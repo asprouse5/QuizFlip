@@ -15,6 +15,7 @@
 		F59E4EDE20BB794E003B8D86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59E4EDC20BB794E003B8D86 /* LaunchScreen.storyboard */; };
 		F59E4EE620BB7F1D003B8D86 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E4EE520BB7F1D003B8D86 /* MainViewController.swift */; };
 		F59E4EE820BB7F2B003B8D86 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E4EE720BB7F2B003B8D86 /* SettingsViewController.swift */; };
+		F59E4EEA20BB932A003B8D86 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E4EE920BB932A003B8D86 /* CategoryData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F59E4EDF20BB794E003B8D86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F59E4EE520BB7F1D003B8D86 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F59E4EE720BB7F2B003B8D86 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F59E4EE920BB932A003B8D86 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,15 +62,16 @@
 		F59E4ECF20BB794D003B8D86 /* SquadBowl */ = {
 			isa = PBXGroup;
 			children = (
-				F59E4EE520BB7F1D003B8D86 /* MainViewController.swift */,
-				F59E4ED020BB794D003B8D86 /* AppDelegate.swift */,
-				F59E4ED220BB794D003B8D86 /* HomeViewController.swift */,
 				F59E4ED420BB794D003B8D86 /* Main.storyboard */,
+				F59E4ED020BB794D003B8D86 /* AppDelegate.swift */,
+				F59E4EE520BB7F1D003B8D86 /* MainViewController.swift */,
+				F59E4ED220BB794D003B8D86 /* HomeViewController.swift */,
+				F59E4EE720BB7F2B003B8D86 /* SettingsViewController.swift */,
 				F59E4EDA20BB794E003B8D86 /* Assets.xcassets */,
 				F59E4EDC20BB794E003B8D86 /* LaunchScreen.storyboard */,
 				F59E4EDF20BB794E003B8D86 /* Info.plist */,
 				F59E4ED720BB794D003B8D86 /* SquadBowl.xcdatamodeld */,
-				F59E4EE720BB7F2B003B8D86 /* SettingsViewController.swift */,
+				F59E4EE920BB932A003B8D86 /* CategoryData.swift */,
 			);
 			path = SquadBowl;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F59E4ED320BB794D003B8D86 /* HomeViewController.swift in Sources */,
+				F59E4EEA20BB932A003B8D86 /* CategoryData.swift in Sources */,
 				F59E4ED120BB794D003B8D86 /* AppDelegate.swift in Sources */,
 				F59E4ED920BB794D003B8D86 /* SquadBowl.xcdatamodeld in Sources */,
 				F59E4EE820BB7F2B003B8D86 /* SettingsViewController.swift in Sources */,
