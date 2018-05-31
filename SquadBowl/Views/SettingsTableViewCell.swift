@@ -11,19 +11,18 @@ import UIKit
 class SettingsTableViewCell: UITableViewCell {
 
     @IBOutlet var mainCatButton: UIButton!
-    @IBOutlet var cat1Button: UIButton!
-    @IBOutlet var cat2Button: UIButton!
-    @IBOutlet var cat3Button: UIButton!
+    @IBOutlet var catButtons: [UIButton]!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+}
+
+// MARK: - SettingsViewModelView
+extension SettingsTableViewCell: SettingsViewModelView {
+
+    public var settingsMainCatButton: UIButton {
+        return mainCatButton
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    public var settingsCatButtons: [UIButton] {
+        return catButtons
     }
-
 }

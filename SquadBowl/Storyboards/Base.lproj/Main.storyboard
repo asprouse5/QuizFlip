@@ -163,7 +163,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsTableViewCell" rowHeight="152" id="QbB-Bn-6X1" customClass="SettingsTableViewCell" customModule="SquadBowl" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" rowHeight="152" id="QbB-Bn-6X1" customClass="SettingsTableViewCell" customModule="SquadBowl" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="74" width="320" height="152"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QbB-Bn-6X1" id="qIh-fB-3ty">
@@ -171,8 +171,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUb-HW-Rmt">
-                                            <rect key="frame" x="20" y="11" width="280" height="41.5"/>
+                                            <rect key="frame" x="20" y="11" width="280" height="42"/>
                                             <accessibility key="accessibilityConfiguration" label="HeadCategory"/>
+                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                             <state key="normal" title="Main Category" backgroundImage="button_unselected">
                                                 <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
@@ -187,29 +188,32 @@
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="M9U-38-NPD">
-                                            <rect key="frame" x="20" y="60.5" width="280" height="83"/>
+                                            <rect key="frame" x="20" y="61" width="280" height="82.5"/>
                                             <subviews>
-                                                <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Zv-4l-rKb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="83" height="83"/>
+                                                <button opaque="NO" tag="101" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3Zv-4l-rKb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="82.5" height="82.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="3Zv-4l-rKb" secondAttribute="height" multiplier="1:1" id="UAd-nc-1he"/>
                                                     </constraints>
-                                                    <state key="normal" title="Animals" image="animals" backgroundImage="square_button_grey"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <state key="normal" backgroundImage="square_button_grey"/>
                                                     <state key="selected" backgroundImage="square_button_color"/>
                                                     <connections>
                                                         <action selector="buttonTrigerred:" destination="ubj-YU-ySE" eventType="touchUpInside" id="o6g-k4-GxJ"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPm-yZ-WPa">
-                                                    <rect key="frame" x="99" y="0.0" width="82.5" height="83"/>
+                                                <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="MPm-yZ-WPa">
+                                                    <rect key="frame" x="98.5" y="0.0" width="83" height="82.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" backgroundImage="square_button_grey"/>
                                                     <state key="selected" backgroundImage="square_button_color"/>
                                                     <connections>
                                                         <action selector="buttonTrigerred:" destination="ubj-YU-ySE" eventType="touchUpInside" id="gfo-66-sVZ"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5iW-cC-1gb">
-                                                    <rect key="frame" x="197.5" y="0.0" width="82.5" height="83"/>
+                                                <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="5iW-cC-1gb">
+                                                    <rect key="frame" x="197.5" y="0.0" width="82.5" height="82.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" backgroundImage="square_button_grey"/>
                                                     <state key="selected" backgroundImage="square_button_color"/>
                                                     <connections>
@@ -234,10 +238,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cat1Button" destination="3Zv-4l-rKb" id="23J-kV-Zdn"/>
-                                    <outlet property="cat2Button" destination="MPm-yZ-WPa" id="5eg-u0-too"/>
-                                    <outlet property="cat3Button" destination="5iW-cC-1gb" id="B6J-2E-FgL"/>
                                     <outlet property="mainCatButton" destination="ZUb-HW-Rmt" id="IuF-Wk-0UU"/>
+                                    <outletCollection property="catButtons" destination="3Zv-4l-rKb" collectionClass="NSMutableArray" id="7ey-LI-tbg"/>
+                                    <outletCollection property="catButtons" destination="MPm-yZ-WPa" collectionClass="NSMutableArray" id="vuR-6l-R8x"/>
+                                    <outletCollection property="catButtons" destination="5iW-cC-1gb" collectionClass="NSMutableArray" id="JYi-fS-thZ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -390,7 +394,6 @@
     <resources>
         <image name="A" width="42" height="48"/>
         <image name="Q" width="42" height="56"/>
-        <image name="animals" width="50" height="50"/>
         <image name="bg" width="313" height="208"/>
         <image name="button_highlighted" width="33" height="54"/>
         <image name="button_normal" width="33" height="54"/>
@@ -405,6 +408,6 @@
         <image name="square_button_grey" width="77" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ubx-zS-TA5"/>
+        <segue reference="JUo-mS-Ii3"/>
     </inferredMetricsTieBreakers>
 </document>

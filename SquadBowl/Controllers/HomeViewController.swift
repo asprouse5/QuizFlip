@@ -19,11 +19,8 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @IBAction func playButtonClicked(_ sender: UIButton) {
     }
-    
-    
 
 }
-
