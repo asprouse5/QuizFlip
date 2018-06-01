@@ -8,43 +8,53 @@
 
 import UIKit
 
+protocol DataTransferable: class {
+    func passState(state: State?)
+}
+
 class SettingsViewController: UITableViewController {
 
-    internal var networkClient = NetworkClient.shared
-    var settingsViewModels = [SettingsViewModel]()
+    var state: State?
+    weak var delegate: DataTransferable?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "bg"))
-        networkClient.readInCategoryData { categories in
-            guard let categories = categories else { fatalError("error getting categories") }
-            self.settingsViewModels = categories.map { SettingsViewModel(category: $0) }
-            self.tableView.reloadData()
+
+        guard let state = state else { fatalError("State not set up") }
+        if state.settingsViewModels.count == 0 {
+            state.networkClient.delegate = self
+            state.networkClient.readInCategoryData()
         }
     }
 
-    @IBAction func buttonTrigerred(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if sender.accessibilityLabel == "HeadCategory" {
-            // select/deselect all other buttons
-            guard let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0))
-                as? SettingsTableViewCell else {
-                    fatalError("Error initializing cell as a SettingsTableViewCell.")
-            }
-
-            let shouldBeSelected = sender.isSelected
-            for button in cell.catButtons {
-                button.isSelected = shouldBeSelected
-            }
-        }
+    @IBAction func okButtonTriggered(_ sender: Any) {
+        delegate?.passState(state: state)
+        self.dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func cancelButtonTriggered(_ sender: Any) {
+        delegate?.passState(state: state)
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func buttonTrigerred(_ sender: CategoryButton) {
+        guard let state = state?.settingsViewModels[sender.section].setSelection(of: sender, state: state) else {
+            return
+        }
+        self.state = state
+    }
 }
 
 // MARK: - UITableViewDataSource
 extension SettingsViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingsViewModels.count
+        return 1
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        guard let state = state else { return 0 }
+        return state.settingsViewModels.count
     }
 
     // Sets each cell's background color to clear
@@ -57,8 +67,20 @@ extension SettingsViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath)
             as? SettingsTableViewCell else { fatalError("No SettingsCell") }
 
-        settingsViewModels[indexPath.row].setTitleAndImages(view: cell, index: indexPath.row)
+        guard let state = state else { fatalError("State not set up") }
+        state.settingsViewModels[indexPath.section].setTitleAndImages(view: cell, indexPath: indexPath, state: state)
 
         return cell
+    }
+}
+
+extension SettingsViewController: NetworkDelegate {
+    func finishedFetching(categories: [Category]) {
+        state?.settingsViewModels = categories.map { SettingsViewModel(category: $0) }
+        state?.isSelected = [Bool](repeating: false,
+                                   count: categories.reduce(0) { sum, cat in
+                                    sum + cat.icons.count + 1
+        })
+        tableView.reloadData()
     }
 }

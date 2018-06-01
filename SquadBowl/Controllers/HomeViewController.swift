@@ -10,9 +10,18 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    var state: State?
+    weak var delegate: DataTransferable?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        delegate = self
+        //guard let state = state else { fatalError("State not set up") }
+        // start async loading of JSON
+
+        // check if there is updated data (online txt file)
+        // if there is, display a popup to the user
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,7 +29,17 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func playButtonClicked(_ sender: UIButton) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "settingsSegue",
+            let destination = segue.destination as? SettingsViewController {
+                destination.state = state
+                destination.delegate = delegate
+        }
     }
+}
 
+extension HomeViewController: DataTransferable {
+    func passState(state: State?) {
+        self.state = state
+    }
 }

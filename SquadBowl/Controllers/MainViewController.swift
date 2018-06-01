@@ -12,10 +12,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // start async loading of JSON
 
-        // check if there is updated data (online txt file)
-        // if there is, display a popup to the user
     }
 
 }

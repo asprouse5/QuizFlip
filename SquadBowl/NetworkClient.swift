@@ -8,10 +8,20 @@
 
 import Foundation
 
-class NetworkClient {
-    public static let shared = NetworkClient()
+protocol NetworkDelegate: class {
+    func finishedFetching(categories: [Category])
+}
 
-    func readInCategoryData(completion: @escaping ([Category]?) -> Void) {
+class NetworkClient {
+
+    weak var delegate: NetworkDelegate?
+
+    func save(categories: [Category]?) {
+        guard let categories = categories else { return }
+        delegate?.finishedFetching(categories: categories)
+    }
+
+    func readInCategoryData(/*completion: @escaping ([Category]?) -> Void*/) {
         guard let plistURL = Bundle.main.url(forResource: "Category", withExtension: "plist") else {
             return // category.plist not found!
         }
@@ -21,6 +31,6 @@ class NetworkClient {
         guard let categories = try? propertyListDecoder.decode([Category].self, from: propertyListData)
             else { return }
 
-        completion(categories)
+        save(categories: categories)
     }
 }

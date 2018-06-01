@@ -8,33 +8,58 @@
 
 import UIKit
 
-public protocol SettingsViewModelView {
-    var settingsMainCatButton: UIButton { get }
-    var settingsCatButtons: [UIButton] { get }
+protocol SettingsViewModelView {
+    var settingsMainCatButton: CategoryButton { get }
+    var settingsCatButtons: [CategoryButton] { get }
 }
 
 class SettingsViewModel {
     var category: Category
-    var networkClient = NetworkClient()
+    var catButtons: [CategoryButton]
+    //var selections: [Bool]
 
     init(category: Category) {
         self.category = category
+        catButtons = [CategoryButton]()
     }
-}
 
-extension SettingsViewModel {
-    public func setTitleAndImages(view: SettingsViewModelView, index: Int) {
+    func setTitleAndImages(view: SettingsViewModelView, indexPath: IndexPath, state: State) {
         // set main category label to the over-arching category
-        view.settingsMainCatButton.setTitle(category.title, for: .normal)
-        view.settingsMainCatButton.tag = index
+        let mainButton = view.settingsMainCatButton
+        catButtons = view.settingsCatButtons
 
-        // set all sub categories title and icon
-        for index in 0..<view.settingsCatButtons.count {
-            let icon = category.icons
-            //let title = icon[index].formatIconTitle()
-            //view.settingsCatButtons[index].setTitle(title, for: .normal)
-            view.settingsCatButtons[index].setImage(UIImage(named: icon[index]), for: .normal)
-            //view.settingsCatButtons[index].alignImageAndTitleVertically()
+        mainButton.setTitle(category.title, for: .normal)
+        let index = mainButton.tagWith(offset: indexPath.section)
+        mainButton.isSelected = state.isSelected[index]
+        mainButton.section = indexPath.section
+
+        // set all sub categories' icons
+        for idx in 0..<catButtons.count {
+            catButtons[idx].setImage(UIImage(named: category.icons[idx]), for: .normal)
+            catButtons[idx].section = indexPath.section
+            let index = catButtons[idx].tagWith(offset: indexPath.section)
+            catButtons[idx].isSelected = state.isSelected[index]
         }
     }
+
+    func setSelection(of button: CategoryButton, state: State?) -> State? {
+        guard var state = state else { return nil }
+
+        button.isSelected = !button.isSelected
+        var index = button.tagWith(offset: button.section)
+        state.isSelected[index] = button.isSelected
+
+        if button.accessibilityLabel == "HeadCategory" {
+            let shouldBeSelected = button.isSelected
+
+            for cButton in catButtons {
+                index += 1
+                cButton.isSelected = shouldBeSelected
+                state.isSelected[index] = shouldBeSelected
+            }
+        }
+
+        return state
+    }
+
 }

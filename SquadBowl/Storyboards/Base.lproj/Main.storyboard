@@ -41,7 +41,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="playButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wDT-TI-Hvi"/>
                                     <segue destination="M4O-zF-FNp" kind="presentation" id="uLa-TB-cxb"/>
                                 </connections>
                             </button>
@@ -72,7 +71,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="ubj-YU-ySE" kind="presentation" id="Ubx-zS-TA5"/>
+                                    <segue destination="ubj-YU-ySE" kind="presentation" identifier="settingsSegue" id="Ubx-zS-TA5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -112,7 +111,7 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick One or More Categories!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5c-ot-N0o">
                                     <rect key="frame" x="8" y="8" width="304" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -137,6 +136,9 @@
                                             <state key="normal" title="OK" backgroundImage="button_normal">
                                                 <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="okButtonTriggered:" destination="ubj-YU-ySE" eventType="touchUpInside" id="gy7-S6-ZzG"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3F-8n-XAR">
                                             <rect key="frame" x="106.5" y="0.0" width="91" height="40"/>
@@ -144,6 +146,9 @@
                                             <state key="normal" title="Cancel" backgroundImage="button_normal">
                                                 <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="cancelButtonTriggered:" destination="ubj-YU-ySE" eventType="touchUpInside" id="ITh-ir-wTe"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3k-TF-JdA">
                                             <rect key="frame" x="213.5" y="0.0" width="90.5" height="40"/>
@@ -170,7 +175,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="151.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUb-HW-Rmt">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUb-HW-Rmt" customClass="CategoryButton" customModule="SquadBowl" customModuleProvider="target">
                                             <rect key="frame" x="20" y="11" width="280" height="42"/>
                                             <accessibility key="accessibilityConfiguration" label="HeadCategory"/>
                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
@@ -190,7 +195,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="M9U-38-NPD">
                                             <rect key="frame" x="20" y="61" width="280" height="82.5"/>
                                             <subviews>
-                                                <button opaque="NO" tag="101" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3Zv-4l-rKb">
+                                                <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3Zv-4l-rKb" customClass="CategoryButton" customModule="SquadBowl" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="82.5" height="82.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="3Zv-4l-rKb" secondAttribute="height" multiplier="1:1" id="UAd-nc-1he"/>
@@ -202,7 +207,7 @@
                                                         <action selector="buttonTrigerred:" destination="ubj-YU-ySE" eventType="touchUpInside" id="o6g-k4-GxJ"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="MPm-yZ-WPa">
+                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="MPm-yZ-WPa" customClass="CategoryButton" customModule="SquadBowl" customModuleProvider="target">
                                                     <rect key="frame" x="98.5" y="0.0" width="83" height="82.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" backgroundImage="square_button_grey"/>
@@ -211,7 +216,7 @@
                                                         <action selector="buttonTrigerred:" destination="ubj-YU-ySE" eventType="touchUpInside" id="gfo-66-sVZ"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="5iW-cC-1gb">
+                                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="5iW-cC-1gb" customClass="CategoryButton" customModule="SquadBowl" customModuleProvider="target">
                                                     <rect key="frame" x="197.5" y="0.0" width="82.5" height="82.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" backgroundImage="square_button_grey"/>
@@ -408,6 +413,6 @@
         <image name="square_button_grey" width="77" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JUo-mS-Ii3"/>
+        <segue reference="Ubx-zS-TA5"/>
     </inferredMetricsTieBreakers>
 </document>

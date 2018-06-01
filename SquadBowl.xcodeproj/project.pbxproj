@@ -22,6 +22,9 @@
 		F5B9221020BF026A00673928 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B9220F20BF026A00673928 /* Category.swift */; };
 		F5B9221320BF4C5300673928 /* Category.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5B9221220BF4C5300673928 /* Category.plist */; };
 		F5B9221520BF560700673928 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B9221420BF560700673928 /* String.swift */; };
+		F5DD801520C0809B00DFB78D /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD801420C0809B00DFB78D /* State.swift */; };
+		F5DD801720C0872600DFB78D /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD801620C0872600DFB78D /* Icon.swift */; };
+		F5DD801920C0987900DFB78D /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD801820C0987900DFB78D /* CategoryButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		F5B9220F20BF026A00673928 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F5B9221220BF4C5300673928 /* Category.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Category.plist; sourceTree = "<group>"; };
 		F5B9221420BF560700673928 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		F5DD801420C0809B00DFB78D /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		F5DD801620C0872600DFB78D /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		F5DD801820C0987900DFB78D /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				F5B9220F20BF026A00673928 /* Category.swift */,
+				F5DD801420C0809B00DFB78D /* State.swift */,
+				F5DD801620C0872600DFB78D /* Icon.swift */,
+				F5DD801820C0987900DFB78D /* CategoryButton.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -243,8 +252,11 @@
 				F59E4ED320BB794D003B8D86 /* HomeViewController.swift in Sources */,
 				F59E4EEA20BB932A003B8D86 /* NetworkClient.swift in Sources */,
 				F5B9221520BF560700673928 /* String.swift in Sources */,
+				F5DD801520C0809B00DFB78D /* State.swift in Sources */,
 				F59E4ED120BB794D003B8D86 /* AppDelegate.swift in Sources */,
 				F5B9220820BEF3E800673928 /* UIButton.swift in Sources */,
+				F5DD801920C0987900DFB78D /* CategoryButton.swift in Sources */,
+				F5DD801720C0872600DFB78D /* Icon.swift in Sources */,
 				F59E4EEE20BDE018003B8D86 /* SettingsTableViewCell.swift in Sources */,
 				F5B9220D20BEFB4E00673928 /* SettingsViewModel.swift in Sources */,
 				F59E4EE820BB7F2B003B8D86 /* SettingsViewController.swift in Sources */,

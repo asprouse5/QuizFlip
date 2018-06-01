@@ -28,4 +28,9 @@ extension UIButton {
             right: 0
         )
     }
+
+    func tagWith(offset: Int) -> Int {
+        return tag + (offset * 4)
+    }
+
 }

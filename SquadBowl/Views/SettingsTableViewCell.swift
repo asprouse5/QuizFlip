@@ -10,19 +10,19 @@ import UIKit
 
 class SettingsTableViewCell: UITableViewCell {
 
-    @IBOutlet var mainCatButton: UIButton!
-    @IBOutlet var catButtons: [UIButton]!
+    @IBOutlet var mainCatButton: CategoryButton!
+    @IBOutlet var catButtons: [CategoryButton]!
 
 }
 
 // MARK: - SettingsViewModelView
 extension SettingsTableViewCell: SettingsViewModelView {
 
-    public var settingsMainCatButton: UIButton {
+    var settingsMainCatButton: CategoryButton {
         return mainCatButton
     }
 
-    public var settingsCatButtons: [UIButton] {
+    var settingsCatButtons: [CategoryButton] {
         return catButtons
     }
 }
