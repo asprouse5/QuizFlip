@@ -8,42 +8,37 @@
 
 import UIKit
 
-protocol DataTransferable: class {
-    func passState(state: State?)
-}
-
 class SettingsViewController: UITableViewController {
 
-    var state: State?
-    weak var delegate: DataTransferable?
+    @IBOutlet var settingsViewModel: SettingsViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "bg"))
 
-        guard let state = state else { fatalError("State not set up") }
-        if state.settingsViewModels.count == 0 {
-            state.networkClient.delegate = self
-            state.networkClient.readInCategoryData()
+        settingsViewModel.getCategories {
+            self.tableView.reloadData()
         }
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        settingsViewModel.saveUserDefaults()
+    }
+
     @IBAction func okButtonTriggered(_ sender: Any) {
-        delegate?.passState(state: state)
         self.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func cancelButtonTriggered(_ sender: Any) {
-        delegate?.passState(state: state)
         self.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func buttonTrigerred(_ sender: CategoryButton) {
-        guard let state = state?.settingsViewModels[sender.section].setSelection(of: sender, state: state) else {
-            return
-        }
-        self.state = state
+        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: sender.section))
+            as? SettingsTableViewCell else { fatalError() }
+        settingsViewModel.setSelection(of: sender, view: cell)
     }
+
 }
 
 // MARK: - UITableViewDataSource
@@ -53,11 +48,9 @@ extension SettingsViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        guard let state = state else { return 0 }
-        return state.settingsViewModels.count
+        return settingsViewModel.numberOfSections()
     }
 
-    // Sets each cell's background color to clear
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.clear
@@ -65,22 +58,10 @@ extension SettingsViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath)
-            as? SettingsTableViewCell else { fatalError("No SettingsCell") }
+            as? SettingsTableViewCell else { fatalError() }
 
-        guard let state = state else { fatalError("State not set up") }
-        state.settingsViewModels[indexPath.section].setTitleAndImages(view: cell, indexPath: indexPath, state: state)
+        settingsViewModel.setupButtons(view: cell, indexPath: indexPath)
 
         return cell
-    }
-}
-
-extension SettingsViewController: NetworkDelegate {
-    func finishedFetching(categories: [Category]) {
-        state?.settingsViewModels = categories.map { SettingsViewModel(category: $0) }
-        state?.isSelected = [Bool](repeating: false,
-                                   count: categories.reduce(0) { sum, cat in
-                                    sum + cat.icons.count + 1
-        })
-        tableView.reloadData()
     }
 }

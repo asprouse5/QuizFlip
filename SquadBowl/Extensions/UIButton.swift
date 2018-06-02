@@ -29,8 +29,8 @@ extension UIButton {
         )
     }
 
-    func tagWith(offset: Int) -> Int {
-        return tag + (offset * 4)
+    func tagWith(offset: Int, multiplier: Int) -> Int {
+        return tag + (offset * multiplier)
     }
 
 }

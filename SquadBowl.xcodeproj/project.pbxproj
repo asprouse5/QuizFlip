@@ -17,14 +17,13 @@
 		F59E4EEC20BDB253003B8D86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F59E4EEB20BDB252003B8D86 /* Assets.xcassets */; };
 		F59E4EEE20BDE018003B8D86 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E4EED20BDE018003B8D86 /* SettingsTableViewCell.swift */; };
 		F5B9220820BEF3E800673928 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B9220720BEF3E800673928 /* UIButton.swift */; };
-		F5B9220A20BEF63300673928 /* icons.txt in Resources */ = {isa = PBXBuildFile; fileRef = F5B9220920BEF63300673928 /* icons.txt */; };
 		F5B9220D20BEFB4E00673928 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B9220C20BEFB4E00673928 /* SettingsViewModel.swift */; };
 		F5B9221020BF026A00673928 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B9220F20BF026A00673928 /* Category.swift */; };
 		F5B9221320BF4C5300673928 /* Category.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5B9221220BF4C5300673928 /* Category.plist */; };
 		F5B9221520BF560700673928 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B9221420BF560700673928 /* String.swift */; };
 		F5DD801520C0809B00DFB78D /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD801420C0809B00DFB78D /* State.swift */; };
-		F5DD801720C0872600DFB78D /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD801620C0872600DFB78D /* Icon.swift */; };
 		F5DD801920C0987900DFB78D /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD801820C0987900DFB78D /* CategoryButton.swift */; };
+		F5DF7C0220C190F300B400FA /* DataTransferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF7C0120C190F300B400FA /* DataTransferable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,14 +39,13 @@
 		F59E4EEB20BDB252003B8D86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F59E4EED20BDE018003B8D86 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		F5B9220720BEF3E800673928 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
-		F5B9220920BEF63300673928 /* icons.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = icons.txt; sourceTree = "<group>"; };
 		F5B9220C20BEFB4E00673928 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F5B9220F20BF026A00673928 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F5B9221220BF4C5300673928 /* Category.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Category.plist; sourceTree = "<group>"; };
 		F5B9221420BF560700673928 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		F5DD801420C0809B00DFB78D /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
-		F5DD801620C0872600DFB78D /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		F5DD801820C0987900DFB78D /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
+		F5DF7C0120C190F300B400FA /* DataTransferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +78,8 @@
 		F59E4ECF20BB794D003B8D86 /* SquadBowl */ = {
 			isa = PBXGroup;
 			children = (
+				F5DF7C0020C190DD00B400FA /* Protocols */,
+				F5DF7BFF20C18FEB00B400FA /* Networking */,
 				F5B9221120BF02F000673928 /* View Models */,
 				F5B9220E20BF023300673928 /* Models */,
 				F5B9220B20BEF71D00673928 /* Extensions */,
@@ -88,7 +88,6 @@
 				F5B921FF20BEECFC00673928 /* Views */,
 				F5B9220220BEED4700673928 /* Other */,
 				F59E4EEB20BDB252003B8D86 /* Assets.xcassets */,
-				F59E4EE920BB932A003B8D86 /* NetworkClient.swift */,
 			);
 			path = SquadBowl;
 			sourceTree = "<group>";
@@ -123,7 +122,6 @@
 		F5B9220220BEED4700673928 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				F5B9220920BEF63300673928 /* icons.txt */,
 				F59E4ED020BB794D003B8D86 /* AppDelegate.swift */,
 				F59E4EDF20BB794E003B8D86 /* Info.plist */,
 				F5B9221220BF4C5300673928 /* Category.plist */,
@@ -145,7 +143,6 @@
 			children = (
 				F5B9220F20BF026A00673928 /* Category.swift */,
 				F5DD801420C0809B00DFB78D /* State.swift */,
-				F5DD801620C0872600DFB78D /* Icon.swift */,
 				F5DD801820C0987900DFB78D /* CategoryButton.swift */,
 			);
 			path = Models;
@@ -157,6 +154,22 @@
 				F5B9220C20BEFB4E00673928 /* SettingsViewModel.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		F5DF7BFF20C18FEB00B400FA /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F59E4EE920BB932A003B8D86 /* NetworkClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F5DF7C0020C190DD00B400FA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F5DF7C0120C190F300B400FA /* DataTransferable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,7 +235,6 @@
 				F5B9221320BF4C5300673928 /* Category.plist in Resources */,
 				F59E4EEC20BDB253003B8D86 /* Assets.xcassets in Resources */,
 				F59E4ED620BB794D003B8D86 /* Main.storyboard in Resources */,
-				F5B9220A20BEF63300673928 /* icons.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +268,8 @@
 				F59E4ED120BB794D003B8D86 /* AppDelegate.swift in Sources */,
 				F5B9220820BEF3E800673928 /* UIButton.swift in Sources */,
 				F5DD801920C0987900DFB78D /* CategoryButton.swift in Sources */,
-				F5DD801720C0872600DFB78D /* Icon.swift in Sources */,
 				F59E4EEE20BDE018003B8D86 /* SettingsTableViewCell.swift in Sources */,
+				F5DF7C0220C190F300B400FA /* DataTransferable.swift in Sources */,
 				F5B9220D20BEFB4E00673928 /* SettingsViewModel.swift in Sources */,
 				F59E4EE820BB7F2B003B8D86 /* SettingsViewController.swift in Sources */,
 				F59E4EE620BB7F1D003B8D86 /* MainViewController.swift in Sources */,

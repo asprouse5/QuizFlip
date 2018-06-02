@@ -6,9 +6,9 @@
 //  Copyright © 2018 Sprouse. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-struct Category: Decodable {
+struct Category: Codable {
     let title: String
     let icons: [String]
 }

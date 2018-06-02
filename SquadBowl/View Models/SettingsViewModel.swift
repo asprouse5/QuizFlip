@@ -8,58 +8,98 @@
 
 import UIKit
 
-protocol SettingsViewModelView {
+protocol SettingsTableViewCellModel {
     var settingsMainCatButton: CategoryButton { get }
     var settingsCatButtons: [CategoryButton] { get }
 }
 
-class SettingsViewModel {
-    var category: Category
-    var catButtons: [CategoryButton]
-    //var selections: [Bool]
+class SettingsViewModel: NSObject {
 
-    init(category: Category) {
-        self.category = category
-        catButtons = [CategoryButton]()
+    @IBOutlet var networkClient: NetworkClient!
+    var categories: [Category]?
+    var selections: [Bool]?
+    let defaults = UserDefaults.standard
+
+    func saveUserDefaults() {
+        defaults.set(selections, forKey: "isSelected")
+        let encodedData = try? PropertyListEncoder().encode(categories)
+        defaults.set(encodedData, forKey: "categories")
     }
 
-    func setTitleAndImages(view: SettingsViewModelView, indexPath: IndexPath, state: State) {
-        // set main category label to the over-arching category
-        let mainButton = view.settingsMainCatButton
-        catButtons = view.settingsCatButtons
-
-        mainButton.setTitle(category.title, for: .normal)
-        let index = mainButton.tagWith(offset: indexPath.section)
-        mainButton.isSelected = state.isSelected[index]
-        mainButton.section = indexPath.section
-
-        // set all sub categories' icons
-        for idx in 0..<catButtons.count {
-            catButtons[idx].setImage(UIImage(named: category.icons[idx]), for: .normal)
-            catButtons[idx].section = indexPath.section
-            let index = catButtons[idx].tagWith(offset: indexPath.section)
-            catButtons[idx].isSelected = state.isSelected[index]
+    func getCategories(completion: @escaping () -> Void) {
+        if let data = defaults.object(forKey: "categories") as? Data,
+            let decodedData = try? PropertyListDecoder().decode([Category].self, from: data) {
+            // data is saved
+            self.categories = decodedData
+            self.selections = defaults.array(forKey: "isSelected") as? [Bool]
+            completion()
+        } else {
+            // no data saved, get some
+            getNewData()
+            completion()
         }
     }
 
-    func setSelection(of button: CategoryButton, state: State?) -> State? {
-        guard var state = state else { return nil }
+    func getNewData() {
+        networkClient.readInCategoryData { categories in
+            DispatchQueue.main.async {
+                self.categories = categories
+                self.selections = [Bool](repeating: false, count: self.getCategoryCount(categories))
+                self.saveUserDefaults()
+            }
+        }
+    }
 
+    func getCategoryCount(_ categories: [Category]?) -> Int {
+        return categories?.reduce(0) { sum, cat in return sum + cat.icons.count + 1 } ?? 0
+    }
+
+    func numberOfSections() -> Int {
+        return categories?.count ?? 0
+    }
+
+    func setupButtons(view: SettingsTableViewCellModel, indexPath: IndexPath) {
+        let title = categoryTitle(for: indexPath)
+        view.settingsMainCatButton.setTitle(title, for: .normal)
+        view.settingsMainCatButton.section = indexPath.section
+        view.settingsMainCatButton.isSelected = selectionState(of: view.settingsMainCatButton)
+
+        for button in view.settingsCatButtons {
+            let image = categoryImage(for: indexPath, subIndex: button.tag)
+            button.setImage(image, for: .normal)
+            button.section = indexPath.section
+            button.isSelected = selectionState(of: button)
+        }
+    }
+
+    func categoryTitle(for indexPath: IndexPath) -> String {
+        return categories?[indexPath.section].title ?? ""
+    }
+
+    func categoryImage(for indexPath: IndexPath, subIndex: Int) -> UIImage? {
+        let name = categories?[indexPath.section].icons[subIndex-1] ?? ""
+        return UIImage(named: name)
+    }
+
+    func selectionState(of button: CategoryButton) -> Bool {
+        let index = button.tagWith(offset: button.section, multiplier: 4)
+        return selections?[index] ?? false
+    }
+
+    func setSelection(of button: CategoryButton, view: SettingsTableViewCellModel) {
         button.isSelected = !button.isSelected
-        var index = button.tagWith(offset: button.section)
-        state.isSelected[index] = button.isSelected
+        var index = button.tagWith(offset: button.section, multiplier: 4)
+        selections?[index] = button.isSelected
 
         if button.accessibilityLabel == "HeadCategory" {
             let shouldBeSelected = button.isSelected
 
-            for cButton in catButtons {
+            for cButton in view.settingsCatButtons {
                 index += 1
                 cButton.isSelected = shouldBeSelected
-                state.isSelected[index] = shouldBeSelected
+                selections?[index] = shouldBeSelected
             }
         }
-
-        return state
     }
 
 }

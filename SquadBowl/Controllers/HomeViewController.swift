@@ -10,14 +10,11 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    var state: State?
-    weak var delegate: DataTransferable?
+    //weak var delegate: DataTransferable?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        delegate = self
-        //guard let state = state else { fatalError("State not set up") }
         // start async loading of JSON
 
         // check if there is updated data (online txt file)
@@ -30,16 +27,6 @@ class HomeViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "settingsSegue",
-            let destination = segue.destination as? SettingsViewController {
-                destination.state = state
-                destination.delegate = delegate
-        }
-    }
-}
 
-extension HomeViewController: DataTransferable {
-    func passState(state: State?) {
-        self.state = state
     }
 }

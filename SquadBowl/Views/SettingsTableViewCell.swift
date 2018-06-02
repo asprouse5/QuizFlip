@@ -16,7 +16,7 @@ class SettingsTableViewCell: UITableViewCell {
 }
 
 // MARK: - SettingsViewModelView
-extension SettingsTableViewCell: SettingsViewModelView {
+extension SettingsTableViewCell: SettingsTableViewCellModel {
 
     var settingsMainCatButton: CategoryButton {
         return mainCatButton

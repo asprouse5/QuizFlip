@@ -1,2 +1,0 @@
-History=US_History:us-history World_History:world-history Government:government
-Sports=Football:football Basketball:basketball Soccer:soccer

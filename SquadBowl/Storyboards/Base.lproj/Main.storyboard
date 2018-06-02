@@ -255,8 +255,17 @@
                             <outlet property="delegate" destination="ubj-YU-ySE" id="ows-Zq-Cvs"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="settingsViewModel" destination="HpI-MW-alL" id="Q3R-AY-wwu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuW-YQ-5fY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="HpI-MW-alL" customClass="SettingsViewModel" customModule="SquadBowl" customModuleProvider="target">
+                    <connections>
+                        <outlet property="networkClient" destination="LtP-1j-Opp" id="lCc-eW-osc"/>
+                    </connections>
+                </customObject>
+                <customObject id="LtP-1j-Opp" customClass="NetworkClient" customModule="SquadBowl" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="136.875" y="984.50704225352115"/>
         </scene>

@@ -10,6 +10,6 @@ import UIKit
 
 class CategoryButton: UIButton {
 
-    var section = -1
+    var section = 0
 
 }

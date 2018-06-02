@@ -8,22 +8,12 @@
 
 import Foundation
 
-protocol NetworkDelegate: class {
-    func finishedFetching(categories: [Category])
-}
+class NetworkClient: NSObject {
 
-class NetworkClient {
-
-    weak var delegate: NetworkDelegate?
-
-    func save(categories: [Category]?) {
-        guard let categories = categories else { return }
-        delegate?.finishedFetching(categories: categories)
-    }
-
-    func readInCategoryData(/*completion: @escaping ([Category]?) -> Void*/) {
+    func readInCategoryData(completion: @escaping ([Category]?) -> Void) {
         guard let plistURL = Bundle.main.url(forResource: "Category", withExtension: "plist") else {
-            return // category.plist not found!
+            completion(nil) // category.plist not found!
+            return
         }
 
         let propertyListDecoder = PropertyListDecoder()
@@ -31,6 +21,6 @@ class NetworkClient {
         guard let categories = try? propertyListDecoder.decode([Category].self, from: propertyListData)
             else { return }
 
-        save(categories: categories)
+        completion(categories)
     }
 }
