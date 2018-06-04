@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F53C315320C2197400479FA4 /* QA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53C315220C2197400479FA4 /* QA.swift */; };
 		F59E4ED120BB794D003B8D86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E4ED020BB794D003B8D86 /* AppDelegate.swift */; };
 		F59E4ED320BB794D003B8D86 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E4ED220BB794D003B8D86 /* HomeViewController.swift */; };
 		F59E4ED620BB794D003B8D86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59E4ED420BB794D003B8D86 /* Main.storyboard */; };
@@ -21,12 +22,14 @@
 		F5B9221020BF026A00673928 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B9220F20BF026A00673928 /* Category.swift */; };
 		F5B9221320BF4C5300673928 /* Category.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5B9221220BF4C5300673928 /* Category.plist */; };
 		F5B9221520BF560700673928 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B9221420BF560700673928 /* String.swift */; };
+		F5D96E7720C5E83D00ED664A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D96E7620C5E83D00ED664A /* Constants.swift */; };
 		F5DD801520C0809B00DFB78D /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD801420C0809B00DFB78D /* State.swift */; };
 		F5DD801920C0987900DFB78D /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD801820C0987900DFB78D /* CategoryButton.swift */; };
 		F5DF7C0220C190F300B400FA /* DataTransferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF7C0120C190F300B400FA /* DataTransferable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F53C315220C2197400479FA4 /* QA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QA.swift; sourceTree = "<group>"; };
 		F59E4ECD20BB794D003B8D86 /* SquadBowl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquadBowl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59E4ED020BB794D003B8D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F59E4ED220BB794D003B8D86 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +46,7 @@
 		F5B9220F20BF026A00673928 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F5B9221220BF4C5300673928 /* Category.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Category.plist; sourceTree = "<group>"; };
 		F5B9221420BF560700673928 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		F5D96E7620C5E83D00ED664A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F5DD801420C0809B00DFB78D /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		F5DD801820C0987900DFB78D /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
 		F5DF7C0120C190F300B400FA /* DataTransferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferable.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 		F5B9220220BEED4700673928 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				F5D96E7620C5E83D00ED664A /* Constants.swift */,
 				F59E4ED020BB794D003B8D86 /* AppDelegate.swift */,
 				F59E4EDF20BB794E003B8D86 /* Info.plist */,
 				F5B9221220BF4C5300673928 /* Category.plist */,
@@ -144,6 +149,7 @@
 				F5B9220F20BF026A00673928 /* Category.swift */,
 				F5DD801420C0809B00DFB78D /* State.swift */,
 				F5DD801820C0987900DFB78D /* CategoryButton.swift */,
+				F53C315220C2197400479FA4 /* QA.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -262,9 +268,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F59E4ED320BB794D003B8D86 /* HomeViewController.swift in Sources */,
+				F53C315320C2197400479FA4 /* QA.swift in Sources */,
 				F59E4EEA20BB932A003B8D86 /* NetworkClient.swift in Sources */,
 				F5B9221520BF560700673928 /* String.swift in Sources */,
 				F5DD801520C0809B00DFB78D /* State.swift in Sources */,
+				F5D96E7720C5E83D00ED664A /* Constants.swift in Sources */,
 				F59E4ED120BB794D003B8D86 /* AppDelegate.swift in Sources */,
 				F5B9220820BEF3E800673928 /* UIButton.swift in Sources */,
 				F5DD801920C0987900DFB78D /* CategoryButton.swift in Sources */,

@@ -11,5 +11,6 @@ import UIKit
 class CategoryButton: UIButton {
 
     var section = 0
+    var category = ""
 
 }

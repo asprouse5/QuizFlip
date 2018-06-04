@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "HomeViewController.passState(state:):HomeViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "NetworkClient.readInCategoryData():NetworkClient.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SettingsViewModel.setTitleAndImages(view:indexPath:state:):SettingsViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "view.settingsMainCatButton.buttonState">
+            </PersistentString>
+            <PersistentString
+               value = "category">
+            </PersistentString>
+            <PersistentString
+               value = "view.settingsCatButtons[index].buttonState">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SettingsViewController.finishedFetching(categories:):SettingsViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SettingsViewController.buttonTrigerred(_:):SettingsViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in SettingsViewController.finishedFetching(categories:):SettingsViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "HomeViewController.viewDidLoad():HomeViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SettingsViewController.tableView(_:numberOfRowsInSection:):SettingsViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SettingsViewModel.updateButtons():SettingsViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "button.isSelected">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SettingsViewController.viewDidLoad():SettingsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "state.settingsViewModels[0].buttonsInSection[2].isSelected">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

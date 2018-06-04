@@ -26,6 +26,16 @@ class SettingsViewModel: NSObject {
         defaults.set(encodedData, forKey: "categories")
     }
 
+    func getJSONData(completion: @escaping () -> Void) {
+        networkClient.getQuestionData { questions in
+            DispatchQueue.main.async {
+                for question in questions! {
+                    print(question.question)
+                }
+            }
+        }
+    }
+
     func getCategories(completion: @escaping () -> Void) {
         if let data = defaults.object(forKey: "categories") as? Data,
             let decodedData = try? PropertyListDecoder().decode([Category].self, from: data) {
@@ -61,24 +71,27 @@ class SettingsViewModel: NSObject {
     func setupButtons(view: SettingsTableViewCellModel, indexPath: IndexPath) {
         let title = categoryTitle(for: indexPath)
         view.settingsMainCatButton.setTitle(title, for: .normal)
-        view.settingsMainCatButton.section = indexPath.section
-        view.settingsMainCatButton.isSelected = selectionState(of: view.settingsMainCatButton)
+        setProperties(for: view.settingsMainCatButton, indexPath: indexPath, name: title)
 
         for button in view.settingsCatButtons {
-            let image = categoryImage(for: indexPath, subIndex: button.tag)
-            button.setImage(image, for: .normal)
-            button.section = indexPath.section
-            button.isSelected = selectionState(of: button)
+            let imageName = categoryImageName(for: indexPath, subIndex: button.tag)
+            button.setImage(UIImage(named: imageName), for: .normal)
+            setProperties(for: button, indexPath: indexPath, name: imageName)
         }
+    }
+
+    func setProperties(for button: CategoryButton, indexPath: IndexPath, name: String) {
+        button.section = indexPath.section
+        button.category = name
+        button.isSelected = selectionState(of: button)
     }
 
     func categoryTitle(for indexPath: IndexPath) -> String {
         return categories?[indexPath.section].title ?? ""
     }
 
-    func categoryImage(for indexPath: IndexPath, subIndex: Int) -> UIImage? {
-        let name = categories?[indexPath.section].icons[subIndex-1] ?? ""
-        return UIImage(named: name)
+    func categoryImageName(for indexPath: IndexPath, subIndex: Int) -> String {
+        return categories?[indexPath.section].icons[subIndex-1] ?? ""
     }
 
     func selectionState(of button: CategoryButton) -> Bool {
