@@ -19,17 +19,10 @@ class SettingsViewController: UITableViewController {
         settingsViewModel.getCategories {
             self.tableView.reloadData()
         }
-
-        settingsViewModel.getJSONData {
-            print("done")
-        }
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        settingsViewModel.saveUserDefaults()
     }
 
     @IBAction func okButtonTriggered(_ sender: Any) {
+        settingsViewModel.saveUserDefaults()
         self.dismiss(animated: true, completion: nil)
     }
 

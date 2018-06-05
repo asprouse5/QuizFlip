@@ -10,15 +10,23 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    //weak var delegate: DataTransferable?
+    @IBOutlet var questionModel: QuestionModel!
+
+    override func viewDidAppear(_ animated: Bool) {
+        // start async loading of JSON
+        questionModel.getStarterQuestions {
+            print("got starter questions")
+        }
+
+        //if questionModel.isFirstTime() {
+            questionModel.getFirstAlert().show(animated: true)
+            //alert.show(animated: true)
+            //self.present(alert, animated: true)
+        //}
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // start async loading of JSON
-
-        // check if there is updated data (online txt file)
-        // if there is, display a popup to the user
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,6 +35,9 @@ class HomeViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        if segue.identifier == "mainSegue",
+            let destination = segue.destination as? MainViewController {
+            destination.questionModel = questionModel
+        }
     }
 }

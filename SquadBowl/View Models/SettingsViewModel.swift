@@ -6,7 +6,7 @@
 //  Copyright © 2018 Sprouse. All rights reserved.
 //
 
-import UIKit
+import UIKit // needed for UIImage
 
 protocol SettingsTableViewCellModel {
     var settingsMainCatButton: CategoryButton { get }
@@ -26,16 +26,6 @@ class SettingsViewModel: NSObject {
         defaults.set(encodedData, forKey: "categories")
     }
 
-    func getJSONData(completion: @escaping () -> Void) {
-        networkClient.getQuestionData { questions in
-            DispatchQueue.main.async {
-                for question in questions! {
-                    print(question.question)
-                }
-            }
-        }
-    }
-
     func getCategories(completion: @escaping () -> Void) {
         if let data = defaults.object(forKey: "categories") as? Data,
             let decodedData = try? PropertyListDecoder().decode([Category].self, from: data) {
@@ -51,7 +41,7 @@ class SettingsViewModel: NSObject {
     }
 
     func getNewData() {
-        networkClient.readInCategoryData { categories in
+        networkClient.getCategoryData { categories in
             DispatchQueue.main.async {
                 self.categories = categories
                 self.selections = [Bool](repeating: false, count: self.getCategoryCount(categories))

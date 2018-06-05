@@ -10,9 +10,26 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    @IBOutlet var questionModel: QuestionModel!
+    @IBOutlet var questionLabel: UILabel!
+    @IBOutlet var answerLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getNextRandomQuestion()
+    }
+
+    func getNextRandomQuestion() {
+        let randQuestion = questionModel.getRandomQuestion()
+        DispatchQueue.main.async {
+            self.questionLabel.text = randQuestion.question
+            self.answerLabel.text = randQuestion.answer
+        }
+    }
+
+    @IBAction func nextTriggered(_ sender: UIButton) {
+        getNextRandomQuestion()
     }
 
 }
