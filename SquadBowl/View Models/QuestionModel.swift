@@ -2,7 +2,7 @@
 //  QuestionModel.swift
 //  SquadBowl
 //
-//  Created by JTOG Mobile Development 1 on 6/5/18.
+//  Created by Adriana Sprouse on 6/5/18.
 //  Copyright © 2018 Sprouse. All rights reserved.
 //
 

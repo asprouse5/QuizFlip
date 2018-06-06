@@ -34,7 +34,7 @@
 
 /* Begin PBXFileReference section */
 		F53C315220C2197400479FA4 /* QA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QA.swift; sourceTree = "<group>"; };
-		F59E4ECD20BB794D003B8D86 /* SquadBowl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquadBowl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F59E4ECD20BB794D003B8D86 /* WizQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WizQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59E4ED020BB794D003B8D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F59E4ED220BB794D003B8D86 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F59E4ED520BB794D003B8D86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 		F59E4ECE20BB794D003B8D86 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F59E4ECD20BB794D003B8D86 /* SquadBowl.app */,
+				F59E4ECD20BB794D003B8D86 /* WizQuiz.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,9 +193,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F59E4ECC20BB794D003B8D86 /* SquadBowl */ = {
+		F59E4ECC20BB794D003B8D86 /* WizQuiz */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F59E4EE220BB794E003B8D86 /* Build configuration list for PBXNativeTarget "SquadBowl" */;
+			buildConfigurationList = F59E4EE220BB794E003B8D86 /* Build configuration list for PBXNativeTarget "WizQuiz" */;
 			buildPhases = (
 				F59E4EC920BB794D003B8D86 /* Sources */,
 				F59E4ECA20BB794D003B8D86 /* Frameworks */,
@@ -206,9 +206,9 @@
 			);
 			dependencies = (
 			);
-			name = SquadBowl;
+			name = WizQuiz;
 			productName = SquadBowl;
-			productReference = F59E4ECD20BB794D003B8D86 /* SquadBowl.app */;
+			productReference = F59E4ECD20BB794D003B8D86 /* WizQuiz.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -239,7 +239,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F59E4ECC20BB794D003B8D86 /* SquadBowl */,
+				F59E4ECC20BB794D003B8D86 /* WizQuiz */,
 			);
 		};
 /* End PBXProject section */
@@ -485,7 +485,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F59E4EE220BB794E003B8D86 /* Build configuration list for PBXNativeTarget "SquadBowl" */ = {
+		F59E4EE220BB794E003B8D86 /* Build configuration list for PBXNativeTarget "WizQuiz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F59E4EE320BB794E003B8D86 /* Debug */,
