@@ -31,9 +31,7 @@ class SettingsViewController: UITableViewController {
     }
 
     @IBAction func buttonTrigerred(_ sender: CategoryButton) {
-        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: sender.section))
-            as? SettingsTableViewCell else { fatalError() }
-        settingsViewModel.setSelection(of: sender, view: cell)
+        settingsViewModel.setSelection(of: sender, tableView: tableView)
     }
 
 }
@@ -48,6 +46,16 @@ extension SettingsViewController {
         return settingsViewModel.numberOfSections()
     }
 
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(Constants.tableViewSectionHeaderHeight)
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = settingsViewModel.setupSectionHeaderView(tableView: tableView, section: section)
+        view.headerButton.addTarget(self, action: #selector(buttonTrigerred(_:)), for: .touchUpInside)
+        return view
+    }
+
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.clear
@@ -57,7 +65,7 @@ extension SettingsViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath)
             as? SettingsTableViewCell else { fatalError() }
 
-        settingsViewModel.setupButtons(view: cell, indexPath: indexPath)
+        settingsViewModel.setupButtons(view: cell, section: indexPath.section)
 
         return cell
     }

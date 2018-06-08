@@ -6,17 +6,13 @@
 //  Copyright © 2018 Sprouse. All rights reserved.
 //
 
-import UIKit // needed for UIAlertController
+import Foundation
 
 class QuestionModel: NSObject {
 
     @IBOutlet var networkClient: NetworkClient!
-    var questions: [QA]?
+    var questions: [QAData]?
     let defaults = UserDefaults.standard
-
-    func getFirstAlert() -> IntroAlertView {
-        return IntroAlertView()
-    }
 
     func saveUserDefaults() {
         let encodedData = try? PropertyListEncoder().encode(questions)
@@ -35,7 +31,7 @@ class QuestionModel: NSObject {
 
     func getStarterQuestions(completion: @escaping () -> Void) {
         if let data = defaults.object(forKey: "questions") as? Data,
-            let decodedData = try? PropertyListDecoder().decode([QA].self, from: data) {
+            let decodedData = try? PropertyListDecoder().decode([QAData].self, from: data) {
             // data is saved
             print("using saved data")
             self.questions = decodedData
@@ -50,12 +46,12 @@ class QuestionModel: NSObject {
 
     func getNewStarterQuestions() {
         networkClient.getStarterQuestionData { questions in
-            //DispatchQueue.main.async {
-            print("STARTER QUESTION COUNT: \(questions?.count ?? 0)")
-            self.questions = questions
-            print("CURRENT TOTAL: \(self.questions?.count ?? 0)")
-            self.saveUserDefaults()
-            //}
+            DispatchQueue.main.async {
+                print("STARTER QUESTION COUNT: \(questions?.count ?? 0)")
+                self.questions = questions
+                print("CURRENT TOTAL: \(self.questions?.count ?? 0)")
+                self.saveUserDefaults()
+            }
             self.getVersion()
             self.getAllQuestions()
         }
@@ -72,8 +68,8 @@ class QuestionModel: NSObject {
         }
     }
 
-    func getRandomQuestion() -> QA {
-        guard let questions = questions else { return QA() }
+    func getRandomQuestion() -> QAData {
+        guard let questions = questions else { return QAData() }
         let max = questions.count
         let index = arc4random_uniform(UInt32(max))
         return questions[Int(index)]

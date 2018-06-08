@@ -16,11 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
         launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        /*if let _ = window?.rootViewController as? HomeViewController {
-            //homeViewController.state = State(networkClient: NetworkClient(),
-            //                                 settingsViewModels: [SettingsViewModel](),
-            //                                 isSelected: [Bool]())
-        }*/
         return true
     }
 

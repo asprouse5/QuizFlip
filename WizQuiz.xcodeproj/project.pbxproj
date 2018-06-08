@@ -21,15 +21,15 @@
 		F5B9220D20BEFB4E00673928 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B9220C20BEFB4E00673928 /* SettingsViewModel.swift */; };
 		F5B9221020BF026A00673928 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B9220F20BF026A00673928 /* Category.swift */; };
 		F5B9221320BF4C5300673928 /* Category.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5B9221220BF4C5300673928 /* Category.plist */; };
-		F5B9221520BF560700673928 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B9221420BF560700673928 /* String.swift */; };
 		F5D96E7720C5E83D00ED664A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D96E7620C5E83D00ED664A /* Constants.swift */; };
-		F5DD801520C0809B00DFB78D /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD801420C0809B00DFB78D /* State.swift */; };
 		F5DD801920C0987900DFB78D /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD801820C0987900DFB78D /* CategoryButton.swift */; };
 		F5DF7C0220C190F300B400FA /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF7C0120C190F300B400FA /* Modal.swift */; };
 		F5EA800420C6F5E300B9C815 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EA800320C6F5E300B9C815 /* QuestionModel.swift */; };
 		F5EA800820C7268B00B9C815 /* IntroAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EA800720C7268B00B9C815 /* IntroAlertView.swift */; };
 		F5EA800C20C7342B00B9C815 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EA800B20C7342B00B9C815 /* UIColor.swift */; };
 		F5EA800E20C7390E00B9C815 /* IntroAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5EA800D20C7390E00B9C815 /* IntroAlertView.xib */; };
+		F5F3F32320C9617400682BD6 /* SettingsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F3F32220C9617400682BD6 /* SettingsHeaderView.xib */; };
+		F5F3F32520C9628A00682BD6 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3F32420C9628A00682BD6 /* SettingsHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,15 +49,15 @@
 		F5B9220C20BEFB4E00673928 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F5B9220F20BF026A00673928 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F5B9221220BF4C5300673928 /* Category.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Category.plist; sourceTree = "<group>"; };
-		F5B9221420BF560700673928 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		F5D96E7620C5E83D00ED664A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		F5DD801420C0809B00DFB78D /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		F5DD801820C0987900DFB78D /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
 		F5DF7C0120C190F300B400FA /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		F5EA800320C6F5E300B9C815 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		F5EA800720C7268B00B9C815 /* IntroAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroAlertView.swift; sourceTree = "<group>"; };
 		F5EA800B20C7342B00B9C815 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		F5EA800D20C7390E00B9C815 /* IntroAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroAlertView.xib; sourceTree = "<group>"; };
+		F5F3F32220C9617400682BD6 /* SettingsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsHeaderView.xib; sourceTree = "<group>"; };
+		F5F3F32420C9628A00682BD6 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +107,10 @@
 		F5B921FF20BEECFC00673928 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F5DD801820C0987900DFB78D /* CategoryButton.swift */,
 				F59E4EED20BDE018003B8D86 /* SettingsTableViewCell.swift */,
 				F5EA800720C7268B00B9C815 /* IntroAlertView.swift */,
+				F5F3F32420C9628A00682BD6 /* SettingsHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -129,6 +131,7 @@
 				F59E4ED420BB794D003B8D86 /* Main.storyboard */,
 				F59E4EDC20BB794E003B8D86 /* LaunchScreen.storyboard */,
 				F5EA800D20C7390E00B9C815 /* IntroAlertView.xib */,
+				F5F3F32220C9617400682BD6 /* SettingsHeaderView.xib */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -148,7 +151,6 @@
 			isa = PBXGroup;
 			children = (
 				F5B9220720BEF3E800673928 /* UIButton.swift */,
-				F5B9221420BF560700673928 /* String.swift */,
 				F5EA800B20C7342B00B9C815 /* UIColor.swift */,
 			);
 			path = Extensions;
@@ -158,8 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				F5B9220F20BF026A00673928 /* Category.swift */,
-				F5DD801420C0809B00DFB78D /* State.swift */,
-				F5DD801820C0987900DFB78D /* CategoryButton.swift */,
 				F53C315220C2197400479FA4 /* QA.swift */,
 			);
 			path = Models;
@@ -253,6 +253,7 @@
 				F5EA800E20C7390E00B9C815 /* IntroAlertView.xib in Resources */,
 				F5B9221320BF4C5300673928 /* Category.plist in Resources */,
 				F59E4EEC20BDB253003B8D86 /* Assets.xcassets in Resources */,
+				F5F3F32320C9617400682BD6 /* SettingsHeaderView.xib in Resources */,
 				F59E4ED620BB794D003B8D86 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,8 +284,7 @@
 				F59E4ED320BB794D003B8D86 /* HomeViewController.swift in Sources */,
 				F53C315320C2197400479FA4 /* QA.swift in Sources */,
 				F59E4EEA20BB932A003B8D86 /* NetworkClient.swift in Sources */,
-				F5B9221520BF560700673928 /* String.swift in Sources */,
-				F5DD801520C0809B00DFB78D /* State.swift in Sources */,
+				F5F3F32520C9628A00682BD6 /* SettingsHeaderView.swift in Sources */,
 				F5EA800820C7268B00B9C815 /* IntroAlertView.swift in Sources */,
 				F5D96E7720C5E83D00ED664A /* Constants.swift in Sources */,
 				F59E4ED120BB794D003B8D86 /* AppDelegate.swift in Sources */,

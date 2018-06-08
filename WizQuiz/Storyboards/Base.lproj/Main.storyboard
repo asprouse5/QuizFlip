@@ -16,7 +16,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="SquadBowl" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="WizQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,23 +100,23 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <customObject id="hIk-o4-7oG" customClass="QuestionModel" customModule="SquadBowl" customModuleProvider="target">
+                <customObject id="hIk-o4-7oG" customClass="QuestionModel" customModule="WizQuiz" customModuleProvider="target">
                     <connections>
                         <outlet property="networkClient" destination="Aas-V8-sfm" id="Kzn-B3-cFW"/>
                     </connections>
                 </customObject>
-                <customObject id="Aas-V8-sfm" customClass="NetworkClient" customModule="SquadBowl" customModuleProvider="target"/>
+                <customObject id="Aas-V8-sfm" customClass="NetworkClient" customModule="WizQuiz" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="130.88455772113943"/>
+            <point key="canvasLocation" x="135" y="129.92957746478874"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="dLv-la-mjo">
             <objects>
-                <tableViewController id="ubj-YU-ySE" customClass="SettingsViewController" customModule="SquadBowl" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1v9-BT-dDA">
+                <tableViewController id="ubj-YU-ySE" customClass="SettingsViewController" customModule="WizQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="1v9-BT-dDA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="hVt-rz-nyY">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -136,7 +136,7 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="cVR-Xq-irh">
-                            <rect key="frame" x="0.0" y="226" width="320" height="56"/>
+                            <rect key="frame" x="0.0" y="210.5" width="320" height="56"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="PsY-Qz-CWz">
@@ -145,7 +145,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0t-ik-gVg">
                                             <rect key="frame" x="0.0" y="0.0" width="90.5" height="40"/>
                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
-                                            <state key="normal" title="OK" backgroundImage="button_normal">
+                                            <state key="normal" title="OK" backgroundImage="button_unselected">
                                                 <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
@@ -155,7 +155,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3F-8n-XAR">
                                             <rect key="frame" x="106.5" y="0.0" width="91" height="40"/>
                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
-                                            <state key="normal" title="Cancel" backgroundImage="button_normal">
+                                            <state key="normal" title="Cancel" backgroundImage="button_unselected">
                                                 <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
@@ -165,7 +165,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3k-TF-JdA">
                                             <rect key="frame" x="213.5" y="0.0" width="90.5" height="40"/>
                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
-                                            <state key="normal" title="Update" backgroundImage="button_normal">
+                                            <state key="normal" title="Update" backgroundImage="button_unselected">
                                                 <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
@@ -180,34 +180,17 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" rowHeight="152" id="QbB-Bn-6X1" customClass="SettingsTableViewCell" customModule="SquadBowl" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="74" width="320" height="152"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" rowHeight="91" id="QbB-Bn-6X1" customClass="SettingsTableViewCell" customModule="WizQuiz" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="101.5" width="320" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QbB-Bn-6X1" id="qIh-fB-3ty">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="151.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUb-HW-Rmt" customClass="CategoryButton" customModule="SquadBowl" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="11" width="280" height="42"/>
-                                            <accessibility key="accessibilityConfiguration" label="HeadCategory"/>
-                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
-                                            <state key="normal" title="Main Category" backgroundImage="button_unselected">
-                                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <state key="selected" backgroundImage="button_normal"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="10"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="buttonTrigerred:" destination="ubj-YU-ySE" eventType="touchUpInside" id="gHD-Zm-M2m"/>
-                                            </connections>
-                                        </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="M9U-38-NPD">
-                                            <rect key="frame" x="20" y="61" width="280" height="82.5"/>
+                                            <rect key="frame" x="20" y="0.0" width="280" height="82.5"/>
                                             <subviews>
-                                                <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3Zv-4l-rKb" customClass="CategoryButton" customModule="SquadBowl" customModuleProvider="target">
+                                                <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3Zv-4l-rKb" customClass="CategoryButton" customModule="WizQuiz" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="82.5" height="82.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="3Zv-4l-rKb" secondAttribute="height" multiplier="1:1" id="UAd-nc-1he"/>
@@ -219,7 +202,7 @@
                                                         <action selector="buttonTrigerred:" destination="ubj-YU-ySE" eventType="touchUpInside" id="o6g-k4-GxJ"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="MPm-yZ-WPa" customClass="CategoryButton" customModule="SquadBowl" customModuleProvider="target">
+                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="MPm-yZ-WPa" customClass="CategoryButton" customModule="WizQuiz" customModuleProvider="target">
                                                     <rect key="frame" x="98.5" y="0.0" width="83" height="82.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" backgroundImage="square_button_grey"/>
@@ -228,7 +211,7 @@
                                                         <action selector="buttonTrigerred:" destination="ubj-YU-ySE" eventType="touchUpInside" id="gfo-66-sVZ"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="5iW-cC-1gb" customClass="CategoryButton" customModule="SquadBowl" customModuleProvider="target">
+                                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="5iW-cC-1gb" customClass="CategoryButton" customModule="WizQuiz" customModuleProvider="target">
                                                     <rect key="frame" x="197.5" y="0.0" width="82.5" height="82.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" backgroundImage="square_button_grey"/>
@@ -246,16 +229,12 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="M9U-38-NPD" secondAttribute="trailing" constant="20" symbolic="YES" id="82I-QE-V2m"/>
-                                        <constraint firstItem="ZUb-HW-Rmt" firstAttribute="leading" secondItem="M9U-38-NPD" secondAttribute="leading" id="8Ul-NM-m6C"/>
-                                        <constraint firstItem="ZUb-HW-Rmt" firstAttribute="top" secondItem="qIh-fB-3ty" secondAttribute="topMargin" id="Dd1-gd-21B"/>
-                                        <constraint firstItem="M9U-38-NPD" firstAttribute="top" secondItem="ZUb-HW-Rmt" secondAttribute="bottom" constant="8" id="JDA-Bm-PJA"/>
-                                        <constraint firstItem="ZUb-HW-Rmt" firstAttribute="trailing" secondItem="M9U-38-NPD" secondAttribute="trailing" id="P4d-dR-IOL"/>
                                         <constraint firstItem="M9U-38-NPD" firstAttribute="leading" secondItem="qIh-fB-3ty" secondAttribute="leading" constant="20" symbolic="YES" id="XrR-nv-aM9"/>
                                         <constraint firstAttribute="bottom" secondItem="M9U-38-NPD" secondAttribute="bottom" constant="8" id="alN-bP-UUb"/>
+                                        <constraint firstItem="M9U-38-NPD" firstAttribute="top" secondItem="qIh-fB-3ty" secondAttribute="top" id="rDU-X8-fwB"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="mainCatButton" destination="ZUb-HW-Rmt" id="IuF-Wk-0UU"/>
                                     <outletCollection property="catButtons" destination="3Zv-4l-rKb" collectionClass="NSMutableArray" id="7ey-LI-tbg"/>
                                     <outletCollection property="catButtons" destination="MPm-yZ-WPa" collectionClass="NSMutableArray" id="vuR-6l-R8x"/>
                                     <outletCollection property="catButtons" destination="5iW-cC-1gb" collectionClass="NSMutableArray" id="JYi-fS-thZ"/>
@@ -272,12 +251,12 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuW-YQ-5fY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="HpI-MW-alL" customClass="SettingsViewModel" customModule="SquadBowl" customModuleProvider="target">
+                <customObject id="HpI-MW-alL" customClass="SettingsViewModel" customModule="WizQuiz" customModuleProvider="target">
                     <connections>
                         <outlet property="networkClient" destination="LtP-1j-Opp" id="lCc-eW-osc"/>
                     </connections>
                 </customObject>
-                <customObject id="LtP-1j-Opp" customClass="NetworkClient" customModule="SquadBowl" customModuleProvider="target"/>
+                <customObject id="LtP-1j-Opp" customClass="NetworkClient" customModule="WizQuiz" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="136.875" y="984.50704225352115"/>
         </scene>
@@ -299,7 +278,7 @@
         <!--Main View Controller-->
         <scene sceneID="p0R-ry-ghK">
             <objects>
-                <viewController id="M4O-zF-FNp" customClass="MainViewController" customModule="SquadBowl" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M4O-zF-FNp" customClass="MainViewController" customModule="WizQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fjf-Ue-hVa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -331,7 +310,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" text="Question" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhi-EG-fn2">
                                                 <rect key="frame" x="58" y="58.5" width="198" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                                <color key="textColor" red="0.0" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -435,7 +414,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nfc-QF-RVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="R5r-EY-BRs" customClass="QuestionModel" customModule="SquadBowl" customModuleProvider="target"/>
+                <customObject id="R5r-EY-BRs" customClass="QuestionModel" customModule="WizQuiz" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-868.125" y="984.50704225352115"/>
         </scene>
@@ -457,6 +436,6 @@
         <image name="square_button_grey" width="77" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JUo-mS-Ii3"/>
+        <segue reference="Ubx-zS-TA5"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,6 +10,7 @@ import Foundation
 
 class NetworkClient: NSObject {
 
+    // used to check if first time or new data is available
     func getVersionNumber(completion: @escaping (String) -> Void) {
         guard let starterJSONURL = URL(string: Constants.versionURL) else { return }
 
@@ -20,9 +21,9 @@ class NetworkClient: NSObject {
         }
 
         completion(version)
-
     }
 
+    // gets information for settings page
     func getCategoryData(completion: @escaping ([Category]?) -> Void) {
         guard let plistURL = Bundle.main.url(forResource: "Category", withExtension: "plist") else {
             completion(nil) // category.plist not found!
@@ -37,32 +38,20 @@ class NetworkClient: NSObject {
         completion(categories)
     }
 
-    func getStarterQuestionData(completion: @escaping ([QA]?) -> Void) {
+    // MARK: - Load question data from JSON
+
+    func getStarterQuestionData(completion: @escaping ([QAData]?) -> Void) {
         guard let starterJSONURL = URL(string: Constants.starterURL) else { return }
-
-        URLSession.shared.dataTask(with: starterJSONURL) { data, response, error in
-            guard error == nil else { return }
-
-            guard let data = data else {
-                print("Error: No data to decode")
-                completion(nil)
-                return
-            }
-
-            guard let response = try? JSONDecoder().decode([QA].self, from: data) else {
-                print("Error: Couldn't decode data into QA")
-                completion(nil)
-                return
-            }
-
-            completion(response)
-            }.resume()
+        getJSONData(url: starterJSONURL, completion: completion)
     }
 
-    func getAllQuestionData(completion: @escaping ([QA]?) -> Void) {
+    func getAllQuestionData(completion: @escaping ([QAData]?) -> Void) {
         guard let allJSONURL = URL(string: Constants.allURL) else { return }
+        getJSONData(url: allJSONURL, completion: completion)
+    }
 
-        URLSession.shared.dataTask(with: allJSONURL) { data, response, error in
+    private func getJSONData(url: URL, completion: @escaping ([QAData]?) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil else { return }
 
             guard let data = data else {
@@ -71,8 +60,8 @@ class NetworkClient: NSObject {
                 return
             }
 
-            guard let response = try? JSONDecoder().decode([QA].self, from: data) else {
-                print("Error: Couldn't decode data into QA")
+            guard let response = try? JSONDecoder().decode([QAData].self, from: data) else {
+                print("Error: Couldn't decode data into QAData")
                 completion(nil)
                 return
             }

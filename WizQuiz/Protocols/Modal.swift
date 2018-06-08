@@ -12,14 +12,14 @@ protocol Modal {
     func show(animated: Bool)
     func dismiss(animated: Bool)
     var backgroundView: UIView { get }
-    var dialogView: UIView { get set }
+    var contentView: UIView! { get set }
 }
 
 extension Modal where Self: UIView {
     func show(animated: Bool) {
         self.backgroundView.alpha = 0
-        self.dialogView.center = CGPoint(x: self.center.x,
-                                         y: self.frame.height + self.dialogView.frame.height / 2)
+        self.contentView.center = CGPoint(x: self.center.x,
+                                         y: self.frame.height + self.contentView.frame.height / 2)
         UIApplication.shared.delegate?.window??.rootViewController?.view.addSubview(self)
 
         if animated {
@@ -31,11 +31,11 @@ extension Modal where Self: UIView {
                            usingSpringWithDamping: 0.7,
                            initialSpringVelocity: 10,
                            options: UIViewAnimationOptions(rawValue: 0),
-                           animations: { self.dialogView.center  = self.center },
+                           animations: { self.contentView.center  = self.center },
                            completion: nil)
         } else {
             self.backgroundView.alpha = 0.66
-            self.dialogView.center  = self.center
+            self.contentView.center  = self.center
         }
     }
 
@@ -50,8 +50,8 @@ extension Modal where Self: UIView {
                            initialSpringVelocity: 10,
                            options: UIViewAnimationOptions(rawValue: 0),
                            animations: {
-                            self.dialogView.center = CGPoint(x: self.center.x,
-                                                             y: self.frame.height + self.dialogView.frame.height / 2) },
+                            self.contentView.center = CGPoint(x: self.center.x,
+                                                             y: self.frame.height + self.contentView.frame.height / 2) },
                            completion: { (_) in self.removeFromSuperview() })
         } else {
             self.removeFromSuperview()

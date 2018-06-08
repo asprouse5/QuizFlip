@@ -3,10 +3,13 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "SettingsViewModel.updateButtons():SettingsViewModel.swift">
+         contextName = "SettingsViewController.tableView(_:numberOfRowsInSection:):SettingsViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SettingsViewModel.setSelection(of:tableView:):SettingsViewModel.swift">
          <PersistentStrings>
             <PersistentString
-               value = "button.isSelected">
+               value = "tableView.cellForRow(at: IndexPath(row: 0, section: 0))">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -28,24 +31,19 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "SettingsViewController.viewDidLoad():SettingsViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "state.settingsViewModels[0].buttonsInSection[2].isSelected">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "QuestionModel.getQuestions(completion:):QuestionModel.swift">
       </ContextState>
       <ContextState
          contextName = "NetworkClient.readInCategoryData():NetworkClient.swift">
-      </ContextState>
-      <ContextState
-         contextName = "QuestionModel.getQuestions(completion:):QuestionModel.swift">
       </ContextState>
       <ContextState
          contextName = "SettingsViewController.finishedFetching(categories:):SettingsViewController.swift">
       </ContextState>
       <ContextState
          contextName = "HomeViewController.passState(state:):HomeViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.getNextRandomQuestion():MainViewController.swift">
       </ContextState>
       <ContextState
          contextName = "SettingsViewModel.setTitleAndImages(view:indexPath:state:):SettingsViewModel.swift">
@@ -62,10 +60,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MainViewController.getNextRandomQuestion():MainViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "SettingsViewController.tableView(_:numberOfRowsInSection:):SettingsViewController.swift">
+         contextName = "SettingsViewModel.updateButtons():SettingsViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "button.isSelected">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

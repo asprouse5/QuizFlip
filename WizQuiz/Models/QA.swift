@@ -1,5 +1,5 @@
 //
-//  QA.swift
+//  QAData.swift
 //  WizQuiz
 //
 //  Created by Adriana Sprouse on 6/1/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct QA: Codable {
+struct QAData: Codable {
     let category: String
     let question: String
     let answer: String
