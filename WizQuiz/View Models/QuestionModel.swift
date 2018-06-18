@@ -12,6 +12,7 @@ class QuestionModel: NSObject {
 
     @IBOutlet var networkClient: NetworkClient!
     var questions: [QAData]?
+    var filteredQuestions: [QAData]?
     let defaults = UserDefaults.standard
 
     func saveUserDefaults() {
@@ -35,6 +36,7 @@ class QuestionModel: NSObject {
             // data is saved
             print("using saved data")
             self.questions = decodedData
+            self.filteredQuestions = questions
             completion()
         } else {
             // no data saved, get some
@@ -49,6 +51,7 @@ class QuestionModel: NSObject {
             DispatchQueue.main.async {
                 print("STARTER QUESTION COUNT: \(questions?.count ?? 0)")
                 self.questions = questions
+                self.filteredQuestions = self.questions
                 print("CURRENT TOTAL: \(self.questions?.count ?? 0)")
                 self.saveUserDefaults()
             }
@@ -62,16 +65,24 @@ class QuestionModel: NSObject {
             DispatchQueue.main.async {
                 print("ALL QUESTION COUNT: \(questions?.count ?? 0)")
                 self.questions? += questions!
+                self.filteredQuestions = self.questions
                 print("CURRENT TOTAL: \(self.questions?.count ?? 0)")
                 self.saveUserDefaults()
             }
         }
     }
 
+    func filterQuestions(_ selections: [Selection]?) {
+        guard let selections = selections else { return }
+        let selected = selections.filter({$0.selected == true}).compactMap({$0.name})
+        filteredQuestions = questions?.filter { selected.contains($0.category) }
+        filteredQuestions?.forEach { print($0.category) }
+    }
+
     func getRandomQuestion() -> QAData {
-        guard let questions = questions else { return QAData() }
-        let max = questions.count
+        guard let filteredQuestions = filteredQuestions else { return QAData() }
+        let max = filteredQuestions.count
         let index = arc4random_uniform(UInt32(max))
-        return questions[Int(index)]
+        return filteredQuestions[Int(index)]
     }
 }

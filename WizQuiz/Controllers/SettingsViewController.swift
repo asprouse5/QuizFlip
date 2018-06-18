@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol QuestionFilterable: class {
+    func sendFilterArray(_ selections: [Selection]?)
+}
+
 class SettingsViewController: UITableViewController {
 
     @IBOutlet var settingsViewModel: SettingsViewModel!
+    weak var filterDelegate: QuestionFilterable?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +28,14 @@ class SettingsViewController: UITableViewController {
 
     @IBAction func okButtonTriggered(_ sender: Any) {
         settingsViewModel.saveUserDefaults()
-        self.dismiss(animated: true, completion: nil)
+        if settingsViewModel.noCategoriesSelected() {
+            let alert = UIAlertController(title: "Warning", message: "You must select at least one category!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            filterDelegate?.sendFilterArray(settingsViewModel.selections)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 
     @IBAction func cancelButtonTriggered(_ sender: Any) {
@@ -31,7 +43,10 @@ class SettingsViewController: UITableViewController {
     }
 
     @IBAction func buttonTrigerred(_ sender: CategoryButton) {
-        settingsViewModel.setSelection(of: sender, tableView: tableView)
+        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: sender.section))
+            as? SettingsTableViewCell else { fatalError() }
+
+        settingsViewModel.setSelection(of: sender, view: cell)
     }
 
 }
@@ -51,7 +66,8 @@ extension SettingsViewController {
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = settingsViewModel.setupSectionHeaderView(tableView: tableView, section: section)
+        let view = SettingsHeaderView(frame: tableView.frame)
+        settingsViewModel.setupSectionHeaderView(view: view, section: section)
         view.headerButton.addTarget(self, action: #selector(buttonTrigerred(_:)), for: .touchUpInside)
         return view
     }
@@ -65,7 +81,10 @@ extension SettingsViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath)
             as? SettingsTableViewCell else { fatalError() }
 
-        settingsViewModel.setupButtons(view: cell, section: indexPath.section)
+        for button in cell.settingsCatButtons {
+            let imageName = settingsViewModel.setupButton(button, section: indexPath.section)
+            button.setImage(UIImage(named: imageName), for: .normal)
+        }
 
         return cell
     }

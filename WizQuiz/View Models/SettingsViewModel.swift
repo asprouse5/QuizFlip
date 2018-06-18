@@ -6,7 +6,7 @@
 //  Copyright © 2018 Sprouse. All rights reserved.
 //
 
-import UIKit // needed for UIImage and UIView
+import Foundation
 
 protocol SettingsTableViewCellModel {
     var settingsCatButtons: [CategoryButton] { get }
@@ -16,36 +16,52 @@ class SettingsViewModel: NSObject {
 
     @IBOutlet var networkClient: NetworkClient!
     var categories: [Category]?
-    var selections: [Bool]?
+    var selections: [Selection]?
     let defaults = UserDefaults.standard
 
     func saveUserDefaults() {
-        defaults.set(selections, forKey: "isSelected")
-        let encodedData = try? PropertyListEncoder().encode(categories)
-        defaults.set(encodedData, forKey: "categories")
+        let encodedCategories = try? PropertyListEncoder().encode(categories)
+        defaults.set(encodedCategories, forKey: "categories")
+        let encodedSelections = try? PropertyListEncoder().encode(selections)
+        defaults.set(encodedSelections, forKey: "selections")
+    }
+
+    func getUserDefaults(for key: String) -> Data? {
+        guard let data = defaults.object(forKey: key) as? Data else { return nil }
+        return data
     }
 
     // MARK: - Getting category data from network
 
     func getCategories(completion: @escaping () -> Void) {
-        if let data = defaults.object(forKey: "categories") as? Data,
-            let decodedData = try? PropertyListDecoder().decode([Category].self, from: data) {
-            // data is saved
-            self.categories = decodedData
-            self.selections = defaults.array(forKey: "isSelected") as? [Bool]
-            completion()
+        if let categoryData = getUserDefaults(for: "categories") {
+            // we have saved data
+            guard let selectionData = getUserDefaults(for: "selections") else { fatalError() }
+
+            // decode categories
+            let decodedCategories = try? PropertyListDecoder().decode([Category].self, from: categoryData)
+            self.categories = decodedCategories
+
+            // decode selections
+            let decodedSelections = try? PropertyListDecoder().decode([Selection].self, from: selectionData)
+            self.selections = decodedSelections
+
         } else {
-            // no data saved, get some
+            // no saved data, get some
             getNewCategoryData()
-            completion()
         }
+
+        completion()
+
     }
 
     func getNewCategoryData() {
         networkClient.getCategoryData { categories in
             DispatchQueue.main.async {
+                guard let categories = categories else { return }
                 self.categories = categories
-                self.selections = [Bool](repeating: true, count: self.getCategoryCount(categories))
+                let data = categories.flatMap { [$0.title] + $0.icons }
+                self.selections = data.map { Selection(name: $0, selected: true) }
                 self.saveUserDefaults()
             }
         }
@@ -57,22 +73,16 @@ class SettingsViewModel: NSObject {
         return categories?.count ?? 0
     }
 
-    func setupButtons(view: SettingsTableViewCellModel, section: Int) {
-        for button in view.settingsCatButtons {
-            let imageName = categoryImageName(for: section, subIndex: button.tag)
-            button.setImage(UIImage(named: imageName), for: .normal)
-            setProperties(for: button, section: section, name: imageName)
-        }
+    func setupButton(_ button: CategoryButton, section: Int) -> String {
+        let imageName = categoryImageName(for: section, subIndex: button.tag)
+        setProperties(for: button, section: section, name: imageName)
+        return imageName
     }
 
-    func setupSectionHeaderView(tableView: UITableView, section: Int) -> SettingsHeaderView {
-        let view = SettingsHeaderView(frame: tableView.frame)
-
+    func setupSectionHeaderView(view: SettingsHeaderView, section: Int) {
         let title = categoryTitle(for: section)
         view.headerButton.setTitle(title, for: .normal)
         setProperties(for: view.headerButton, section: section, name: title)
-
-        return view
     }
 
     // MARK: - Private functions for setting SettingsViewController's views
@@ -82,11 +92,11 @@ class SettingsViewModel: NSObject {
     }
 
     private func categoryTitle(for section: Int) -> String {
-        return categories?[section].title ?? ""
+        return categories?[section].title ?? "N/A"
     }
 
     private func categoryImageName(for section: Int, subIndex: Int) -> String {
-        return categories?[section].icons[subIndex-1] ?? ""
+        return categories?[section].icons[subIndex-1] ?? "N/A"
     }
 
     private func setProperties(for button: CategoryButton, section: Int, name: String) {
@@ -97,28 +107,30 @@ class SettingsViewModel: NSObject {
 
     private func selectionState(of button: CategoryButton) -> Bool {
         let index = button.tagWith(offset: button.section, multiplier: 4)
-        return selections?[index] ?? false
+        return selections?[index].selected ?? false
     }
 
     // MARK: - Setting selection of CategoryButton when triggered
 
-    @objc func setSelection(of button: CategoryButton, tableView: UITableView) {
-        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: button.section))
-            as? SettingsTableViewCell else { fatalError() }
-
+    func setSelection(of button: CategoryButton, view: SettingsTableViewCellModel) {
         button.isSelected = !button.isSelected
         var index = button.tagWith(offset: button.section, multiplier: 4)
-        selections?[index] = button.isSelected
+        selections?[index].setSelected(button.isSelected)
 
         if button.accessibilityLabel == "HeadCategory" {
             let shouldBeSelected = button.isSelected
 
-            for cButton in cell.settingsCatButtons {
+            for cButton in view.settingsCatButtons {
                 index += 1
                 cButton.isSelected = shouldBeSelected
-                selections?[index] = shouldBeSelected
+                selections?[index].setSelected(shouldBeSelected)
             }
         }
+    }
+
+    func noCategoriesSelected() -> Bool {
+        guard let selections = selections else { return false }
+        return selections.filter({ $0.selected == true }).count == 0
     }
 
 }

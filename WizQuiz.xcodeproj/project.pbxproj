@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F535681720D1BF04007E85BD /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535681620D1BF04007E85BD /* Selection.swift */; };
 		F53C315320C2197400479FA4 /* QA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53C315220C2197400479FA4 /* QA.swift */; };
+		F540DC8820D69F6B003D317D /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F540DC8720D69F6B003D317D /* SettingsViewModelTests.swift */; };
 		F59E4ED120BB794D003B8D86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E4ED020BB794D003B8D86 /* AppDelegate.swift */; };
 		F59E4ED320BB794D003B8D86 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E4ED220BB794D003B8D86 /* HomeViewController.swift */; };
 		F59E4ED620BB794D003B8D86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59E4ED420BB794D003B8D86 /* Main.storyboard */; };
@@ -33,7 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F535681620D1BF04007E85BD /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
 		F53C315220C2197400479FA4 /* QA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QA.swift; sourceTree = "<group>"; };
+		F540DC8720D69F6B003D317D /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		F59E4ECD20BB794D003B8D86 /* WizQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WizQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59E4ED020BB794D003B8D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F59E4ED220BB794D003B8D86 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F540DC8920D69FA5003D317D /* WizQuizTests */ = {
+			isa = PBXGroup;
+			children = (
+				F540DC8720D69F6B003D317D /* SettingsViewModelTests.swift */,
+			);
+			path = WizQuizTests;
+			sourceTree = "<group>";
+		};
 		F59E4EC420BB794D003B8D86 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +111,7 @@
 				F5B9220020BEED1800673928 /* Controllers */,
 				F5B921FF20BEECFC00673928 /* Views */,
 				F5B9220220BEED4700673928 /* Other */,
+				F540DC8920D69FA5003D317D /* WizQuizTests */,
 				F59E4EEB20BDB252003B8D86 /* Assets.xcassets */,
 			);
 			path = WizQuiz;
@@ -161,6 +174,7 @@
 			children = (
 				F5B9220F20BF026A00673928 /* Category.swift */,
 				F53C315220C2197400479FA4 /* QA.swift */,
+				F535681620D1BF04007E85BD /* Selection.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -287,10 +301,12 @@
 				F5F3F32520C9628A00682BD6 /* SettingsHeaderView.swift in Sources */,
 				F5EA800820C7268B00B9C815 /* IntroAlertView.swift in Sources */,
 				F5D96E7720C5E83D00ED664A /* Constants.swift in Sources */,
+				F535681720D1BF04007E85BD /* Selection.swift in Sources */,
 				F59E4ED120BB794D003B8D86 /* AppDelegate.swift in Sources */,
 				F5EA800420C6F5E300B9C815 /* QuestionModel.swift in Sources */,
 				F5B9220820BEF3E800673928 /* UIButton.swift in Sources */,
 				F5DD801920C0987900DFB78D /* CategoryButton.swift in Sources */,
+				F540DC8820D69F6B003D317D /* SettingsViewModelTests.swift in Sources */,
 				F59E4EEE20BDE018003B8D86 /* SettingsTableViewCell.swift in Sources */,
 				F5DF7C0220C190F300B400FA /* Modal.swift in Sources */,
 				F5EA800C20C7342B00B9C815 /* UIColor.swift in Sources */,

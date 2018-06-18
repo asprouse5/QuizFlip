@@ -372,7 +372,7 @@
                                 </constraints>
                                 <state key="normal" image="settings" backgroundImage="square_button_grey"/>
                                 <connections>
-                                    <segue destination="ubj-YU-ySE" kind="presentation" id="JUo-mS-Ii3"/>
+                                    <segue destination="ubj-YU-ySE" kind="presentation" identifier="settingsSegue" id="JUo-mS-Ii3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -436,6 +436,6 @@
         <image name="square_button_grey" width="77" height="77"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ubx-zS-TA5"/>
+        <segue reference="JUo-mS-Ii3"/>
     </inferredMetricsTieBreakers>
 </document>

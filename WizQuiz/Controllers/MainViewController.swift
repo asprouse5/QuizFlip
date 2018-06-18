@@ -14,9 +14,12 @@ class MainViewController: UIViewController {
     @IBOutlet var questionLabel: UILabel!
     @IBOutlet var answerLabel: UILabel!
 
+    override func viewDidAppear(_ animated: Bool) {
+        getNextRandomQuestion()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        getNextRandomQuestion()
     }
 
     func getNextRandomQuestion() {
@@ -31,4 +34,16 @@ class MainViewController: UIViewController {
         getNextRandomQuestion()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "settingsSegue",
+            let destination = segue.destination as? SettingsViewController {
+            destination.filterDelegate = self
+        }
+    }
+}
+
+extension MainViewController: QuestionFilterable {
+    func sendFilterArray(_ selections: [Selection]?) {
+        questionModel.filterQuestions(selections)
+    }
 }

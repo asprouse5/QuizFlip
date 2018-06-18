@@ -46,8 +46,10 @@ class NetworkClient: NSObject {
     }
 
     func getAllQuestionData(completion: @escaping ([QAData]?) -> Void) {
-        guard let allJSONURL = URL(string: Constants.allURL) else { return }
-        getJSONData(url: allJSONURL, completion: completion)
+        for categoryURL in Constants.allURLs {
+            guard let url = URL(string: categoryURL) else { return }
+            getJSONData(url: url, completion: completion)
+        }
     }
 
     private func getJSONData(url: URL, completion: @escaping ([QAData]?) -> Void) {

@@ -11,4 +11,10 @@ import Foundation
 struct Category: Codable {
     let title: String
     let icons: [String]
+
+    var names: [String] {
+        var strings = icons
+        strings.insert(title, at: 0)
+        return strings
+    }
 }

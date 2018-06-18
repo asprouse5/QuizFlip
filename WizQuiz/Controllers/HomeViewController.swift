@@ -14,14 +14,15 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if questionModel.isFirstTime() {
+            IntroAlertView().show(animated: true)
+        }
         // start async loading of JSON
         questionModel.getStarterQuestions {
             print("got starter questions")
         }
 
-        if questionModel.isFirstTime() {
-            IntroAlertView().show(animated: true)
-        }
     }
 
     override func didReceiveMemoryWarning() {
