@@ -12,6 +12,7 @@ class IntroAlertView: UIView, Modal {
 
     var backgroundView = UIView()
     @IBOutlet var contentView: UIView!
+    @IBOutlet var qaGif: UIImageView!
 
     convenience init() {
         self.init(frame: UIScreen.main.bounds)
@@ -35,6 +36,8 @@ class IntroAlertView: UIView, Modal {
 
         Bundle.main.loadNibNamed("IntroAlertView", owner: self, options: nil)
         addSubview(contentView)
+
+        qaGif.loadGif(asset: "qaDemo")
     }
 
     @IBAction func dismissTriggered(_ sender: Any) {

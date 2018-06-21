@@ -1,8 +1,8 @@
 //
-//  SettingsTableViewCell.swift
+//  SettingsCollectionTableViewCell.swift
 //  WizQuiz
 //
-//  Created by Adriana Sprouse on 5/29/18.
+//  Created by Adriana Sprouse on 6/21/18.
 //  Copyright © 2018 Sprouse. All rights reserved.
 //
 
@@ -10,14 +10,9 @@ import UIKit
 
 class SettingsTableViewCell: UITableViewCell {
 
-    @IBOutlet var catButtons: [CategoryButton]!
+    @IBOutlet var settingsCollectionView: UICollectionView!
 
-}
-
-// MARK: - SettingsViewModelView
-extension SettingsTableViewCell: SettingsTableViewCellModel {
-
-    var settingsCatButtons: [CategoryButton] {
-        return catButtons
+    func setCollectionViewTag(tag: Int) {
+        settingsCollectionView.tag = tag
     }
 }

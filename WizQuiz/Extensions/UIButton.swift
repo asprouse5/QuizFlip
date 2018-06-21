@@ -33,4 +33,13 @@ extension UIButton {
         return tag + (offset * multiplier)
     }
 
+    func setBackground(gradient: CAGradientLayer) {
+        gradient.frame = self.bounds
+        gradient.cornerRadius = self.cornerRadius
+
+        layer.insertSublayer(gradient, at: 0)
+        let backImage = self.asImage(layer: gradient)
+        self.setBackgroundImage(backImage, for: .normal)
+    }
+
 }

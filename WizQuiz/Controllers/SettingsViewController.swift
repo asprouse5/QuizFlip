@@ -19,7 +19,7 @@ class SettingsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "bg"))
+        self.tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "darkbg"))
 
         settingsViewModel.getCategories {
             self.tableView.reloadData()
@@ -43,10 +43,7 @@ class SettingsViewController: UITableViewController {
     }
 
     @IBAction func buttonTrigerred(_ sender: CategoryButton) {
-        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: sender.section))
-            as? SettingsTableViewCell else { fatalError() }
-
-        settingsViewModel.setSelection(of: sender, view: cell)
+        settingsViewModel.setSelection(of: sender)
     }
 
 }
@@ -74,17 +71,59 @@ extension SettingsViewController {
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
                             forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? SettingsTableViewCell else { return }
+
         cell.backgroundColor = UIColor.clear
+        cell.setCollectionViewTag(tag: indexPath.section)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCollectionCell", for: indexPath)
             as? SettingsTableViewCell else { fatalError() }
 
-        for button in cell.settingsCatButtons {
-            let imageName = settingsViewModel.setupButton(button, section: indexPath.section)
-            button.setImage(UIImage(named: imageName), for: .normal)
+            return cell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView.rowHeight == -1 {
+            return tableView.estimatedRowHeight
+        } else {
+            return tableView.rowHeight + 24
         }
+    }
+}
+
+// MARK: - UICollectionView
+extension SettingsViewController: UICollectionViewDelegate, UICollectionViewDataSource,
+    UICollectionViewDelegateFlowLayout {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return settingsViewModel.numberOfItems(in: section)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = collectionView.maxWidth()
+        tableView.rowHeight = size
+
+        tableView.beginUpdates()
+        tableView.endUpdates()
+
+        return CGSize(width: size, height: size)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SettingsViewCell", for: indexPath)
+            as? SettingsCollectionViewCell else { fatalError() }
+
+        guard let button = cell.imageButton else { fatalError() }
+        let imageName = settingsViewModel.setupButton(button, tag: indexPath.item, section: collectionView.tag)
+        button.setImage(UIImage(named: imageName), for: .normal)
 
         return cell
     }

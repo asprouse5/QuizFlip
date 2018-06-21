@@ -51,7 +51,7 @@ extension Modal where Self: UIView {
                            options: UIViewAnimationOptions(rawValue: 0),
                            animations: {
                             self.contentView.center = CGPoint(x: self.center.x,
-                                                             y: self.frame.height + self.contentView.frame.height / 2) },
+                                                             y: self.frame.height + self.contentView.frame.height/2) },
                            completion: { (_) in self.removeFromSuperview() })
         } else {
             self.removeFromSuperview()

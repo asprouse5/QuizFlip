@@ -8,15 +8,12 @@
 
 import Foundation
 
-protocol SettingsTableViewCellModel {
-    var settingsCatButtons: [CategoryButton] { get }
-}
-
 class SettingsViewModel: NSObject {
 
     @IBOutlet var networkClient: NetworkClient!
     var categories: [Category]?
     var selections: [Selection]?
+    var categoryButtons = [CategoryButton]()
     let defaults = UserDefaults.standard
 
     func saveUserDefaults() {
@@ -26,7 +23,7 @@ class SettingsViewModel: NSObject {
         defaults.set(encodedSelections, forKey: "selections")
     }
 
-    func getUserDefaults(for key: String) -> Data? {
+    private func getUserDefaults(for key: String) -> Data? {
         guard let data = defaults.object(forKey: key) as? Data else { return nil }
         return data
     }
@@ -52,7 +49,6 @@ class SettingsViewModel: NSObject {
         }
 
         completion()
-
     }
 
     func getNewCategoryData() {
@@ -61,7 +57,7 @@ class SettingsViewModel: NSObject {
                 guard let categories = categories else { return }
                 self.categories = categories
                 let data = categories.flatMap { [$0.title] + $0.icons }
-                self.selections = data.map { Selection(name: $0, selected: true) }
+                self.selections = data.map { Selection(name: $0) }
                 self.saveUserDefaults()
             }
         }
@@ -73,7 +69,13 @@ class SettingsViewModel: NSObject {
         return categories?.count ?? 0
     }
 
-    func setupButton(_ button: CategoryButton, section: Int) -> String {
+    func numberOfItems(in section: Int) -> Int {
+        return categories?[section].icons.count ?? 0
+    }
+
+    func setupButton(_ button: CategoryButton, tag: Int, section: Int) -> String {
+        button.tag = tag+1
+        categoryButtons.append(button)
         let imageName = categoryImageName(for: section, subIndex: button.tag)
         setProperties(for: button, section: section, name: imageName)
         return imageName
@@ -86,10 +88,6 @@ class SettingsViewModel: NSObject {
     }
 
     // MARK: - Private functions for setting SettingsViewController's views
-
-    private func getCategoryCount(_ categories: [Category]?) -> Int {
-        return categories?.reduce(0) { sum, cat in return sum + cat.icons.count + 1 } ?? 0
-    }
 
     private func categoryTitle(for section: Int) -> String {
         return categories?[section].title ?? "N/A"
@@ -112,7 +110,7 @@ class SettingsViewModel: NSObject {
 
     // MARK: - Setting selection of CategoryButton when triggered
 
-    func setSelection(of button: CategoryButton, view: SettingsTableViewCellModel) {
+    func setSelection(of button: CategoryButton) {
         button.isSelected = !button.isSelected
         var index = button.tagWith(offset: button.section, multiplier: 4)
         selections?[index].setSelected(button.isSelected)
@@ -120,7 +118,10 @@ class SettingsViewModel: NSObject {
         if button.accessibilityLabel == "HeadCategory" {
             let shouldBeSelected = button.isSelected
 
-            for cButton in view.settingsCatButtons {
+            // need to select/deselect buttons if all/none are selected
+            let sameSectionButtons = categoryButtons.filter { $0.section == button.section }
+
+            for cButton in sameSectionButtons {
                 index += 1
                 cButton.isSelected = shouldBeSelected
                 selections?[index].setSelected(shouldBeSelected)

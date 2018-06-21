@@ -33,6 +33,15 @@ class HomeViewController: UIViewController {
         if segue.identifier == "mainSegue",
             let destination = segue.destination as? MainViewController {
             destination.questionModel = questionModel
+        } else if segue.identifier == "settingsSegue",
+            let destination = segue.destination as? SettingsViewController {
+            destination.filterDelegate = self
         }
+    }
+}
+
+extension HomeViewController: QuestionFilterable {
+    func sendFilterArray(_ selections: [Selection]?) {
+        questionModel.filterQuestions(selections)
     }
 }

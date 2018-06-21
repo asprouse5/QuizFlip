@@ -16,8 +16,15 @@ class QuestionModel: NSObject {
     let defaults = UserDefaults.standard
 
     func saveUserDefaults() {
-        let encodedData = try? PropertyListEncoder().encode(questions)
-        defaults.set(encodedData, forKey: "questions")
+        let encodedQuestions = try? PropertyListEncoder().encode(questions)
+        defaults.set(encodedQuestions, forKey: "questions")
+        let encodedFilteredQuestions = try? PropertyListEncoder().encode(filteredQuestions)
+        defaults.set(encodedFilteredQuestions, forKey: "filteredQuestions")
+    }
+
+    func getUserDefaults(for key: String) -> Data? {
+        guard let data = defaults.object(forKey: key) as? Data else { return nil }
+        return data
     }
 
     func isFirstTime() -> Bool {
@@ -31,19 +38,24 @@ class QuestionModel: NSObject {
     }
 
     func getStarterQuestions(completion: @escaping () -> Void) {
-        if let data = defaults.object(forKey: "questions") as? Data,
-            let decodedData = try? PropertyListDecoder().decode([QAData].self, from: data) {
-            // data is saved
-            print("using saved data")
-            self.questions = decodedData
-            self.filteredQuestions = questions
-            completion()
+        if let questionData = getUserDefaults(for: "questions") {
+            // we have saved data
+            guard let filteredQuestionData = getUserDefaults(for: "filteredQuestions") else { fatalError() }
+
+            // decode questions
+            let decodedQuestions = try? PropertyListDecoder().decode([QAData].self, from: questionData)
+            self.questions = decodedQuestions
+
+            // decode filteredQuestions
+            let decodedFilteredQuestions = try? PropertyListDecoder().decode([QAData].self, from: filteredQuestionData)
+            self.filteredQuestions = decodedFilteredQuestions
+
         } else {
             // no data saved, get some
             print("getting new data")
             getNewStarterQuestions()
-            completion()
         }
+        completion()
     }
 
     func getNewStarterQuestions() {
@@ -77,6 +89,7 @@ class QuestionModel: NSObject {
         let selected = selections.filter({$0.selected == true}).compactMap({$0.name})
         filteredQuestions = questions?.filter { selected.contains($0.category) }
         filteredQuestions?.forEach { print($0.category) }
+        self.saveUserDefaults()
     }
 
     func getRandomQuestion() -> QAData {

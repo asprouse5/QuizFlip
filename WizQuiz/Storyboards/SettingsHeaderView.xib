@@ -22,30 +22,37 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNS-ga-Dx1" customClass="CategoryButton" customModule="WizQuiz" customModuleProvider="target">
-                    <rect key="frame" x="16" y="8" width="288" height="58"/>
+                    <rect key="frame" x="30" y="8" width="260" height="58"/>
                     <accessibility key="accessibilityConfiguration" label="HeadCategory"/>
                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
-                    <state key="normal" title="Button" backgroundImage="button_unselected">
+                    <state key="normal" title="Button">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
-                    <state key="selected" backgroundImage="button_normal">
+                    <state key="selected">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.0028293852949999999" green="0.055941035430000001" blue="0.33475852010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </button>
             </subviews>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="aNS-ga-Dx1" secondAttribute="trailing" constant="16" id="OZp-WD-cVK"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="aNS-ga-Dx1" secondAttribute="trailing" constant="30" id="OZp-WD-cVK"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="aNS-ga-Dx1" secondAttribute="bottom" constant="8" id="Sx4-q2-gIE"/>
                 <constraint firstItem="aNS-ga-Dx1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="lQ7-pP-I8N"/>
-                <constraint firstItem="aNS-ga-Dx1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="o0b-Pc-ISy"/>
+                <constraint firstItem="aNS-ga-Dx1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="o0b-Pc-ISy"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="83.5" y="-208.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="button_normal" width="33" height="54"/>
-        <image name="button_unselected" width="33" height="54"/>
-    </resources>
 </document>

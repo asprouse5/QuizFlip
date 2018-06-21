@@ -3,47 +3,27 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "SettingsViewController.tableView(_:numberOfRowsInSection:):SettingsViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "SettingsViewModel.setSelection(of:tableView:):SettingsViewModel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "tableView.cellForRow(at: IndexPath(row: 0, section: 0))">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in SettingsViewController.finishedFetching(categories:):SettingsViewController.swift">
+         contextName = "SettingsViewController.settingsViewModel.getter:SettingsViewController.swift">
       </ContextState>
       <ContextState
          contextName = "HomeViewController.viewDidLoad():HomeViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "SettingsViewController.buttonTrigerred(_:):SettingsViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in MainViewController.getNextRandomQuestion():MainViewController.swift">
+         contextName = "SettingsViewController.tableView(_:willDisplay:forRowAt:):SettingsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.questionTextView.text">
+               value = "indexPath.section">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "QuestionModel.getQuestions(completion:):QuestionModel.swift">
-      </ContextState>
-      <ContextState
-         contextName = "NetworkClient.readInCategoryData():NetworkClient.swift">
+         contextName = "SettingsViewModel.categoryImageName(for:subIndex:):SettingsViewModel.swift">
       </ContextState>
       <ContextState
          contextName = "SettingsViewController.finishedFetching(categories:):SettingsViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "HomeViewController.passState(state:):HomeViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MainViewController.getNextRandomQuestion():MainViewController.swift">
+         contextName = "QuestionModel.getQuestions(completion:):QuestionModel.swift">
       </ContextState>
       <ContextState
          contextName = "SettingsViewModel.setTitleAndImages(view:indexPath:state:):SettingsViewModel.swift">
@@ -66,6 +46,68 @@
                value = "button.isSelected">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "QuestionModel.getStarterQuestions(completion:):QuestionModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in SettingsViewController.finishedFetching(categories:):SettingsViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SettingsViewController.tableView(_:numberOfRowsInSection:):SettingsViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "QuestionModel.filterQuestions(_:):QuestionModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SettingsViewModel.saveUserDefaults():SettingsViewModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SettingsViewModel.setSelection(of:tableView:):SettingsViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tableView.cellForRow(at: IndexPath(row: 0, section: 0))">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SettingsViewModel.setSelection(of:):SettingsViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "button.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NetworkClient.readInCategoryData():NetworkClient.swift">
+      </ContextState>
+      <ContextState
+         contextName = "HomeViewController.passState(state:):HomeViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SettingsViewController.buttonTrigerred(_:):SettingsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tableView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in MainViewController.getNextRandomQuestion():MainViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.questionTextView.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static Constants.getUserDefaults(for:):Constants.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SettingsViewModel.getCategories(completion:):SettingsViewModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.getNextRandomQuestion():MainViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
