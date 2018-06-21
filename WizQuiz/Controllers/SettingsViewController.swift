@@ -104,8 +104,7 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
         return settingsViewModel.numberOfItems(in: section)
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = collectionView.maxWidth()
         tableView.rowHeight = size

@@ -24,7 +24,6 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       // getNextRandomQuestion()
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.qaTriggered(_:)))
         qaView.addGestureRecognizer(tap)
     }

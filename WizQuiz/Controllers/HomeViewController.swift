@@ -22,7 +22,6 @@ class HomeViewController: UIViewController {
         questionModel.getStarterQuestions {
             print("got starter questions")
         }
-
     }
 
     override func didReceiveMemoryWarning() {
