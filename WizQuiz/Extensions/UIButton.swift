@@ -10,13 +10,13 @@ import UIKit
 
 extension UIButton {
     func alignImageAndTitleVertically(padding: CGFloat = 1.0) {
-        let imageSize = self.imageView!.frame.size
-        let titleSize = self.titleLabel!.frame.size
+        let imageSize = imageView!.frame.size
+        let titleSize = titleLabel!.frame.size
         let totalHeight = imageSize.height + titleSize.height + padding
 
         self.imageEdgeInsets = UIEdgeInsets(
             top: -(totalHeight - imageSize.height),
-            left: (self.frame.size.width - imageSize.width) / 2,
+            left: (frame.size.width - imageSize.width) / 2,
             bottom: 0,
             right: -titleSize.width
         )
@@ -29,17 +29,17 @@ extension UIButton {
         )
     }
 
-    func tagWith(offset: Int, multiplier: Int) -> Int {
-        return tag + (offset * multiplier)
+    func tagWith(offset: Int) -> Int {
+        return tag + (offset * Constants.multiplier)
     }
 
     func setBackground(gradient: CAGradientLayer) {
-        gradient.frame = self.bounds
-        gradient.cornerRadius = self.cornerRadius
+        gradient.frame = bounds
+        gradient.cornerRadius = cornerRadius
 
         layer.insertSublayer(gradient, at: 0)
-        let backImage = self.asImage(layer: gradient)
-        self.setBackgroundImage(backImage, for: .normal)
+        let backImage = asImage(layer: gradient)
+        setBackgroundImage(backImage, for: .normal)
     }
 
 }

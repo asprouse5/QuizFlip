@@ -9,37 +9,35 @@
 import UIKit
 
 protocol QuestionFilterable: class {
-    func sendFilterArray(_ selections: [Selection]?)
+    func sendFilterArray(with selections: [Selection]?)
 }
 
-class SettingsViewController: UITableViewController {
+class SettingsViewController: UIViewController {
 
     @IBOutlet var settingsViewModel: SettingsViewModel!
+    @IBOutlet var settingsCollectionView: UICollectionView!
     weak var filterDelegate: QuestionFilterable?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.backgroundView = UIImageView(image: #imageLiteral(resourceName: "darkbg"))
 
         settingsViewModel.getCategories {
-            self.tableView.reloadData()
+            self.settingsCollectionView.reloadData()
         }
     }
 
     @IBAction func okButtonTriggered(_ sender: Any) {
         settingsViewModel.saveUserDefaults()
         if settingsViewModel.noCategoriesSelected() {
-            let alert = UIAlertController(title: "Warning", message: "You must select at least one category!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            MessageAlertView(parent: self, title: Strings.warning, message: Strings.message).show(animated: true)
         } else {
-            filterDelegate?.sendFilterArray(settingsViewModel.selections)
-            self.dismiss(animated: true, completion: nil)
+            filterDelegate?.sendFilterArray(with: settingsViewModel.selections)
+            dismiss(animated: true, completion: nil)
         }
     }
 
     @IBAction func cancelButtonTriggered(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
     @IBAction func buttonTrigerred(_ sender: CategoryButton) {
@@ -48,56 +46,12 @@ class SettingsViewController: UITableViewController {
 
 }
 
-// MARK: - UITableViewDataSource
-extension SettingsViewController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return settingsViewModel.numberOfSections()
-    }
-
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat(Constants.tableViewSectionHeaderHeight)
-    }
-
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = SettingsHeaderView(frame: tableView.frame)
-        settingsViewModel.setupSectionHeaderView(view: view, section: section)
-        view.headerButton.addTarget(self, action: #selector(buttonTrigerred(_:)), for: .touchUpInside)
-        return view
-    }
-
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
-                            forRowAt indexPath: IndexPath) {
-        guard let cell = cell as? SettingsTableViewCell else { return }
-
-        cell.backgroundColor = UIColor.clear
-        cell.setCollectionViewTag(tag: indexPath.section)
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCollectionCell", for: indexPath)
-            as? SettingsTableViewCell else { fatalError() }
-
-            return cell
-    }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView.rowHeight == -1 {
-            return tableView.estimatedRowHeight
-        } else {
-            return tableView.rowHeight + 24
-        }
-    }
-}
-
 // MARK: - UICollectionView
 extension SettingsViewController: UICollectionViewDelegate, UICollectionViewDataSource,
     UICollectionViewDelegateFlowLayout {
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return settingsViewModel.numberOfSections()
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -107,12 +61,20 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = collectionView.maxWidth()
-        tableView.rowHeight = size
-
-        tableView.beginUpdates()
-        tableView.endUpdates()
 
         return CGSize(width: size, height: size)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: UICollectionElementKindSectionHeader,
+            withReuseIdentifier: "SettingsHeader",
+            for: indexPath) as? SettingsHeaderView else { fatalError() }
+        settingsViewModel.setupSectionHeaderView(view: header, section: indexPath.section)
+
+        return header
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -121,7 +83,7 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
             as? SettingsCollectionViewCell else { fatalError() }
 
         guard let button = cell.imageButton else { fatalError() }
-        let imageName = settingsViewModel.setupButton(button, tag: indexPath.item, section: collectionView.tag)
+        let imageName = settingsViewModel.setupButton(button, tag: indexPath.item, section: indexPath.section)
         button.setImage(UIImage(named: imageName), for: .normal)
 
         return cell

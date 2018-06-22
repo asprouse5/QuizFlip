@@ -12,6 +12,7 @@ class CategoryButton: UIButton {
 
     var section = 0
     var category = ""
+    var isHead = false
     let gradientLayer = CAGradientLayer()
 
     override func draw(_ rect: CGRect) {

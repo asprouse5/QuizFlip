@@ -37,11 +37,11 @@ class SettingsViewModel: NSObject {
 
             // decode categories
             let decodedCategories = try? PropertyListDecoder().decode([Category].self, from: categoryData)
-            self.categories = decodedCategories
+            categories = decodedCategories
 
             // decode selections
             let decodedSelections = try? PropertyListDecoder().decode([Selection].self, from: selectionData)
-            self.selections = decodedSelections
+            selections = decodedSelections
 
         } else {
             // no saved data, get some
@@ -75,7 +75,6 @@ class SettingsViewModel: NSObject {
 
     func setupButton(_ button: CategoryButton, tag: Int, section: Int) -> String {
         button.tag = tag+1
-        categoryButtons.append(button)
         let imageName = categoryImageName(for: section, subIndex: button.tag)
         setProperties(for: button, section: section, name: imageName)
         return imageName
@@ -84,6 +83,7 @@ class SettingsViewModel: NSObject {
     func setupSectionHeaderView(view: SettingsHeaderView, section: Int) {
         let title = categoryTitle(for: section)
         view.headerButton.setTitle(title, for: .normal)
+        view.headerButton.isHead = true
         setProperties(for: view.headerButton, section: section, name: title)
     }
 
@@ -101,32 +101,51 @@ class SettingsViewModel: NSObject {
         button.section = section
         button.category = name
         button.isSelected = selectionState(of: button)
+        if !categoryButtons.contains(button) {
+            categoryButtons.append(button)
+        }
     }
 
     private func selectionState(of button: CategoryButton) -> Bool {
-        let index = button.tagWith(offset: button.section, multiplier: 4)
+        let index = button.tagWith(offset: button.section)
         return selections?[index].selected ?? false
     }
 
     // MARK: - Setting selection of CategoryButton when triggered
 
     func setSelection(of button: CategoryButton) {
-        button.isSelected = !button.isSelected
-        var index = button.tagWith(offset: button.section, multiplier: 4)
-        selections?[index].setSelected(button.isSelected)
+        var index = button.tagWith(offset: button.section)
+        updateSelection(for: button, selected: !button.isSelected, index: index)
 
-        if button.accessibilityLabel == "HeadCategory" {
-            let shouldBeSelected = button.isSelected
+        let sameSectionButtons = categoryButtons.filter { $0.section == button.section }
+        let headButton = sameSectionButtons.first { $0.isHead == true }
+        let cButtons = sameSectionButtons.filter { $0.isHead == false }
 
-            // need to select/deselect buttons if all/none are selected
-            let sameSectionButtons = categoryButtons.filter { $0.section == button.section }
-
-            for cButton in sameSectionButtons {
+        if button.isHead {
+            for cButton in cButtons {
                 index += 1
-                cButton.isSelected = shouldBeSelected
-                selections?[index].setSelected(shouldBeSelected)
+                updateSelection(for: cButton, selected: button.isSelected, index: index)
             }
+        } else {
+            guard let headButton = headButton else { fatalError() }
+            let headIndex = headButton.tagWith(offset: headButton.section)
+
+            var selected = true
+            if noButtonsSelected(cButtons) {
+                selected = false
+            }
+
+            updateSelection(for: headButton, selected: selected, index: headIndex)
         }
+    }
+
+    func updateSelection(for button: CategoryButton?, selected: Bool, index: Int) {
+        button?.isSelected = selected
+        selections?[index].setSelected(selected)
+    }
+
+    func noButtonsSelected(_ buttons: [CategoryButton]) -> Bool {
+        return buttons.filter { $0.isSelected == false }.count == buttons.count
     }
 
     func noCategoriesSelected() -> Bool {

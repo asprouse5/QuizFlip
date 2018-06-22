@@ -8,25 +8,9 @@
 
 import UIKit
 
-class SettingsHeaderView: UIView {
+class SettingsHeaderView: UICollectionReusableView {
 
     @IBOutlet var headerButton: CategoryButton!
     @IBOutlet var contentView: UIView!
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-
-    private func setup() {
-        Bundle.main.loadNibNamed("SettingsHeaderView", owner: self, options: nil)
-        self.contentView.frame.size.width = frame.width
-        self.contentView.frame.size.height = frame.height
-        addSubview(contentView)
-    }
 }

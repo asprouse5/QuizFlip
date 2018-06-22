@@ -44,11 +44,11 @@ class QuestionModel: NSObject {
 
             // decode questions
             let decodedQuestions = try? PropertyListDecoder().decode([QAData].self, from: questionData)
-            self.questions = decodedQuestions
+            questions = decodedQuestions
 
             // decode filteredQuestions
             let decodedFilteredQuestions = try? PropertyListDecoder().decode([QAData].self, from: filteredQuestionData)
-            self.filteredQuestions = decodedFilteredQuestions
+            filteredQuestions = decodedFilteredQuestions
 
         } else {
             // no data saved, get some
@@ -75,8 +75,9 @@ class QuestionModel: NSObject {
     func getAllQuestions() {
         networkClient.getAllQuestionData { questions in
             DispatchQueue.main.async {
-                print("ALL QUESTION COUNT: \(questions?.count ?? 0)")
-                self.questions? += questions!
+                guard let questions = questions else { return }
+                print("QUESTION COUNT: \(questions.count)")
+                self.questions?.append(contentsOf: questions)
                 self.filteredQuestions = self.questions
                 print("CURRENT TOTAL: \(self.questions?.count ?? 0)")
                 self.saveUserDefaults()
@@ -84,12 +85,12 @@ class QuestionModel: NSObject {
         }
     }
 
-    func filterQuestions(_ selections: [Selection]?) {
+    func filterQuestions(by selections: [Selection]?) {
         guard let selections = selections else { return }
         let selected = selections.filter({$0.selected == true}).compactMap({$0.name})
         filteredQuestions = questions?.filter { selected.contains($0.category) }
         filteredQuestions?.forEach { print($0.category) }
-        self.saveUserDefaults()
+        saveUserDefaults()
     }
 
     func getRandomQuestion() -> QAData {

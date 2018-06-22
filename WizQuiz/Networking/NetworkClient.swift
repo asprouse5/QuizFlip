@@ -63,7 +63,7 @@ class NetworkClient: NSObject {
             }
 
             guard let response = try? JSONDecoder().decode([QAData].self, from: data) else {
-                print("Error: Couldn't decode data into QAData")
+                print("Error: Couldn't decode \(url) data into QAData")
                 completion(nil)
                 return
             }

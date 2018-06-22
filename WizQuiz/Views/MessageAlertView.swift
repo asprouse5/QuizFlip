@@ -1,24 +1,26 @@
 //
-//  IntroAlertView.swift
+//  SettingsHeaderView.swift
 //  WizQuiz
 //
-//  Created by Adriana Sprouse on 6/5/18.
+//  Created by Adriana Sprouse on 6/7/18.
 //  Copyright © 2018 Sprouse. All rights reserved.
 //
 
 import UIKit
 
-class IntroAlertView: UIView, Modal {
+class MessageAlertView: UIView, Modal {
 
     @IBOutlet var contentView: UIView!
-    @IBOutlet var qaGif: UIImageView!
-
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var messageLabel: UILabel!
     var backgroundView = UIView()
     var parentViewController: UIViewController?
 
-    convenience init() {
+    convenience init(parent: UIViewController, title: String, message: String) {
         self.init(frame: UIScreen.main.bounds)
-        parentViewController = UIApplication.shared.delegate?.window??.rootViewController
+        parentViewController = parent
+        titleLabel.text = title
+        messageLabel.text = message
     }
 
     override init(frame: CGRect) {
@@ -37,13 +39,11 @@ class IntroAlertView: UIView, Modal {
         backgroundView.alpha = 0.6
         addSubview(backgroundView)
 
-        Bundle.main.loadNibNamed("IntroAlertView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("MessageAlertView", owner: self, options: nil)
         addSubview(contentView)
-
-        qaGif.loadGif(asset: "qaDemo")
     }
 
-    @IBAction func dismissTriggered(_ sender: Any) {
+    @IBAction func okTriggered(_ sender: Any) {
         dismiss(animated: true)
     }
 }

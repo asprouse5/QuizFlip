@@ -39,8 +39,10 @@ class HomeViewController: UIViewController {
     }
 }
 
+// MARK: - QuestionFilterable Protocol
+
 extension HomeViewController: QuestionFilterable {
-    func sendFilterArray(_ selections: [Selection]?) {
-        questionModel.filterQuestions(selections)
+    func sendFilterArray(with selections: [Selection]?) {
+        questionModel.filterQuestions(by: selections)
     }
 }

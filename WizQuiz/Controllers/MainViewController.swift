@@ -18,13 +18,10 @@ class MainViewController: UIViewController {
     var randQuestion = QAData()
     var showAnswer = false
 
-    override func viewDidAppear(_ animated: Bool) {
-        getNextRandomQuestion()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.qaTriggered(_:)))
+        getNextRandomQuestion()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(qaTriggered(_:)))
         qaView.addGestureRecognizer(tap)
     }
 
@@ -44,7 +41,6 @@ class MainViewController: UIViewController {
     // flips the question/answer
     @IBAction func qaTriggered(_ sender: UIButton) {
         UIView.transition(with: qaView, duration: 0.6, options: [.transitionFlipFromRight], animations: {
-            [unowned self] in
             self.showAnswer = !self.showAnswer
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 if self.showAnswer {
@@ -66,8 +62,11 @@ class MainViewController: UIViewController {
     }
 }
 
+// MARK: - QuestionFilterable Protocol
+
 extension MainViewController: QuestionFilterable {
-    func sendFilterArray(_ selections: [Selection]?) {
-        questionModel.filterQuestions(selections)
+    func sendFilterArray(with selections: [Selection]?) {
+        questionModel.filterQuestions(by: selections)
+        getNextRandomQuestion()
     }
 }

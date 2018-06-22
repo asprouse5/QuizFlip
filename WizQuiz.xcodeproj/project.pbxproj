@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F535681720D1BF04007E85BD /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535681620D1BF04007E85BD /* Selection.swift */; };
 		F53C315320C2197400479FA4 /* QAData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53C315220C2197400479FA4 /* QAData.swift */; };
+		F584E5BD20DD3BA800ED2563 /* SettingsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F584E5BC20DD3BA800ED2563 /* SettingsHeaderView.xib */; };
+		F584E5BF20DD3C1100ED2563 /* MessageAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584E5BE20DD3C1100ED2563 /* MessageAlertView.swift */; };
 		F586573320DA7BFD00598DE6 /* RoundRectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F586573220DA7BFD00598DE6 /* RoundRectButton.swift */; };
 		F586573520DA7ECE00598DE6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F586573420DA7ECE00598DE6 /* UIView.swift */; };
 		F586573720DAF57100598DE6 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F586573620DAF57100598DE6 /* UIImage.swift */; };
@@ -35,7 +37,7 @@
 		F5EA800820C7268B00B9C815 /* IntroAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EA800720C7268B00B9C815 /* IntroAlertView.swift */; };
 		F5EA800C20C7342B00B9C815 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EA800B20C7342B00B9C815 /* UIColor.swift */; };
 		F5EA800E20C7390E00B9C815 /* IntroAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5EA800D20C7390E00B9C815 /* IntroAlertView.xib */; };
-		F5F3F32320C9617400682BD6 /* SettingsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F3F32220C9617400682BD6 /* SettingsHeaderView.xib */; };
+		F5F3F32320C9617400682BD6 /* MessageAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F3F32220C9617400682BD6 /* MessageAlertView.xib */; };
 		F5F3F32520C9628A00682BD6 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3F32420C9628A00682BD6 /* SettingsHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,8 @@
 /* Begin PBXFileReference section */
 		F535681620D1BF04007E85BD /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
 		F53C315220C2197400479FA4 /* QAData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAData.swift; sourceTree = "<group>"; };
+		F584E5BC20DD3BA800ED2563 /* SettingsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsHeaderView.xib; sourceTree = "<group>"; };
+		F584E5BE20DD3C1100ED2563 /* MessageAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAlertView.swift; sourceTree = "<group>"; };
 		F586573220DA7BFD00598DE6 /* RoundRectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRectButton.swift; sourceTree = "<group>"; };
 		F586573420DA7ECE00598DE6 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		F586573620DAF57100598DE6 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -83,7 +87,7 @@
 		F5EA800720C7268B00B9C815 /* IntroAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroAlertView.swift; sourceTree = "<group>"; };
 		F5EA800B20C7342B00B9C815 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		F5EA800D20C7390E00B9C815 /* IntroAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroAlertView.xib; sourceTree = "<group>"; };
-		F5F3F32220C9617400682BD6 /* SettingsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsHeaderView.xib; sourceTree = "<group>"; };
+		F5F3F32220C9617400682BD6 /* MessageAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageAlertView.xib; sourceTree = "<group>"; };
 		F5F3F32420C9628A00682BD6 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +171,7 @@
 				F586573220DA7BFD00598DE6 /* RoundRectButton.swift */,
 				F59EF5A320DBCA8B0088C420 /* SettingsTableViewCell.swift */,
 				F59EF5A520DBCF430088C420 /* SettingsCollectionViewCell.swift */,
+				F584E5BE20DD3C1100ED2563 /* MessageAlertView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,7 +192,8 @@
 				F59E4ED420BB794D003B8D86 /* Main.storyboard */,
 				F59E4EDC20BB794E003B8D86 /* LaunchScreen.storyboard */,
 				F5EA800D20C7390E00B9C815 /* IntroAlertView.xib */,
-				F5F3F32220C9617400682BD6 /* SettingsHeaderView.xib */,
+				F5F3F32220C9617400682BD6 /* MessageAlertView.xib */,
+				F584E5BC20DD3BA800ED2563 /* SettingsHeaderView.xib */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -343,7 +349,8 @@
 				F5EA800E20C7390E00B9C815 /* IntroAlertView.xib in Resources */,
 				F5B9221320BF4C5300673928 /* Category.plist in Resources */,
 				F59E4EEC20BDB253003B8D86 /* Assets.xcassets in Resources */,
-				F5F3F32320C9617400682BD6 /* SettingsHeaderView.xib in Resources */,
+				F584E5BD20DD3BA800ED2563 /* SettingsHeaderView.xib in Resources */,
+				F5F3F32320C9617400682BD6 /* MessageAlertView.xib in Resources */,
 				F59E4ED620BB794D003B8D86 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F586573520DA7ECE00598DE6 /* UIView.swift in Sources */,
+				F584E5BF20DD3C1100ED2563 /* MessageAlertView.swift in Sources */,
 				F59E4ED320BB794D003B8D86 /* HomeViewController.swift in Sources */,
 				F53C315320C2197400479FA4 /* QAData.swift in Sources */,
 				F59E4EEA20BB932A003B8D86 /* NetworkClient.swift in Sources */,
