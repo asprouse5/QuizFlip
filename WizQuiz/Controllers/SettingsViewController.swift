@@ -44,7 +44,7 @@ class SettingsViewController: UIViewController {
     @IBAction func okButtonTriggered(_ sender: Any) {
         settingsViewModel.saveUserDefaults()
         if settingsViewModel.noCategoriesSelected() {
-            MessageAlertView(parent: self, title: Constants.warning, message: Constants.categoryMessage).show(animated: true)
+            MessageAlertView(parent: self, title: Constants.warning, message: Constants.message).show(animated: true)
         } else {
             filterDelegate?.sendFilterArray(with: settingsViewModel.selections)
             dismiss(animated: true, completion: nil)
@@ -67,7 +67,6 @@ class SettingsViewController: UIViewController {
     @IBAction func buttonTrigerred(_ sender: CategoryButton) {
         settingsViewModel.setSelection(of: sender)
     }
-
 }
 
 // MARK: - UICollectionView
@@ -115,7 +114,8 @@ UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Strings.settingsViewCell.rawValue, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: Strings.settingsViewCell.rawValue, for: indexPath)
             as? SettingsCollectionViewCell else { fatalError() }
 
         guard let button = cell.imageButton else { fatalError() }

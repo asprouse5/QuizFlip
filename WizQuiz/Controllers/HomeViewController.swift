@@ -11,23 +11,11 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet var questionModel: QuestionModel!
+    @IBOutlet var loading: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if questionModel.isFirstTime() {
-            IntroAlertView().show(animated: true)
-        } else {
-            questionModel.isNewDataAvailable { response in
-                if response {
-                    MessageAlertView(parent: self,
-                                     title: "New Data Available",
-                                     message: "Go to the Settings page to update your questions!").show(animated: true)
-                }
-            }
-        }
-        // start async loading of JSON
-        questionModel.getStarterQuestions()
+        checkInternetConnection()
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +32,42 @@ class HomeViewController: UIViewController {
             destination.updateDelegate = self
             destination.setUpdateEnabled(questionModel.canUpdate)
         }
+    }
+
+    func checkInternetConnection() {
+        loading.startAnimating()
+        questionModel.getVersion { version in
+            if version == "" { // no internet
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "No Internet Connection",
+                                                  message: "Please connect to the internet and try again.",
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { _ in
+                        self.checkInternetConnection()
+                    }))
+                    self.present(alert, animated: true)
+                }
+            } else { // internet
+                self.finishSetup()
+            }
+        }
+    }
+
+    func finishSetup() {
+        self.loading.stopAnimating()
+        if questionModel.isFirstTime() {
+            IntroAlertView().show(animated: true)
+        } else {
+            questionModel.isNewDataAvailable { response in
+                if response {
+                    MessageAlertView(parent: self,
+                                     title: "New Data Available",
+                                     message: "Go to the Settings page to update your questions!").show(animated: true)
+                }
+            }
+        }
+        // start async loading of JSON
+        questionModel.getStarterQuestions()
     }
 }
 

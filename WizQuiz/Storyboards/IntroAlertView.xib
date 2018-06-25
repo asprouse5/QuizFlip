@@ -70,6 +70,9 @@
                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                             <color key="value" red="0.0028293852949999999" green="0.055941035430000001" blue="0.33475852010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="dismissTriggered:" destination="-1" eventType="touchUpInside" id="9Lk-u7-WDK"/>
@@ -123,7 +126,7 @@
         </view>
     </objects>
     <resources>
-        <image name="qaDemo" width="600" height="588"/>
-        <image name="settings" width="50" height="50"/>
+        <image name="qaDemo" width="300" height="294"/>
+        <image name="settings" width="448" height="448"/>
     </resources>
 </document>

@@ -21,7 +21,7 @@ class QuestionModel: NSObject {
     }
 
     func isFirstTime() -> Bool {
-        return Defaults.getVersion() == nil
+        return Defaults.getUserDefaults(for: Strings.questions.rawValue) == nil
     }
 
     func isNewDataAvailable(completion: @escaping (Bool) -> Void) {
@@ -33,9 +33,10 @@ class QuestionModel: NSObject {
         }
     }
 
-    func getVersion() {
+    func getVersion(completion: @escaping (String) -> Void) {
         networkClient.getVersionNumber { version in
             Defaults.saveVersion(version: version)
+            completion(version)
         }
     }
 
@@ -70,7 +71,6 @@ class QuestionModel: NSObject {
                 self.filteredQuestions = self.questions
                 self.saveUserDefaults()
             }
-            self.getVersion()
             self.getAllQuestions()
         }
     }

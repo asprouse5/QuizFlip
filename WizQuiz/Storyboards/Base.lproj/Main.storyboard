@@ -93,17 +93,22 @@
                                     <segue destination="xH6-1J-cWF" kind="presentation" identifier="settingsSegue" modalTransitionStyle="flipHorizontal" id="hMb-wi-hEx"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cOd-vH-yGY">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="07g-Mf-xeG" firstAttribute="height" secondItem="lNz-SV-cqe" secondAttribute="height" id="61c-MU-6TM"/>
                             <constraint firstAttribute="bottom" secondItem="vv9-1t-qMM" secondAttribute="bottom" id="7qf-i8-7Er"/>
                             <constraint firstItem="WfX-ch-K5P" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.2" id="Edp-I1-QRB"/>
+                            <constraint firstItem="cOd-vH-yGY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GXv-5B-s2X"/>
                             <constraint firstItem="vv9-1t-qMM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="H7b-kW-y54"/>
                             <constraint firstItem="thI-qa-IiR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MUn-lz-qQL"/>
                             <constraint firstItem="07g-Mf-xeG" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="OKh-8D-Xqw"/>
                             <constraint firstItem="lNz-SV-cqe" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="T1u-vB-x3Q"/>
                             <constraint firstItem="WfX-ch-K5P" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="ULk-3L-OYK"/>
+                            <constraint firstItem="cOd-vH-yGY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZCb-C9-Ko1"/>
                             <constraint firstItem="WfX-ch-K5P" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="dIz-YQ-2fw"/>
                             <constraint firstAttribute="trailing" secondItem="vv9-1t-qMM" secondAttribute="trailing" id="gn9-KA-REQ"/>
                             <constraint firstAttribute="trailing" secondItem="WfX-ch-K5P" secondAttribute="trailing" constant="20" symbolic="YES" id="j5R-j2-UoM"/>
@@ -117,6 +122,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="loading" destination="cOd-vH-yGY" id="Go8-EZ-Zbo"/>
                         <outlet property="questionModel" destination="hIk-o4-7oG" id="5Rs-K2-Vvd"/>
                     </connections>
                 </viewController>
@@ -596,11 +602,11 @@ Thank you to my family for helping me to create this app!</string>
     </scenes>
     <resources>
         <image name="Q" width="77" height="101"/>
-        <image name="darkbg" width="800" height="1000"/>
+        <image name="darkbg" width="400" height="500"/>
         <image name="info" width="522" height="522"/>
         <image name="logo" width="955" height="159"/>
         <image name="play" width="522" height="522"/>
-        <image name="qa_bg" width="1555" height="1517"/>
+        <image name="qa_bg" width="777" height="758"/>
         <image name="settings" width="448" height="448"/>
     </resources>
     <inferredMetricsTieBreakers>
