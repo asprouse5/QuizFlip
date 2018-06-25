@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F52C4B9820E1184F00B5A839 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52C4B9720E1184F00B5A839 /* Defaults.swift */; };
+		F52C4B9C20E12B1B00B5A839 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52C4B9B20E12B1B00B5A839 /* Strings.swift */; };
 		F535681720D1BF04007E85BD /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535681620D1BF04007E85BD /* Selection.swift */; };
 		F53C315320C2197400479FA4 /* QAData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53C315220C2197400479FA4 /* QAData.swift */; };
 		F584E5BD20DD3BA800ED2563 /* SettingsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F584E5BC20DD3BA800ED2563 /* SettingsHeaderView.xib */; };
@@ -37,6 +39,7 @@
 		F5EA800820C7268B00B9C815 /* IntroAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EA800720C7268B00B9C815 /* IntroAlertView.swift */; };
 		F5EA800C20C7342B00B9C815 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EA800B20C7342B00B9C815 /* UIColor.swift */; };
 		F5EA800E20C7390E00B9C815 /* IntroAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5EA800D20C7390E00B9C815 /* IntroAlertView.xib */; };
+		F5F0787720DEB7E800BD18D2 /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F0787620DEB7E800BD18D2 /* DismissSegue.swift */; };
 		F5F3F32320C9617400682BD6 /* MessageAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F3F32220C9617400682BD6 /* MessageAlertView.xib */; };
 		F5F3F32520C9628A00682BD6 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3F32420C9628A00682BD6 /* SettingsHeaderView.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F52C4B9720E1184F00B5A839 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		F52C4B9B20E12B1B00B5A839 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		F535681620D1BF04007E85BD /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
 		F53C315220C2197400479FA4 /* QAData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAData.swift; sourceTree = "<group>"; };
 		F584E5BC20DD3BA800ED2563 /* SettingsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsHeaderView.xib; sourceTree = "<group>"; };
@@ -87,6 +92,7 @@
 		F5EA800720C7268B00B9C815 /* IntroAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroAlertView.swift; sourceTree = "<group>"; };
 		F5EA800B20C7342B00B9C815 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		F5EA800D20C7390E00B9C815 /* IntroAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroAlertView.xib; sourceTree = "<group>"; };
+		F5F0787620DEB7E800BD18D2 /* DismissSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissSegue.swift; sourceTree = "<group>"; };
 		F5F3F32220C9617400682BD6 /* MessageAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageAlertView.xib; sourceTree = "<group>"; };
 		F5F3F32420C9628A00682BD6 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,6 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				F5D96E7620C5E83D00ED664A /* Constants.swift */,
+				F52C4B9B20E12B1B00B5A839 /* Strings.swift */,
+				F5F0787620DEB7E800BD18D2 /* DismissSegue.swift */,
 				F59E4ED020BB794D003B8D86 /* AppDelegate.swift */,
 				F59E4EDF20BB794E003B8D86 /* Info.plist */,
 				F5B9221220BF4C5300673928 /* Category.plist */,
@@ -227,6 +235,7 @@
 				F5B9220F20BF026A00673928 /* Category.swift */,
 				F53C315220C2197400479FA4 /* QAData.swift */,
 				F535681620D1BF04007E85BD /* Selection.swift */,
+				F52C4B9720E1184F00B5A839 /* Defaults.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -387,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F586573520DA7ECE00598DE6 /* UIView.swift in Sources */,
+				F52C4B9820E1184F00B5A839 /* Defaults.swift in Sources */,
 				F584E5BF20DD3C1100ED2563 /* MessageAlertView.swift in Sources */,
 				F59E4ED320BB794D003B8D86 /* HomeViewController.swift in Sources */,
 				F53C315320C2197400479FA4 /* QAData.swift in Sources */,
@@ -395,6 +405,7 @@
 				F5EA800820C7268B00B9C815 /* IntroAlertView.swift in Sources */,
 				F59EF5AA20DBE2750088C420 /* UICollectionView.swift in Sources */,
 				F586573720DAF57100598DE6 /* UIImage.swift in Sources */,
+				F52C4B9C20E12B1B00B5A839 /* Strings.swift in Sources */,
 				F5D96E7720C5E83D00ED664A /* Constants.swift in Sources */,
 				F535681720D1BF04007E85BD /* Selection.swift in Sources */,
 				F59E4ED120BB794D003B8D86 /* AppDelegate.swift in Sources */,
@@ -407,6 +418,7 @@
 				F5B9220D20BEFB4E00673928 /* SettingsViewModel.swift in Sources */,
 				F59E4EE820BB7F2B003B8D86 /* SettingsViewController.swift in Sources */,
 				F59E4EE620BB7F1D003B8D86 /* MainViewController.swift in Sources */,
+				F5F0787720DEB7E800BD18D2 /* DismissSegue.swift in Sources */,
 				F59EF5A420DBCA8B0088C420 /* SettingsTableViewCell.swift in Sources */,
 				F59EF5A620DBCF430088C420 /* SettingsCollectionViewCell.swift in Sources */,
 				F5B9221020BF026A00673928 /* Category.swift in Sources */,

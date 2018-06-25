@@ -53,4 +53,15 @@ extension UIView {
             layer.render(in: context.cgContext)
         }
     }
+
+    func setTextSize(label: UILabel?) {
+        let textStyle: UIFontTextStyle
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            textStyle = .largeTitle
+        } else {
+            textStyle = .title2
+        }
+        label?.adjustsFontForContentSizeCategory = true
+        label?.font = UIFont.preferredFont(forTextStyle: textStyle)
+    }
 }

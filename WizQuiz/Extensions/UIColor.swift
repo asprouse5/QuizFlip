@@ -9,8 +9,6 @@
 import UIKit
 
 extension UIColor {
-    static let teal = UIColor(red: 0, green: 204/255, blue: 204/255, alpha: 1)
-
     static let lightYellow = UIColor(red: 253/255, green: 238/255, blue: 169/255, alpha: 1)
     static let darkYellow = UIColor(red: 253/255, green: 223/255, blue: 145/255, alpha: 1)
 

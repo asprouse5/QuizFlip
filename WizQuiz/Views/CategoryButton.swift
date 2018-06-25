@@ -23,5 +23,6 @@ class CategoryButton: UIButton {
         }
 
         setBackground(gradient: gradientLayer)
+        setTextSize(label: self.titleLabel)
     }
 }

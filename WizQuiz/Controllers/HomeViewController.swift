@@ -17,11 +17,17 @@ class HomeViewController: UIViewController {
 
         if questionModel.isFirstTime() {
             IntroAlertView().show(animated: true)
+        } else {
+            questionModel.isNewDataAvailable { response in
+                if response {
+                    MessageAlertView(parent: self,
+                                     title: "New Data Available",
+                                     message: "Go to the Settings page to update your questions!").show(animated: true)
+                }
+            }
         }
         // start async loading of JSON
-        questionModel.getStarterQuestions {
-            print("got starter questions")
-        }
+        questionModel.getStarterQuestions()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,12 +35,14 @@ class HomeViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "mainSegue",
+        if segue.identifier == Strings.mainSegue.rawValue,
             let destination = segue.destination as? MainViewController {
             destination.questionModel = questionModel
-        } else if segue.identifier == "settingsSegue",
+        } else if segue.identifier == Strings.settingsSegue.rawValue,
             let destination = segue.destination as? SettingsViewController {
             destination.filterDelegate = self
+            destination.updateDelegate = self
+            destination.setUpdateEnabled(questionModel.canUpdate)
         }
     }
 }
@@ -44,5 +52,16 @@ class HomeViewController: UIViewController {
 extension HomeViewController: QuestionFilterable {
     func sendFilterArray(with selections: [Selection]?) {
         questionModel.filterQuestions(by: selections)
+    }
+}
+
+// MARK: - Updated Protocol
+
+extension HomeViewController: Updated {
+    func didUpdate(_ updated: Bool) {
+        if updated {
+            questionModel.canUpdate = false
+            questionModel.getNewStarterQuestions()
+        }
     }
 }

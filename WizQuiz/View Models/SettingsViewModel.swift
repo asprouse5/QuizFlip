@@ -13,27 +13,19 @@ class SettingsViewModel: NSObject {
     @IBOutlet var networkClient: NetworkClient!
     var categories: [Category]?
     var selections: [Selection]?
-    var categoryButtons = [CategoryButton]()
-    let defaults = UserDefaults.standard
+    var categoryButtons: [CategoryButton] = []
 
     func saveUserDefaults() {
-        let encodedCategories = try? PropertyListEncoder().encode(categories)
-        defaults.set(encodedCategories, forKey: "categories")
-        let encodedSelections = try? PropertyListEncoder().encode(selections)
-        defaults.set(encodedSelections, forKey: "selections")
-    }
-
-    private func getUserDefaults(for key: String) -> Data? {
-        guard let data = defaults.object(forKey: key) as? Data else { return nil }
-        return data
+        Defaults.saveUserDefaults(key: Strings.categories.rawValue, value: self.categories)
+        Defaults.saveUserDefaults(key: Strings.selections.rawValue, value: self.selections)
     }
 
     // MARK: - Getting category data from network
 
     func getCategories(completion: @escaping () -> Void) {
-        if let categoryData = getUserDefaults(for: "categories") {
+        if let categoryData = Defaults.getUserDefaults(for: Strings.categories.rawValue) {
             // we have saved data
-            guard let selectionData = getUserDefaults(for: "selections") else { fatalError() }
+            guard let selectionData = Defaults.getUserDefaults(for: Strings.selections.rawValue) else { fatalError() }
 
             // decode categories
             let decodedCategories = try? PropertyListDecoder().decode([Category].self, from: categoryData)

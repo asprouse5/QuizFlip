@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
     @IBOutlet var questionModel: QuestionModel!
     @IBOutlet var qaIcon: UIImageView!
     @IBOutlet var qaLabel: UILabel!
+    @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var qaView: UIView!
 
     var randQuestion = QAData()
@@ -23,6 +24,8 @@ class MainViewController: UIViewController {
         getNextRandomQuestion()
         let tap = UITapGestureRecognizer(target: self, action: #selector(qaTriggered(_:)))
         qaView.addGestureRecognizer(tap)
+        qaLabel.setTextSize(label: qaLabel)
+        categoryLabel.setTextSize(label: categoryLabel)
     }
 
     func getNextRandomQuestion() {
@@ -31,6 +34,7 @@ class MainViewController: UIViewController {
         DispatchQueue.main.async {
             self.qaIcon.image = #imageLiteral(resourceName: "Q")
             self.qaLabel.text = self.randQuestion.question
+            self.categoryLabel.text = self.questionModel.formatCategory(self.randQuestion.category)
         }
     }
 
@@ -55,9 +59,11 @@ class MainViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "settingsSegue",
+        if segue.identifier == Strings.settingsSegue.rawValue,
             let destination = segue.destination as? SettingsViewController {
             destination.filterDelegate = self
+            destination.updateDelegate = self
+            destination.setUpdateEnabled(questionModel.canUpdate)
         }
     }
 }
@@ -68,5 +74,16 @@ extension MainViewController: QuestionFilterable {
     func sendFilterArray(with selections: [Selection]?) {
         questionModel.filterQuestions(by: selections)
         getNextRandomQuestion()
+    }
+}
+
+// MARK: - Updated Protocol
+
+extension MainViewController: Updated {
+    func didUpdate(_ updated: Bool) {
+        if updated {
+            questionModel.canUpdate = false
+            questionModel.getNewStarterQuestions()
+        }
     }
 }

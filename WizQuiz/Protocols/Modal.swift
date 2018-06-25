@@ -25,9 +25,7 @@ extension Modal where Self: UIView {
         parentViewController?.view.addSubview(self)
 
         if animated {
-            UIView.animate(withDuration: 0.33, animations: {
-                self.backgroundView.alpha = 0.66
-            })
+            UIView.animate(withDuration: 0.33) { self.backgroundView.alpha = 0.66 }
             UIView.animate(withDuration: 0.33,
                            delay: 0,
                            usingSpringWithDamping: 0.7,
@@ -43,9 +41,7 @@ extension Modal where Self: UIView {
 
     func dismiss(animated: Bool) {
         if animated {
-            UIView.animate(withDuration: 0.33, animations: {
-                self.backgroundView.alpha = 0
-            })
+            UIView.animate(withDuration: 0.33) { self.backgroundView.alpha = 0 }
             UIView.animate(withDuration: 0.33,
                            delay: 0,
                            usingSpringWithDamping: 1,
@@ -54,7 +50,7 @@ extension Modal where Self: UIView {
                            animations: {
                             self.contentView.center = CGPoint(x: self.center.x,
                                                              y: self.frame.height + self.contentView.frame.height/2) },
-                           completion: { (_) in self.removeFromSuperview() })
+                           completion: { _ in self.removeFromSuperview() })
         } else {
             self.removeFromSuperview()
         }

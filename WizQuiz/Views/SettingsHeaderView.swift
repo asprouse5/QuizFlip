@@ -11,6 +11,5 @@ import UIKit
 class SettingsHeaderView: UICollectionReusableView {
 
     @IBOutlet var headerButton: CategoryButton!
-    @IBOutlet var contentView: UIView!
 
 }

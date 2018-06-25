@@ -173,8 +173,8 @@ extension UIImage {
 
     internal class func animatedImageWithSource(_ source: CGImageSource) -> UIImage? {
         let count = CGImageSourceGetCount(source)
-        var images = [CGImage]()
-        var delays = [Int]()
+        var images: [CGImage] = []
+        var delays: [Int] = []
 
         // Fill arrays
         for idx in 0..<count {
@@ -202,7 +202,7 @@ extension UIImage {
 
         // Get frames
         let gcd = gcdForArray(delays)
-        var frames = [UIImage]()
+        var frames: [UIImage] = []
 
         var frame: UIImage
         var frameCount: Int

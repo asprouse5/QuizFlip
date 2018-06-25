@@ -24,6 +24,7 @@ class RoundRectButton: UIButton {
         }
 
         setBackground(gradient: gradientLayer)
+        setTextSize(label: self.titleLabel)
     }
 
 }
