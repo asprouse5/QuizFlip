@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IntroSettingsAlertView" customModule="WizQuiz" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="pHd-0l-dzv"/>
+                <outlet property="notSelectedButton" destination="XKy-qm-E3b" id="6Pq-Li-pKc"/>
+                <outlet property="stackView" destination="8bu-m1-wjc" id="pWU-yg-lyU"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="311" height="519"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8bu-m1-wjc">
+                    <rect key="frame" x="8" y="8" width="295" height="503"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrP-WR-513">
+                            <rect key="frame" x="105" y="0.0" width="85.5" height="24"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ca-XL-1tO">
+                            <rect key="frame" x="0.0" y="54" width="295" height="61"/>
+                            <string key="text">You can change the trivia categories on this page
+(scroll to see more):</string>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="aMh-Wn-RM1">
+                            <rect key="frame" x="22" y="145" width="251" height="101"/>
+                            <subviews>
+                                <button opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbX-Aw-ok1" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="100.5" height="101"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="MbX-Aw-ok1" secondAttribute="height" multiplier="1:1" id="kqT-cf-xJY"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="Selected">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" red="0.0039215686269999999" green="0.054901960780000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <button opaque="NO" userInteractionEnabled="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="XKy-qm-E3b" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
+                                    <rect key="frame" x="150.5" y="0.0" width="100.5" height="101"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal">
+                                        <string key="title">Not
+Selected</string>
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" red="0.0039215686269999999" green="0.054901960780000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="XKy-qm-E3b" firstAttribute="width" secondItem="MbX-Aw-ok1" secondAttribute="width" id="YUL-4M-FCr"/>
+                                <constraint firstItem="XKy-qm-E3b" firstAttribute="leading" secondItem="MbX-Aw-ok1" secondAttribute="trailing" constant="50" id="xXK-hj-7XL"/>
+                            </constraints>
+                        </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Return to this page anytime by selecting this icon:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="205-oP-hH4">
+                            <rect key="frame" x="30.5" y="276" width="234" height="41"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frC-r8-wCh" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
+                            <rect key="frame" x="110" y="347" width="75.5" height="75.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="frC-r8-wCh" secondAttribute="height" multiplier="1:1" id="Zro-PI-tck"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                            <state key="normal" image="settings"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.80000000000000004" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yu-zD-34h" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
+                            <rect key="frame" x="88.5" y="452.5" width="118" height="50.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="OK">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.65098039220000004" green="0.46274509800000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="dismissTriggered:" destination="-1" eventType="touchUpInside" id="9Lk-u7-WDK"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="2yu-zD-34h" firstAttribute="height" secondItem="8bu-m1-wjc" secondAttribute="height" multiplier="0.1" id="B9E-kl-pXv"/>
+                        <constraint firstItem="9ca-XL-1tO" firstAttribute="leading" secondItem="8bu-m1-wjc" secondAttribute="leading" id="MuN-vS-eaS"/>
+                        <constraint firstItem="2yu-zD-34h" firstAttribute="width" secondItem="8bu-m1-wjc" secondAttribute="width" multiplier="0.4" id="hDK-6W-Hgk"/>
+                        <constraint firstItem="frC-r8-wCh" firstAttribute="height" secondItem="8bu-m1-wjc" secondAttribute="height" multiplier="0.15" id="nBj-ju-hHO"/>
+                        <constraint firstItem="aMh-Wn-RM1" firstAttribute="centerX" secondItem="8bu-m1-wjc" secondAttribute="centerX" id="ofh-CU-30P"/>
+                        <constraint firstItem="aMh-Wn-RM1" firstAttribute="height" secondItem="8bu-m1-wjc" secondAttribute="height" multiplier="0.2" id="ueD-FW-r7O"/>
+                        <constraint firstAttribute="trailing" secondItem="9ca-XL-1tO" secondAttribute="trailing" id="zrx-Z9-n47"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="8bu-m1-wjc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="2Dw-yb-Xl2"/>
+                <constraint firstItem="8bu-m1-wjc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="EW4-lZ-OkC"/>
+                <constraint firstItem="8bu-m1-wjc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="htw-03-Cqs"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="8bu-m1-wjc" secondAttribute="bottom" constant="8" id="xgE-Lo-8Zt"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="20"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="-156.5" y="285.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="settings" width="448" height="448"/>
+    </resources>
+</document>

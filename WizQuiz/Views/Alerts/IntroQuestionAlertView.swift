@@ -1,26 +1,25 @@
 //
-//  SettingsHeaderView.swift
-//  WizQuiz
+//  IntroAlertView.swift
+//  QuizFlip
 //
-//  Created by Adriana Sprouse on 6/7/18.
+//  Created by Adriana Sprouse on 6/27/18.
 //  Copyright © 2018 Sprouse. All rights reserved.
 //
 
 import UIKit
 
-class MessageAlertView: UIView, Modal {
+class IntroQuestionAlertView: UIView, Modal {
 
     @IBOutlet var contentView: UIView!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var messageLabel: UILabel!
+    @IBOutlet var infoLabel: UILabel!
+    @IBOutlet var qaGif: UIImageView!
+
     var backgroundView = UIView()
     var parentViewController: UIViewController?
 
-    convenience init(parent: UIViewController, title: String, message: String) {
+    convenience init(parent: UIViewController) {
         self.init(frame: UIScreen.main.bounds)
         parentViewController = parent
-        titleLabel.text = title
-        messageLabel.text = message
     }
 
     override init(frame: CGRect) {
@@ -39,11 +38,19 @@ class MessageAlertView: UIView, Modal {
         backgroundView.alpha = 0.6
         addSubview(backgroundView)
 
-        Bundle.main.loadNibNamed("MessageAlertView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("IntroQuestionAlertView", owner: self, options: nil)
         addSubview(contentView)
+
+        contentView.frame = CGRect(origin: contentView.center,
+                                   size: CGSize(width: frame.width * 0.8,
+                                                height: frame.height * 0.6))
+
+        infoLabel.setTextSize(label: infoLabel)
+
+        qaGif.loadGif(asset: "qaDemo")
     }
 
-    @IBAction func okTriggered(_ sender: Any) {
+    @IBAction func dismissTriggered(_ sender: Any) {
         dismiss(animated: true)
     }
 }

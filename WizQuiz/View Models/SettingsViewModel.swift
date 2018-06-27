@@ -1,6 +1,6 @@
 //
 //  SettingsViewModel.swift
-//  WizQuiz
+//  QuizFlip
 //
 //  Created by Adriana Sprouse on 5/30/18.
 //  Copyright © 2018 Sprouse. All rights reserved.
@@ -43,19 +43,17 @@ class SettingsViewModel: NSObject {
         completion()
     }
 
-    func getNewCategoryData() {
+    private func getNewCategoryData() {
         networkClient.getCategoryData { categories in
-            DispatchQueue.main.async {
-                guard let categories = categories else { return }
-                self.categories = categories
-                let data = categories.flatMap { [$0.title] + $0.icons }
-                self.selections = data.map { Selection(name: $0) }
-                self.saveUserDefaults()
-            }
+            guard let categories = categories else { return }
+            self.categories = categories
+            let data = categories.flatMap { [$0.title] + $0.icons }
+            self.selections = data.map { Selection(name: $0) }
+            self.saveUserDefaults()
         }
     }
 
-    // MARK: - Set up tableView data for SettingsViewController
+    // MARK: - Set up collection view data for SettingsViewController
 
     func numberOfSections() -> Int {
         return categories?.count ?? 0
@@ -131,16 +129,28 @@ class SettingsViewModel: NSObject {
         }
     }
 
-    func updateSelection(for button: CategoryButton?, selected: Bool, index: Int) {
+    private func updateSelection(for button: CategoryButton?, selected: Bool, index: Int) {
         button?.isSelected = selected
         selections?[index].setSelected(selected)
     }
 
-    func noButtonsSelected(_ buttons: [CategoryButton]) -> Bool {
+    private func noButtonsSelected(_ buttons: [CategoryButton]) -> Bool {
         return buttons.filter { $0.isSelected == false }.count == buttons.count
     }
 
-    func noCategoriesSelected() -> Bool {
+    // MARK: - Enabling/Disbaling buttons so category is always selected
+
+    func setButtonState(_ button: RoundRectButton) {
+        if noCategoriesSelected() {
+            button.tag = -1
+            button.isEnabled = false
+        } else {
+            button.tag = 1
+            button.isEnabled = true
+        }
+    }
+
+    private func noCategoriesSelected() -> Bool {
         guard let selections = selections else { return false }
         return selections.filter({ $0.selected == true }).count == 0
     }

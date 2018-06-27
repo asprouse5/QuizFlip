@@ -1,6 +1,6 @@
 //
 //  MainViewController.swift
-//  WizQuiz
+//  QuizFlip
 //
 //  Created by Adriana Sprouse on 5/27/18.
 //  Copyright © 2018 Sprouse. All rights reserved.
@@ -15,31 +15,48 @@ class MainViewController: UIViewController {
     @IBOutlet var qaLabel: UILabel!
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var qaView: UIView!
+    @IBOutlet var backButton: RoundRectButton!
 
-    var randQuestion = QAData()
+    var nextQuestion = QAData()
     var showAnswer = false
+    var isFirstTime = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getNextRandomQuestion()
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(qaTriggered(_:)))
         qaView.addGestureRecognizer(tap)
         qaLabel.setTextSize(label: qaLabel)
         categoryLabel.setTextSize(label: categoryLabel)
+
+        if isFirstTime {
+            IntroQuestionAlertView(parent: self).show(animated: true)
+        } else {
+            questionModel.filteredQuestions?.shuffle()
+        }
+
+        questionModel.delegate = self
+        getNextQuestion()
     }
 
-    func getNextRandomQuestion() {
+    func setFirstTime(_ isFirstTime: Any?) {
+        guard let isFirstTime = isFirstTime as? Bool else { return }
+        self.isFirstTime = isFirstTime
+    }
+
+    func getNextQuestion() {
         showAnswer = false
-        randQuestion = questionModel.getRandomQuestion()
-        DispatchQueue.main.async {
-            self.qaIcon.image = #imageLiteral(resourceName: "Q")
-            self.qaLabel.text = self.randQuestion.question
-            self.categoryLabel.text = self.questionModel.formatCategory(self.randQuestion.category)
-        }
+        questionModel.getNextQuestion()
+    }
+
+    @IBAction func backTriggered(_ sender: Any) {
+        showAnswer = false
+        questionModel.getPreviousQuestion()
     }
 
     @IBAction func nextTriggered(_ sender: UIButton) {
-        getNextRandomQuestion()
+        getNextQuestion()
+        backButton.isEnabled = true
     }
 
     // flips the question/answer
@@ -49,10 +66,10 @@ class MainViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 if self.showAnswer {
                     self.qaIcon.image = #imageLiteral(resourceName: "A")
-                    self.qaLabel.text = self.randQuestion.answer
+                    self.qaLabel.text = self.nextQuestion.answer
                 } else {
                     self.qaIcon.image = #imageLiteral(resourceName: "Q")
-                    self.qaLabel.text = self.randQuestion.question
+                    self.qaLabel.text = self.nextQuestion.question
                 }
             }
         })
@@ -63,7 +80,20 @@ class MainViewController: UIViewController {
             let destination = segue.destination as? SettingsViewController {
             destination.filterDelegate = self
             destination.updateDelegate = self
-            destination.setUpdateEnabled(questionModel.canUpdate)
+        }
+    }
+}
+
+extension MainViewController: RandomQuestion {
+    func sendQuestion(_ question: QAData, atBeginning: Bool) {
+        self.nextQuestion = question
+        DispatchQueue.main.async {
+            if atBeginning {
+                self.backButton.isEnabled = false
+            }
+            self.qaIcon.image = #imageLiteral(resourceName: "Q")
+            self.qaLabel.text = self.nextQuestion.question
+            self.categoryLabel.text = self.questionModel.formatCategory(self.nextQuestion.category)
         }
     }
 }
@@ -73,13 +103,13 @@ class MainViewController: UIViewController {
 extension MainViewController: QuestionFilterable {
     func sendFilterArray(with selections: [Selection]?) {
         questionModel.filterQuestions(by: selections)
-        getNextRandomQuestion()
+        getNextQuestion()
     }
 }
 
 // MARK: - Updated Protocol
 
-extension MainViewController: Updated {
+extension MainViewController: Update {
     func didUpdate(_ updated: Bool) {
         if updated {
             questionModel.canUpdate = false

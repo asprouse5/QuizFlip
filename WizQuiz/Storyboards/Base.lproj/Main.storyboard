@@ -42,7 +42,7 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.0028293852953015491" green="0.055941035433345603" blue="0.33475852010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.0039215686274509803" green="0.054901960784313725" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -243,7 +243,7 @@ Thank you to my family for helping me to create this app!</string>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="YV8-dW-hgC">
                                 <rect key="frame" x="16" y="508" width="288" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GtP-iV-VDo" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GtP-iV-VDo" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="85.5" height="40"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <state key="normal" title="OK">
@@ -285,10 +285,10 @@ Thank you to my family for helping me to create this app!</string>
                                             <action selector="cancelButtonTriggered:" destination="xH6-1J-cWF" eventType="touchUpInside" id="eQA-be-AET"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="-1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7N-2R-2Kt" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7N-2R-2Kt" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
                                         <rect key="frame" x="202.5" y="0.0" width="85.5" height="40"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                        <state key="normal" title="Update">
+                                        <state key="normal" title="Help">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -303,7 +303,7 @@ Thank you to my family for helping me to create this app!</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="updateButtonTriggered:" destination="xH6-1J-cWF" eventType="touchUpInside" id="Ihd-yr-XKF"/>
+                                            <action selector="helpButtonTriggered:" destination="xH6-1J-cWF" eventType="touchUpInside" id="fVO-4g-NAX"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -421,9 +421,11 @@ Thank you to my family for helping me to create this app!</string>
                         <viewLayoutGuide key="safeArea" id="Z1q-fF-V3F"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="xkR-5V-qhY" id="aFt-IE-gQZ"/>
+                        <outlet property="helpButton" destination="D7N-2R-2Kt" id="Rrt-eb-eBZ"/>
+                        <outlet property="okButton" destination="GtP-iV-VDo" id="Oe9-mc-R4W"/>
                         <outlet property="settingsCollectionView" destination="lkh-nZ-1GS" id="7Dc-FM-TmE"/>
                         <outlet property="settingsViewModel" destination="zDY-qA-RWH" id="E7b-Mc-II0"/>
-                        <outlet property="updateButton" destination="D7N-2R-2Kt" id="blZ-aH-QBU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j0o-xi-CvL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -451,19 +453,19 @@ Thank you to my family for helping me to create this app!</string>
                                 <rect key="frame" x="20" y="20" width="280" height="113.5"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mMQ-Cx-Cp8">
-                                <rect key="frame" x="16" y="141.5" width="288" height="256.5"/>
+                                <rect key="frame" x="16" y="142" width="288" height="254"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qa_bg" translatesAutoresizingMaskIntoConstraints="NO" id="66M-Cg-d5v">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="256.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="254.5"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ihb-Lb-67e" userLabel="QA Stack View">
-                                        <rect key="frame" x="16" y="40" width="256" height="200.5"/>
+                                        <rect key="frame" x="16" y="40" width="256" height="198"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Q" translatesAutoresizingMaskIntoConstraints="NO" id="N1O-oX-dZ1">
-                                                <rect key="frame" x="0.0" y="0.0" width="51" height="200.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="51" height="198"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moX-Nb-0hM">
-                                                <rect key="frame" x="61" y="0.0" width="195" height="200.5"/>
+                                                <rect key="frame" x="61" y="0.0" width="195" height="198"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -495,27 +497,57 @@ Thank you to my family for helping me to create this app!</string>
                                     <constraint firstItem="lNz-D5-jaR" firstAttribute="top" secondItem="mMQ-Cx-Cp8" secondAttribute="top" constant="8" id="w8j-fX-taA"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L88-6h-af2" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
-                                <rect key="frame" x="80" y="414" width="160" height="57"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.65000000000000002" green="0.46129032258064512" blue="0.44032258064516128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="nextTriggered:" destination="M4O-zF-FNp" eventType="touchUpInside" id="6RC-yO-t8n"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-Zs-Bkf">
+                                <rect key="frame" x="80" y="406" width="160" height="57"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L88-6h-af2" userLabel="Back Button" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="57" height="57"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <state key="normal" image="back">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.65098039215686276" green="0.46274509803921571" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="backTriggered:" destination="M4O-zF-FNp" eventType="touchUpInside" id="PSI-ej-3Z2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnR-NX-f2H" userLabel="Next Button" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
+                                        <rect key="frame" x="103" y="0.0" width="57" height="57"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <state key="normal" image="next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.65098039220000004" green="0.46274509800000002" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="nextTriggered:" destination="M4O-zF-FNp" eventType="touchUpInside" id="oMp-QU-sTy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="NnR-NX-f2H" firstAttribute="width" secondItem="L88-6h-af2" secondAttribute="width" id="UY4-7H-zh1"/>
+                                    <constraint firstItem="NnR-NX-f2H" firstAttribute="height" secondItem="L88-6h-af2" secondAttribute="height" id="kRq-lQ-pF7"/>
+                                </constraints>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gua-BX-jGg" userLabel="Info Button" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
                                 <rect key="frame" x="16" y="479" width="57" height="57"/>
                                 <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -560,10 +592,10 @@ Thank you to my family for helping me to create this app!</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Gua-BX-jGg" firstAttribute="top" secondItem="L88-6h-af2" secondAttribute="bottom" constant="8" id="4LR-ex-BQV"/>
-                            <constraint firstItem="L88-6h-af2" firstAttribute="centerX" secondItem="Fjf-Ue-hVa" secondAttribute="centerX" id="4h8-kW-lhr"/>
+                            <constraint firstItem="L88-6h-af2" firstAttribute="width" secondItem="Gua-BX-jGg" secondAttribute="width" id="2Hd-qG-z4f"/>
+                            <constraint firstItem="qRb-Zs-Bkf" firstAttribute="top" secondItem="mMQ-Cx-Cp8" secondAttribute="bottom" constant="10" id="4zC-Q9-RA2"/>
                             <constraint firstItem="mMQ-Cx-Cp8" firstAttribute="leading" secondItem="baD-R0-XQH" secondAttribute="leading" constant="16" id="5dz-Sj-Y6U"/>
-                            <constraint firstItem="L88-6h-af2" firstAttribute="top" secondItem="mMQ-Cx-Cp8" secondAttribute="bottom" constant="16" id="9CF-f2-8hV"/>
+                            <constraint firstItem="L88-6h-af2" firstAttribute="height" secondItem="Gua-BX-jGg" secondAttribute="height" id="Aoa-oD-80M"/>
                             <constraint firstItem="Gua-BX-jGg" firstAttribute="height" secondItem="Fjf-Ue-hVa" secondAttribute="height" multiplier="0.1" id="CnV-9I-rUf"/>
                             <constraint firstItem="lii-wd-mI3" firstAttribute="leading" secondItem="Fjf-Ue-hVa" secondAttribute="leading" constant="20" symbolic="YES" id="DTf-pe-MTU"/>
                             <constraint firstItem="bnb-A3-pdt" firstAttribute="leading" secondItem="Fjf-Ue-hVa" secondAttribute="leading" id="FYd-72-5sK"/>
@@ -574,19 +606,21 @@ Thank you to my family for helping me to create this app!</string>
                             <constraint firstItem="lii-wd-mI3" firstAttribute="height" secondItem="Fjf-Ue-hVa" secondAttribute="height" multiplier="0.2" id="XgX-lV-WvV"/>
                             <constraint firstItem="mMQ-Cx-Cp8" firstAttribute="top" secondItem="lii-wd-mI3" secondAttribute="bottom" constant="8" id="XhN-Nc-ZcT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="q6g-vA-DNi" secondAttribute="trailing" id="YIz-Ti-lil"/>
-                            <constraint firstItem="L88-6h-af2" firstAttribute="width" secondItem="Fjf-Ue-hVa" secondAttribute="width" multiplier="0.5" id="ZcH-Xx-Rty"/>
                             <constraint firstAttribute="trailing" secondItem="lii-wd-mI3" secondAttribute="trailing" constant="20" symbolic="YES" id="brh-ua-V1e"/>
-                            <constraint firstItem="L88-6h-af2" firstAttribute="height" secondItem="Gua-BX-jGg" secondAttribute="height" id="kMd-uc-YLD"/>
+                            <constraint firstItem="qRb-Zs-Bkf" firstAttribute="centerX" secondItem="Fjf-Ue-hVa" secondAttribute="centerX" id="fAd-dE-B3y"/>
+                            <constraint firstItem="q6g-vA-DNi" firstAttribute="top" secondItem="qRb-Zs-Bkf" secondAttribute="bottom" constant="16" id="gS6-hL-liP"/>
                             <constraint firstAttribute="bottomMargin" secondItem="q6g-vA-DNi" secondAttribute="bottom" constant="32" id="l6P-zW-uNp"/>
                             <constraint firstAttribute="bottom" secondItem="bnb-A3-pdt" secondAttribute="bottom" id="lbL-E0-xJ8"/>
                             <constraint firstItem="Gua-BX-jGg" firstAttribute="width" secondItem="Gua-BX-jGg" secondAttribute="height" multiplier="1:1" id="p2f-bq-1f8"/>
                             <constraint firstItem="bnb-A3-pdt" firstAttribute="top" secondItem="Fjf-Ue-hVa" secondAttribute="top" id="vMm-IH-0R6"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Gua-BX-jGg" secondAttribute="bottom" constant="32" id="wIg-bq-Mv2"/>
+                            <constraint firstItem="qRb-Zs-Bkf" firstAttribute="width" secondItem="bnb-A3-pdt" secondAttribute="width" multiplier="0.5" id="yGw-Ja-RU4"/>
                             <constraint firstItem="lii-wd-mI3" firstAttribute="top" secondItem="Fjf-Ue-hVa" secondAttribute="topMargin" id="zFH-lf-Y92"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="baD-R0-XQH"/>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="L88-6h-af2" id="4FK-Zj-0Ts"/>
                         <outlet property="categoryLabel" destination="lNz-D5-jaR" id="Vlq-uN-NLf"/>
                         <outlet property="qaIcon" destination="N1O-oX-dZ1" id="DUb-ea-imm"/>
                         <outlet property="qaLabel" destination="moX-Nb-0hM" id="KBf-Qg-dPh"/>
@@ -597,14 +631,16 @@ Thank you to my family for helping me to create this app!</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nfc-QF-RVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="R5r-EY-BRs" customClass="QuestionModel" customModule="WizQuiz" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="133" y="960"/>
+            <point key="canvasLocation" x="131.25" y="959.15492957746483"/>
         </scene>
     </scenes>
     <resources>
         <image name="Q" width="77" height="101"/>
+        <image name="back" width="530" height="530"/>
         <image name="darkbg" width="400" height="500"/>
         <image name="info" width="522" height="522"/>
-        <image name="logo" width="955" height="159"/>
+        <image name="logo" width="1000" height="152"/>
+        <image name="next" width="530" height="530"/>
         <image name="play" width="522" height="522"/>
         <image name="qa_bg" width="777" height="758"/>
         <image name="settings" width="448" height="448"/>

@@ -1,6 +1,6 @@
 //
 //  QuestionModel.swift
-//  WizQuiz
+//  QuizFlip
 //
 //  Created by Adriana Sprouse on 6/5/18.
 //  Copyright © 2018 Sprouse. All rights reserved.
@@ -8,12 +8,18 @@
 
 import Foundation
 
+protocol RandomQuestion: class {
+    func sendQuestion(_ question: QAData, atBeginning: Bool)
+}
+
 class QuestionModel: NSObject {
 
     @IBOutlet var networkClient: NetworkClient!
+    weak var delegate: RandomQuestion?
     var questions: [QAData]?
     var filteredQuestions: [QAData]?
     var canUpdate = false
+    var questionNumber = -1
 
     func saveUserDefaults() {
         Defaults.saveUserDefaults(key: Strings.questions.rawValue, value: self.questions)
@@ -66,11 +72,9 @@ class QuestionModel: NSObject {
 
     func getNewStarterQuestions() {
         networkClient.getStarterQuestionData { questions in
-            DispatchQueue.main.async {
                 self.questions = questions
                 self.filteredQuestions = self.questions
                 self.saveUserDefaults()
-            }
             self.getAllQuestions()
         }
     }
@@ -90,31 +94,49 @@ class QuestionModel: NSObject {
         guard let selections = selections else { return }
         let selected = selections.filter({$0.selected == true}).compactMap({$0.name})
         filteredQuestions = questions?.filter { selected.contains($0.category) }
+        filteredQuestions?.shuffle()
+        questionNumber = -1
         saveUserDefaults()
     }
 
-    func refilterQuestions() {
+    /*func refilterQuestions() {
         guard let selectionData = Defaults.getUserDefaults(for: Strings.selections.rawValue) else { fatalError() }
         let selections = try? PropertyListDecoder().decode([Selection].self, from: selectionData)
         filterQuestions(by: selections)
+    }*/
+
+    func getNextQuestion() {
+        questionNumber += 1
+        getQuestion(at: questionNumber)
     }
 
-    func getRandomQuestion() -> QAData {
-        guard var filteredQuestions = filteredQuestions else { return QAData() }
+    func getPreviousQuestion() {
+        questionNumber -= 1
+        getQuestion(at: questionNumber)
+    }
 
-        let max = filteredQuestions.count
-        let index = arc4random_uniform(UInt32(max))
-        let randomQuestion = filteredQuestions[Int(index)]
+    private func getQuestion(at index: Int) {
+        guard var filteredQuestions = filteredQuestions else {
+            delegate?.sendQuestion(QAData(), atBeginning: false)
+            return
+        }
+        print("Question \(index) of \(filteredQuestions.count)")
 
-        self.filteredQuestions?.remove(at: Int(index))
-        if self.filteredQuestions?.count == 0 {
-            refilterQuestions()
+        let returnQuestion: QAData
+        let beginning = (index == 0)
+
+        if index == filteredQuestions.count {
+            questionNumber = -1
+            self.filteredQuestions?.shuffle()
+            returnQuestion = QAData(category: "", question: Constants.endQA, answer: Constants.endQA)
+        } else {
+            returnQuestion = filteredQuestions[index]
         }
 
-        return randomQuestion
+        delegate?.sendQuestion(returnQuestion, atBeginning: beginning)
     }
 
     func formatCategory(_ category: String) -> String {
-        return "Category: \(category.replacingOccurrences(of: "-", with: " ").capitalized)"
+        return "Category: \(category.replacingOccurrences(of: "-", with: " "))"
     }
 }

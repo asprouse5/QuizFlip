@@ -1,6 +1,6 @@
 //
 //  SettingsCollectionTableViewCell.swift
-//  WizQuiz
+//  QuizFlip
 //
 //  Created by Adriana Sprouse on 6/21/18.
 //  Copyright © 2018 Sprouse. All rights reserved.

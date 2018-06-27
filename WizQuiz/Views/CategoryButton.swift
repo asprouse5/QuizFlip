@@ -1,6 +1,6 @@
 //
 //  CategoryButton.swift
-//  WizQuiz
+//  QuizFlip
 //
 //  Created by Adriana Sprouse on 5/31/18.
 //  Copyright © 2018 Sprouse. All rights reserved.

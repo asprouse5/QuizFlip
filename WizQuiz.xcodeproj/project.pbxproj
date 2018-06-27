@@ -9,14 +9,18 @@
 /* Begin PBXBuildFile section */
 		F52C4B9820E1184F00B5A839 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52C4B9720E1184F00B5A839 /* Defaults.swift */; };
 		F52C4B9C20E12B1B00B5A839 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52C4B9B20E12B1B00B5A839 /* Strings.swift */; };
+		F52C4B9E20E16F6000B5A839 /* QuestionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52C4B9D20E16F6000B5A839 /* QuestionViewModelTests.swift */; };
 		F535681720D1BF04007E85BD /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535681620D1BF04007E85BD /* Selection.swift */; };
 		F53C315320C2197400479FA4 /* QAData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53C315220C2197400479FA4 /* QAData.swift */; };
+		F55B1B0120E3BF0500386BF0 /* IntroQuestionAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F55B1B0020E3BF0500386BF0 /* IntroQuestionAlertView.xib */; };
+		F55B1B0320E3BF2A00386BF0 /* IntroQuestionAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B1B0220E3BF2A00386BF0 /* IntroQuestionAlertView.swift */; };
 		F584E5BD20DD3BA800ED2563 /* SettingsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F584E5BC20DD3BA800ED2563 /* SettingsHeaderView.xib */; };
-		F584E5BF20DD3C1100ED2563 /* MessageAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584E5BE20DD3C1100ED2563 /* MessageAlertView.swift */; };
+		F584E5BF20DD3C1100ED2563 /* UpdateAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584E5BE20DD3C1100ED2563 /* UpdateAlertView.swift */; };
 		F586573320DA7BFD00598DE6 /* RoundRectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F586573220DA7BFD00598DE6 /* RoundRectButton.swift */; };
 		F586573520DA7ECE00598DE6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F586573420DA7ECE00598DE6 /* UIView.swift */; };
 		F586573720DAF57100598DE6 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F586573620DAF57100598DE6 /* UIImage.swift */; };
-		F588EFDE20D81BDF007D1BA5 /* WizQuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F588EFDD20D81BDF007D1BA5 /* WizQuizTests.swift */; };
+		F588EFDE20D81BDF007D1BA5 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F588EFDD20D81BDF007D1BA5 /* SettingsViewModelTests.swift */; };
+		F596137A20E3D4C200FE1915 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = F596137920E3D4C200FE1915 /* Array.swift */; };
 		F59E4ED120BB794D003B8D86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E4ED020BB794D003B8D86 /* AppDelegate.swift */; };
 		F59E4ED320BB794D003B8D86 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E4ED220BB794D003B8D86 /* HomeViewController.swift */; };
 		F59E4ED620BB794D003B8D86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F59E4ED420BB794D003B8D86 /* Main.storyboard */; };
@@ -36,11 +40,11 @@
 		F5DD801920C0987900DFB78D /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DD801820C0987900DFB78D /* CategoryButton.swift */; };
 		F5DF7C0220C190F300B400FA /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF7C0120C190F300B400FA /* Modal.swift */; };
 		F5EA800420C6F5E300B9C815 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EA800320C6F5E300B9C815 /* QuestionModel.swift */; };
-		F5EA800820C7268B00B9C815 /* IntroAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EA800720C7268B00B9C815 /* IntroAlertView.swift */; };
+		F5EA800820C7268B00B9C815 /* IntroSettingsAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EA800720C7268B00B9C815 /* IntroSettingsAlertView.swift */; };
 		F5EA800C20C7342B00B9C815 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EA800B20C7342B00B9C815 /* UIColor.swift */; };
-		F5EA800E20C7390E00B9C815 /* IntroAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5EA800D20C7390E00B9C815 /* IntroAlertView.xib */; };
+		F5EA800E20C7390E00B9C815 /* IntroSettingsAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5EA800D20C7390E00B9C815 /* IntroSettingsAlertView.xib */; };
 		F5F0787720DEB7E800BD18D2 /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F0787620DEB7E800BD18D2 /* DismissSegue.swift */; };
-		F5F3F32320C9617400682BD6 /* MessageAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F3F32220C9617400682BD6 /* MessageAlertView.xib */; };
+		F5F3F32320C9617400682BD6 /* UpdateAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F3F32220C9617400682BD6 /* UpdateAlertView.xib */; };
 		F5F3F32520C9628A00682BD6 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F3F32420C9628A00682BD6 /* SettingsHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,17 +61,21 @@
 /* Begin PBXFileReference section */
 		F52C4B9720E1184F00B5A839 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		F52C4B9B20E12B1B00B5A839 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		F52C4B9D20E16F6000B5A839 /* QuestionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModelTests.swift; sourceTree = "<group>"; };
 		F535681620D1BF04007E85BD /* Selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
 		F53C315220C2197400479FA4 /* QAData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAData.swift; sourceTree = "<group>"; };
+		F55B1B0020E3BF0500386BF0 /* IntroQuestionAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroQuestionAlertView.xib; sourceTree = "<group>"; };
+		F55B1B0220E3BF2A00386BF0 /* IntroQuestionAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroQuestionAlertView.swift; sourceTree = "<group>"; };
 		F584E5BC20DD3BA800ED2563 /* SettingsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsHeaderView.xib; sourceTree = "<group>"; };
-		F584E5BE20DD3C1100ED2563 /* MessageAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAlertView.swift; sourceTree = "<group>"; };
+		F584E5BE20DD3C1100ED2563 /* UpdateAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAlertView.swift; sourceTree = "<group>"; };
 		F586573220DA7BFD00598DE6 /* RoundRectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundRectButton.swift; sourceTree = "<group>"; };
 		F586573420DA7ECE00598DE6 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		F586573620DAF57100598DE6 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		F588EFD520D81919007D1BA5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F588EFDB20D81BDF007D1BA5 /* WizQuizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WizQuizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F588EFDD20D81BDF007D1BA5 /* WizQuizTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizQuizTests.swift; sourceTree = "<group>"; };
+		F588EFDD20D81BDF007D1BA5 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		F588EFDF20D81BDF007D1BA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F596137920E3D4C200FE1915 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		F59E4ECD20BB794D003B8D86 /* WizQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WizQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59E4ED020BB794D003B8D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F59E4ED220BB794D003B8D86 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -89,11 +97,11 @@
 		F5DD801820C0987900DFB78D /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
 		F5DF7C0120C190F300B400FA /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		F5EA800320C6F5E300B9C815 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
-		F5EA800720C7268B00B9C815 /* IntroAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroAlertView.swift; sourceTree = "<group>"; };
+		F5EA800720C7268B00B9C815 /* IntroSettingsAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroSettingsAlertView.swift; sourceTree = "<group>"; };
 		F5EA800B20C7342B00B9C815 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		F5EA800D20C7390E00B9C815 /* IntroAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroAlertView.xib; sourceTree = "<group>"; };
+		F5EA800D20C7390E00B9C815 /* IntroSettingsAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroSettingsAlertView.xib; sourceTree = "<group>"; };
 		F5F0787620DEB7E800BD18D2 /* DismissSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissSegue.swift; sourceTree = "<group>"; };
-		F5F3F32220C9617400682BD6 /* MessageAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageAlertView.xib; sourceTree = "<group>"; };
+		F5F3F32220C9617400682BD6 /* UpdateAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateAlertView.xib; sourceTree = "<group>"; };
 		F5F3F32420C9628A00682BD6 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,10 +134,31 @@
 		F588EFDC20D81BDF007D1BA5 /* WizQuizTests */ = {
 			isa = PBXGroup;
 			children = (
-				F588EFDD20D81BDF007D1BA5 /* WizQuizTests.swift */,
+				F588EFDD20D81BDF007D1BA5 /* SettingsViewModelTests.swift */,
+				F52C4B9D20E16F6000B5A839 /* QuestionViewModelTests.swift */,
 				F588EFDF20D81BDF007D1BA5 /* Info.plist */,
 			);
 			path = WizQuizTests;
+			sourceTree = "<group>";
+		};
+		F596137720E3CD6A00FE1915 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				F5EA800D20C7390E00B9C815 /* IntroSettingsAlertView.xib */,
+				F55B1B0020E3BF0500386BF0 /* IntroQuestionAlertView.xib */,
+				F5F3F32220C9617400682BD6 /* UpdateAlertView.xib */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		F596137820E3CD7400FE1915 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				F5EA800720C7268B00B9C815 /* IntroSettingsAlertView.swift */,
+				F55B1B0220E3BF2A00386BF0 /* IntroQuestionAlertView.swift */,
+				F584E5BE20DD3C1100ED2563 /* UpdateAlertView.swift */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 		F59E4EC420BB794D003B8D86 = {
@@ -172,12 +201,11 @@
 			isa = PBXGroup;
 			children = (
 				F5DD801820C0987900DFB78D /* CategoryButton.swift */,
-				F5EA800720C7268B00B9C815 /* IntroAlertView.swift */,
+				F596137820E3CD7400FE1915 /* Alerts */,
 				F5F3F32420C9628A00682BD6 /* SettingsHeaderView.swift */,
 				F586573220DA7BFD00598DE6 /* RoundRectButton.swift */,
 				F59EF5A320DBCA8B0088C420 /* SettingsTableViewCell.swift */,
 				F59EF5A520DBCF430088C420 /* SettingsCollectionViewCell.swift */,
-				F584E5BE20DD3C1100ED2563 /* MessageAlertView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,8 +213,8 @@
 		F5B9220020BEED1800673928 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F59E4EE520BB7F1D003B8D86 /* MainViewController.swift */,
 				F59E4ED220BB794D003B8D86 /* HomeViewController.swift */,
+				F59E4EE520BB7F1D003B8D86 /* MainViewController.swift */,
 				F59E4EE720BB7F2B003B8D86 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
@@ -197,8 +225,7 @@
 			children = (
 				F59E4ED420BB794D003B8D86 /* Main.storyboard */,
 				F59E4EDC20BB794E003B8D86 /* LaunchScreen.storyboard */,
-				F5EA800D20C7390E00B9C815 /* IntroAlertView.xib */,
-				F5F3F32220C9617400682BD6 /* MessageAlertView.xib */,
+				F596137720E3CD6A00FE1915 /* Alerts */,
 				F584E5BC20DD3BA800ED2563 /* SettingsHeaderView.xib */,
 			);
 			path = Storyboards;
@@ -226,6 +253,7 @@
 				F586573420DA7ECE00598DE6 /* UIView.swift */,
 				F586573620DAF57100598DE6 /* UIImage.swift */,
 				F59EF5A920DBE2750088C420 /* UICollectionView.swift */,
+				F596137920E3D4C200FE1915 /* Array.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -355,12 +383,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F59E4EDE20BB794E003B8D86 /* LaunchScreen.storyboard in Resources */,
-				F5EA800E20C7390E00B9C815 /* IntroAlertView.xib in Resources */,
+				F5EA800E20C7390E00B9C815 /* IntroSettingsAlertView.xib in Resources */,
 				F5B9221320BF4C5300673928 /* Category.plist in Resources */,
 				F59E4EEC20BDB253003B8D86 /* Assets.xcassets in Resources */,
 				F584E5BD20DD3BA800ED2563 /* SettingsHeaderView.xib in Resources */,
-				F5F3F32320C9617400682BD6 /* MessageAlertView.xib in Resources */,
+				F5F3F32320C9617400682BD6 /* UpdateAlertView.xib in Resources */,
 				F59E4ED620BB794D003B8D86 /* Main.storyboard in Resources */,
+				F55B1B0120E3BF0500386BF0 /* IntroQuestionAlertView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,7 +416,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F588EFDE20D81BDF007D1BA5 /* WizQuizTests.swift in Sources */,
+				F52C4B9E20E16F6000B5A839 /* QuestionViewModelTests.swift in Sources */,
+				F588EFDE20D81BDF007D1BA5 /* SettingsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,12 +427,13 @@
 			files = (
 				F586573520DA7ECE00598DE6 /* UIView.swift in Sources */,
 				F52C4B9820E1184F00B5A839 /* Defaults.swift in Sources */,
-				F584E5BF20DD3C1100ED2563 /* MessageAlertView.swift in Sources */,
+				F584E5BF20DD3C1100ED2563 /* UpdateAlertView.swift in Sources */,
+				F596137A20E3D4C200FE1915 /* Array.swift in Sources */,
 				F59E4ED320BB794D003B8D86 /* HomeViewController.swift in Sources */,
 				F53C315320C2197400479FA4 /* QAData.swift in Sources */,
 				F59E4EEA20BB932A003B8D86 /* NetworkClient.swift in Sources */,
 				F5F3F32520C9628A00682BD6 /* SettingsHeaderView.swift in Sources */,
-				F5EA800820C7268B00B9C815 /* IntroAlertView.swift in Sources */,
+				F5EA800820C7268B00B9C815 /* IntroSettingsAlertView.swift in Sources */,
 				F59EF5AA20DBE2750088C420 /* UICollectionView.swift in Sources */,
 				F586573720DAF57100598DE6 /* UIImage.swift in Sources */,
 				F52C4B9C20E12B1B00B5A839 /* Strings.swift in Sources */,
@@ -421,6 +452,7 @@
 				F5F0787720DEB7E800BD18D2 /* DismissSegue.swift in Sources */,
 				F59EF5A420DBCA8B0088C420 /* SettingsTableViewCell.swift in Sources */,
 				F59EF5A620DBCF430088C420 /* SettingsCollectionViewCell.swift in Sources */,
+				F55B1B0320E3BF2A00386BF0 /* IntroQuestionAlertView.swift in Sources */,
 				F5B9221020BF026A00673928 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,15 +647,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9V377KXBUA;
 				INFOPLIST_FILE = "$(SRCROOT)/WizQuiz/Other/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Sprouse.WizQuiz;
+				PRODUCT_BUNDLE_IDENTIFIER = Sprouse.QuizFlip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -633,15 +669,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9V377KXBUA;
 				INFOPLIST_FILE = "$(SRCROOT)/WizQuiz/Other/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Sprouse.WizQuiz;
+				PRODUCT_BUNDLE_IDENTIFIER = Sprouse.QuizFlip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

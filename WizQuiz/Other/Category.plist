@@ -7,9 +7,9 @@
 		<string>Sports</string>
 		<key>icons</key>
 		<array>
-			<string>football</string>
-			<string>basketball</string>
-			<string>soccer</string>
+			<string>Football</string>
+			<string>Basketball</string>
+			<string>Soccer</string>
 		</array>
 	</dict>
 	<dict>
@@ -17,9 +17,9 @@
 		<string>Entertainment</string>
 		<key>icons</key>
 		<array>
-			<string>movies</string>
-			<string>tv</string>
-			<string>music</string>
+			<string>Movies</string>
+			<string>TV</string>
+			<string>Music</string>
 		</array>
 	</dict>
 	<dict>
@@ -27,9 +27,9 @@
 		<string>History</string>
 		<key>icons</key>
 		<array>
-			<string>us-history</string>
-			<string>world-history</string>
-			<string>us-government</string>
+			<string>US-History</string>
+			<string>World-History</string>
+			<string>US-Government</string>
 		</array>
 	</dict>
 	<dict>
@@ -37,9 +37,9 @@
 		<string>Science</string>
 		<key>icons</key>
 		<array>
-			<string>anatomy</string>
-			<string>animals</string>
-			<string>earth-science</string>
+			<string>Anatomy</string>
+			<string>Animals</string>
+			<string>Earth-Science</string>
 		</array>
 	</dict>
 </array>
