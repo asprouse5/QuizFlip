@@ -71,11 +71,11 @@
 		F586573420DA7ECE00598DE6 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		F586573620DAF57100598DE6 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		F588EFD520D81919007D1BA5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		F588EFDB20D81BDF007D1BA5 /* WizQuizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WizQuizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F588EFDB20D81BDF007D1BA5 /* QuizFlipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizFlipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F588EFDD20D81BDF007D1BA5 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		F588EFDF20D81BDF007D1BA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F596137920E3D4C200FE1915 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		F59E4ECD20BB794D003B8D86 /* WizQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WizQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F59E4ECD20BB794D003B8D86 /* QuizFlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizFlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F59E4ED020BB794D003B8D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F59E4ED220BB794D003B8D86 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F59E4ED520BB794D003B8D86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,14 +129,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F588EFDC20D81BDF007D1BA5 /* WizQuizTests */ = {
+		F588EFDC20D81BDF007D1BA5 /* QuizFlipTests */ = {
 			isa = PBXGroup;
 			children = (
 				F588EFDD20D81BDF007D1BA5 /* SettingsViewModelTests.swift */,
 				F52C4B9D20E16F6000B5A839 /* QuestionViewModelTests.swift */,
 				F588EFDF20D81BDF007D1BA5 /* Info.plist */,
 			);
-			path = WizQuizTests;
+			path = QuizFlipTests;
 			sourceTree = "<group>";
 		};
 		F596137720E3CD6A00FE1915 /* Alerts */ = {
@@ -162,8 +162,8 @@
 		F59E4EC420BB794D003B8D86 = {
 			isa = PBXGroup;
 			children = (
-				F59E4ECF20BB794D003B8D86 /* WizQuiz */,
-				F588EFDC20D81BDF007D1BA5 /* WizQuizTests */,
+				F59E4ECF20BB794D003B8D86 /* QuizFlip */,
+				F588EFDC20D81BDF007D1BA5 /* QuizFlipTests */,
 				F59E4ECE20BB794D003B8D86 /* Products */,
 				F588EFD420D81919007D1BA5 /* Frameworks */,
 			);
@@ -172,13 +172,13 @@
 		F59E4ECE20BB794D003B8D86 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F59E4ECD20BB794D003B8D86 /* WizQuiz.app */,
-				F588EFDB20D81BDF007D1BA5 /* WizQuizTests.xctest */,
+				F59E4ECD20BB794D003B8D86 /* QuizFlip.app */,
+				F588EFDB20D81BDF007D1BA5 /* QuizFlipTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F59E4ECF20BB794D003B8D86 /* WizQuiz */ = {
+		F59E4ECF20BB794D003B8D86 /* QuizFlip */ = {
 			isa = PBXGroup;
 			children = (
 				F5DF7C0020C190DD00B400FA /* Protocols */,
@@ -192,7 +192,7 @@
 				F5B9220220BEED4700673928 /* Other */,
 				F59E4EEB20BDB252003B8D86 /* Assets.xcassets */,
 			);
-			path = WizQuiz;
+			path = QuizFlip;
 			sourceTree = "<group>";
 		};
 		F5B921FF20BEECFC00673928 /* Views */ = {
@@ -293,9 +293,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F588EFDA20D81BDF007D1BA5 /* WizQuizTests */ = {
+		F588EFDA20D81BDF007D1BA5 /* QuizFlipTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F588EFE220D81BDF007D1BA5 /* Build configuration list for PBXNativeTarget "WizQuizTests" */;
+			buildConfigurationList = F588EFE220D81BDF007D1BA5 /* Build configuration list for PBXNativeTarget "QuizFlipTests" */;
 			buildPhases = (
 				F588EFD720D81BDF007D1BA5 /* Sources */,
 				F588EFD820D81BDF007D1BA5 /* Frameworks */,
@@ -306,14 +306,14 @@
 			dependencies = (
 				F588EFE120D81BDF007D1BA5 /* PBXTargetDependency */,
 			);
-			name = WizQuizTests;
+			name = QuizFlipTests;
 			productName = WizQuizTests;
-			productReference = F588EFDB20D81BDF007D1BA5 /* WizQuizTests.xctest */;
+			productReference = F588EFDB20D81BDF007D1BA5 /* QuizFlipTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F59E4ECC20BB794D003B8D86 /* WizQuiz */ = {
+		F59E4ECC20BB794D003B8D86 /* QuizFlip */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F59E4EE220BB794E003B8D86 /* Build configuration list for PBXNativeTarget "WizQuiz" */;
+			buildConfigurationList = F59E4EE220BB794E003B8D86 /* Build configuration list for PBXNativeTarget "QuizFlip" */;
 			buildPhases = (
 				F59E4EC920BB794D003B8D86 /* Sources */,
 				F59E4ECA20BB794D003B8D86 /* Frameworks */,
@@ -324,9 +324,9 @@
 			);
 			dependencies = (
 			);
-			name = WizQuiz;
+			name = QuizFlip;
 			productName = SquadBowl;
-			productReference = F59E4ECD20BB794D003B8D86 /* WizQuiz.app */;
+			productReference = F59E4ECD20BB794D003B8D86 /* QuizFlip.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -348,7 +348,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F59E4EC820BB794D003B8D86 /* Build configuration list for PBXProject "WizQuiz" */;
+			buildConfigurationList = F59E4EC820BB794D003B8D86 /* Build configuration list for PBXProject "QuizFlip" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -361,8 +361,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F59E4ECC20BB794D003B8D86 /* WizQuiz */,
-				F588EFDA20D81BDF007D1BA5 /* WizQuizTests */,
+				F59E4ECC20BB794D003B8D86 /* QuizFlip */,
+				F588EFDA20D81BDF007D1BA5 /* QuizFlipTests */,
 			);
 		};
 /* End PBXProject section */
@@ -458,7 +458,7 @@
 /* Begin PBXTargetDependency section */
 		F588EFE120D81BDF007D1BA5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F59E4ECC20BB794D003B8D86 /* WizQuiz */;
+			target = F59E4ECC20BB794D003B8D86 /* QuizFlip */;
 			targetProxy = F588EFE020D81BDF007D1BA5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -500,7 +500,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WizQuiz.app/WizQuiz";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuizFlip.app/QuizFlip";
 			};
 			name = Debug;
 		};
@@ -521,7 +521,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WizQuiz.app/WizQuiz";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuizFlip.app/QuizFlip";
 			};
 			name = Release;
 		};
@@ -646,7 +646,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9V377KXBUA;
-				INFOPLIST_FILE = "$(SRCROOT)/WizQuiz/Other/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/QuizFlip/Other/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -668,7 +668,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9V377KXBUA;
-				INFOPLIST_FILE = "$(SRCROOT)/WizQuiz/Other/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/QuizFlip/Other/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -686,7 +686,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F588EFE220D81BDF007D1BA5 /* Build configuration list for PBXNativeTarget "WizQuizTests" */ = {
+		F588EFE220D81BDF007D1BA5 /* Build configuration list for PBXNativeTarget "QuizFlipTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F588EFE320D81BDF007D1BA5 /* Debug */,
@@ -695,7 +695,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F59E4EC820BB794D003B8D86 /* Build configuration list for PBXProject "WizQuiz" */ = {
+		F59E4EC820BB794D003B8D86 /* Build configuration list for PBXProject "QuizFlip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F59E4EE020BB794E003B8D86 /* Debug */,
@@ -704,7 +704,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F59E4EE220BB794E003B8D86 /* Build configuration list for PBXNativeTarget "WizQuiz" */ = {
+		F59E4EE220BB794E003B8D86 /* Build configuration list for PBXNativeTarget "QuizFlip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F59E4EE320BB794E003B8D86 /* Debug */,
