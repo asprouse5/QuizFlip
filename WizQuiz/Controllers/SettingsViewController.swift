@@ -12,19 +12,13 @@ protocol QuestionFilterable: class {
     func sendFilterArray(with selections: [Selection]?)
 }
 
-protocol Update: class {
-    func didUpdate(_ updated: Bool)
-}
-
 class SettingsViewController: UIViewController {
 
     @IBOutlet var settingsViewModel: SettingsViewModel!
     @IBOutlet var settingsCollectionView: UICollectionView!
-    @IBOutlet var helpButton: RoundRectButton!
     @IBOutlet var okButton: RoundRectButton!
     @IBOutlet var cancelButton: RoundRectButton!
     weak var filterDelegate: QuestionFilterable?
-    weak var updateDelegate: Update?
     var itemSize: CGFloat = 0
     var isFirstTime = false
 
@@ -68,6 +62,7 @@ class SettingsViewController: UIViewController {
 }
 
 // MARK: - UICollectionView
+
 extension SettingsViewController: UICollectionViewDelegate, UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout {
 

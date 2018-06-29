@@ -9,17 +9,24 @@
 import Foundation
 
 protocol RandomQuestion: class {
-    func sendQuestion(_ question: QAData, atBeginning: Bool)
+    func sendQuestion(_ question: QAData, disableBack: Bool)
+}
+
+protocol Version: class {
+    func sendUpdate(available: Bool)
+    func noInternet(firstTime: Bool)
+    func sendFirstVersion(_ version: String)
 }
 
 class QuestionModel: NSObject {
 
     @IBOutlet var networkClient: NetworkClient!
-    weak var delegate: RandomQuestion?
+    weak var randomDelegate: RandomQuestion?
+    weak var versionDelegate: Version?
     var questions: [QAData]?
     var filteredQuestions: [QAData]?
-    var canUpdate = false
     var questionNumber = -1
+    var currentVersion: String?
 
     func saveUserDefaults() {
         Defaults.saveUserDefaults(key: Strings.questions.rawValue, value: self.questions)
@@ -27,40 +34,39 @@ class QuestionModel: NSObject {
     }
 
     func isFirstTime() -> Bool {
-        return Defaults.getUserDefaults(for: Strings.questions.rawValue) == nil
+        return Defaults.getUserDefaults(for: Strings.filteredQuestions.rawValue) == nil
     }
 
-    func isNewDataAvailable(completion: @escaping (Bool) -> Void) {
-        let currentVersion = Defaults.getVersion()
+    // MARK: - Getting/saving version
+
+    func getVersion() {
+        currentVersion = Defaults.getVersion()
         networkClient.getVersionNumber { version in
-            Defaults.saveVersion(version: version)
-            self.canUpdate = version != currentVersion
-            completion(self.canUpdate)
+            if version == "" { // no internet
+                self.versionDelegate?.noInternet(firstTime: self.isFirstTime())
+            } else if !self.isFirstTime() {
+                self.versionDelegate?.sendUpdate(available: version != self.currentVersion)
+            } else {
+                Defaults.saveVersion(version: version)
+                self.versionDelegate?.sendFirstVersion(version)
+            }
+            self.currentVersion = version
         }
     }
 
-    func getVersion(completion: @escaping (String) -> Void) {
-        networkClient.getVersionNumber { version in
-            Defaults.saveVersion(version: version)
-            completion(version)
-        }
+    func saveNewVersion() {
+        Defaults.saveVersion(version: currentVersion)
     }
 
-    func getCanUpdate() -> Bool {
-        return canUpdate
-    }
+    // MARK: - Getting question data from network
 
     func getStarterQuestions() {
-        if let questionData = Defaults.getUserDefaults(for: Strings.questions.rawValue) {
-            // we have saved data
-            guard let filteredQuestionData = Defaults.getUserDefaults(for: Strings.filteredQuestions.rawValue)
-                else { fatalError() }
+        if let questionData = Defaults.getUserDefaults(for: Strings.questions.rawValue),
+            let filteredQuestionData = Defaults.getUserDefaults(for: Strings.filteredQuestions.rawValue) {
 
-            // decode questions
             let decodedQuestions = try? PropertyListDecoder().decode([QAData].self, from: questionData)
             questions = decodedQuestions
 
-            // decode filteredQuestions
             let decodedFilteredQuestions = try? PropertyListDecoder().decode([QAData].self, from: filteredQuestionData)
             filteredQuestions = decodedFilteredQuestions
 
@@ -70,25 +76,25 @@ class QuestionModel: NSObject {
         }
     }
 
-    func getNewStarterQuestions() {
+    private func getNewStarterQuestions() {
         networkClient.getStarterQuestionData { questions in
-                self.questions = questions
-                self.filteredQuestions = self.questions
-                self.saveUserDefaults()
+            self.questions = questions
+            self.saveUserDefaults()
             self.getAllQuestions()
         }
     }
 
-    func getAllQuestions() {
+    private func getAllQuestions() {
         networkClient.getAllQuestionData { questions in
             DispatchQueue.main.async {
                 guard let questions = questions else { return }
                 self.questions?.append(contentsOf: questions)
-                self.filteredQuestions = self.questions
                 self.saveUserDefaults()
             }
         }
     }
+
+    // MARK: - Question filtering and grabbing
 
     func filterQuestions(by selections: [Selection]?) {
         guard let selections = selections else { return }
@@ -98,12 +104,6 @@ class QuestionModel: NSObject {
         questionNumber = -1
         saveUserDefaults()
     }
-
-    /*func refilterQuestions() {
-        guard let selectionData = Defaults.getUserDefaults(for: Strings.selections.rawValue) else { fatalError() }
-        let selections = try? PropertyListDecoder().decode([Selection].self, from: selectionData)
-        filterQuestions(by: selections)
-    }*/
 
     func getNextQuestion() {
         questionNumber += 1
@@ -117,15 +117,16 @@ class QuestionModel: NSObject {
 
     private func getQuestion(at index: Int) {
         guard var filteredQuestions = filteredQuestions else {
-            delegate?.sendQuestion(QAData(), atBeginning: false)
+            randomDelegate?.sendQuestion(QAData(), disableBack: false)
             return
         }
         print("Question \(index) of \(filteredQuestions.count)")
 
         let returnQuestion: QAData
         let beginning = (index == 0)
+        let end = (index == filteredQuestions.count)
 
-        if index == filteredQuestions.count {
+        if end {
             questionNumber = -1
             self.filteredQuestions?.shuffle()
             returnQuestion = QAData(category: "", question: Constants.endQA, answer: Constants.endQA)
@@ -133,7 +134,7 @@ class QuestionModel: NSObject {
             returnQuestion = filteredQuestions[index]
         }
 
-        delegate?.sendQuestion(returnQuestion, atBeginning: beginning)
+        randomDelegate?.sendQuestion(returnQuestion, disableBack: beginning || end)
     }
 
     func formatCategory(_ category: String) -> String {

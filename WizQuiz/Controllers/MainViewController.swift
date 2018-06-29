@@ -19,7 +19,6 @@ class MainViewController: UIViewController {
 
     var nextQuestion = QAData()
     var showAnswer = false
-    var isFirstTime = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,19 +28,14 @@ class MainViewController: UIViewController {
         qaLabel.setTextSize(label: qaLabel)
         categoryLabel.setTextSize(label: categoryLabel)
 
-        if isFirstTime {
+        if questionModel.isFirstTime() {
             IntroQuestionAlertView(parent: self).show(animated: true)
         } else {
             questionModel.filteredQuestions?.shuffle()
         }
 
-        questionModel.delegate = self
+        questionModel.randomDelegate = self
         getNextQuestion()
-    }
-
-    func setFirstTime(_ isFirstTime: Any?) {
-        guard let isFirstTime = isFirstTime as? Bool else { return }
-        self.isFirstTime = isFirstTime
     }
 
     func getNextQuestion() {
@@ -79,16 +73,15 @@ class MainViewController: UIViewController {
         if segue.identifier == Strings.settingsSegue.rawValue,
             let destination = segue.destination as? SettingsViewController {
             destination.filterDelegate = self
-            destination.updateDelegate = self
         }
     }
 }
 
 extension MainViewController: RandomQuestion {
-    func sendQuestion(_ question: QAData, atBeginning: Bool) {
+    func sendQuestion(_ question: QAData, disableBack: Bool) {
         self.nextQuestion = question
         DispatchQueue.main.async {
-            if atBeginning {
+            if disableBack {
                 self.backButton.isEnabled = false
             }
             self.qaIcon.image = #imageLiteral(resourceName: "Q")
@@ -98,22 +91,9 @@ extension MainViewController: RandomQuestion {
     }
 }
 
-// MARK: - QuestionFilterable Protocol
-
 extension MainViewController: QuestionFilterable {
     func sendFilterArray(with selections: [Selection]?) {
         questionModel.filterQuestions(by: selections)
         getNextQuestion()
-    }
-}
-
-// MARK: - Updated Protocol
-
-extension MainViewController: Update {
-    func didUpdate(_ updated: Bool) {
-        if updated {
-            questionModel.canUpdate = false
-            questionModel.getNewStarterQuestions()
-        }
     }
 }

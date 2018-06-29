@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -46,7 +45,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="M4O-zF-FNp" kind="show" identifier="mainSegue" id="uLa-TB-cxb"/>
+                                    <segue destination="M4O-zF-FNp" kind="presentation" identifier="mainSegue" modalTransitionStyle="flipHorizontal" id="uLa-TB-cxb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNz-SV-cqe" userLabel="Info Button" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
@@ -68,7 +67,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="h3I-JO-9Jb" kind="show" id="zz1-e3-Mix"/>
+                                    <segue destination="h3I-JO-9Jb" kind="presentation" modalTransitionStyle="flipHorizontal" id="zz1-e3-Mix"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07g-Mf-xeG" userLabel="Settings Button" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
@@ -309,7 +308,7 @@ Thank you to my family for helping me to create this app!</string>
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lkh-nZ-1GS">
-                                <rect key="frame" x="20" y="141.5" width="280" height="358.5"/>
+                                <rect key="frame" x="32" y="141.5" width="256" height="358.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UQL-3o-tGp">
                                     <size key="itemSize" width="78" height="78"/>
@@ -361,11 +360,11 @@ Thank you to my family for helping me to create this app!</string>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="settingsHeader" id="nkB-Ax-HOv" customClass="SettingsHeaderView" customModule="WizQuiz" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="280" height="74"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="256" height="74"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DY1-vx-aTI" customClass="CategoryButton" customModule="WizQuiz" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="8" width="280" height="58"/>
+                                            <rect key="frame" x="0.0" y="8" width="256" height="58"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -416,13 +415,12 @@ Thank you to my family for helping me to create this app!</string>
                             <constraint firstItem="YV8-dW-hgC" firstAttribute="leading" secondItem="H7J-HT-8an" secondAttribute="leadingMargin" id="kmn-8Y-Q6h"/>
                             <constraint firstItem="3Q1-LU-v80" firstAttribute="top" secondItem="Z1q-fF-V3F" secondAttribute="top" id="uR8-55-Ggz"/>
                             <constraint firstItem="Xce-q8-8MT" firstAttribute="leading" secondItem="H7J-HT-8an" secondAttribute="leading" id="xVf-8u-wSC"/>
-                            <constraint firstItem="lkh-nZ-1GS" firstAttribute="leading" secondItem="Z1q-fF-V3F" secondAttribute="leading" constant="20" id="xYe-Y6-qDY"/>
+                            <constraint firstItem="lkh-nZ-1GS" firstAttribute="leading" secondItem="Z1q-fF-V3F" secondAttribute="leading" constant="32" id="xYe-Y6-qDY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Z1q-fF-V3F"/>
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="xkR-5V-qhY" id="aFt-IE-gQZ"/>
-                        <outlet property="helpButton" destination="D7N-2R-2Kt" id="Rrt-eb-eBZ"/>
                         <outlet property="okButton" destination="GtP-iV-VDo" id="Oe9-mc-R4W"/>
                         <outlet property="settingsCollectionView" destination="lkh-nZ-1GS" id="7Dc-FM-TmE"/>
                         <outlet property="settingsViewModel" destination="zDY-qA-RWH" id="E7b-Mc-II0"/>
@@ -453,19 +451,19 @@ Thank you to my family for helping me to create this app!</string>
                                 <rect key="frame" x="20" y="20" width="280" height="113.5"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mMQ-Cx-Cp8">
-                                <rect key="frame" x="16" y="142" width="288" height="254"/>
+                                <rect key="frame" x="16" y="142" width="288" height="254.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qa_bg" translatesAutoresizingMaskIntoConstraints="NO" id="66M-Cg-d5v">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="254.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="255"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ihb-Lb-67e" userLabel="QA Stack View">
-                                        <rect key="frame" x="16" y="40" width="256" height="198"/>
+                                        <rect key="frame" x="16" y="40" width="256" height="198.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Q" translatesAutoresizingMaskIntoConstraints="NO" id="N1O-oX-dZ1">
-                                                <rect key="frame" x="0.0" y="0.0" width="51" height="198"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="51" height="198.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moX-Nb-0hM">
-                                                <rect key="frame" x="61" y="0.0" width="195" height="198"/>
+                                                <rect key="frame" x="61" y="0.0" width="195" height="198.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -498,10 +496,10 @@ Thank you to my family for helping me to create this app!</string>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-Zs-Bkf">
-                                <rect key="frame" x="80" y="406" width="160" height="57"/>
+                                <rect key="frame" x="80" y="406.5" width="160" height="56.5"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L88-6h-af2" userLabel="Back Button" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="57" height="57"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="57" height="56.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <state key="normal" image="back">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -522,7 +520,7 @@ Thank you to my family for helping me to create this app!</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnR-NX-f2H" userLabel="Next Button" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
-                                        <rect key="frame" x="103" y="0.0" width="57" height="57"/>
+                                        <rect key="frame" x="103" y="0.0" width="57" height="56.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <state key="normal" image="next">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -564,7 +562,7 @@ Thank you to my family for helping me to create this app!</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="h3I-JO-9Jb" kind="show" id="hvX-GN-LWd"/>
+                                    <segue destination="h3I-JO-9Jb" kind="presentation" modalTransitionStyle="flipHorizontal" id="hvX-GN-LWd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6g-vA-DNi" userLabel="Settings Button" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
@@ -646,7 +644,7 @@ Thank you to my family for helping me to create this app!</string>
         <image name="settings" width="448" height="448"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EQR-VE-eLi"/>
+        <segue reference="hMb-wi-hEx"/>
         <segue reference="hvX-GN-LWd"/>
     </inferredMetricsTieBreakers>
 </document>

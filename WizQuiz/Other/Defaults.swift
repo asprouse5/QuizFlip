@@ -25,7 +25,14 @@ struct Defaults {
         return defaults.string(forKey: Strings.version.rawValue) ?? nil
     }
 
-    static func saveVersion(version: String) {
+    static func saveVersion(version: String?) {
         self.defaults.set(version, forKey: Strings.version.rawValue)
+    }
+
+    static func prepareForUpdate() {
+        defaults.removeObject(forKey: Strings.categories.rawValue)
+        defaults.removeObject(forKey: Strings.selections.rawValue)
+        defaults.removeObject(forKey: Strings.questions.rawValue)
+        defaults.removeObject(forKey: Strings.filteredQuestions.rawValue)
     }
 }

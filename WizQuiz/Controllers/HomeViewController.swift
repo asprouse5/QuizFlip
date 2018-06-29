@@ -12,35 +12,29 @@ class HomeViewController: UIViewController {
 
     @IBOutlet var questionModel: QuestionModel!
     @IBOutlet var loading: UIActivityIndicatorView!
-    var isFirstTime = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkInternetConnection()
+        questionModel.versionDelegate = self
+
+        loading.startAnimating()
+        questionModel.getVersion()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Strings.mainSegue.rawValue,
             let destination = segue.destination as? MainViewController {
             destination.questionModel = questionModel
-            destination.setFirstTime(isFirstTime)
         } else if segue.identifier == Strings.settingsSegue.rawValue,
             let destination = segue.destination as? SettingsViewController {
             destination.filterDelegate = self
-            destination.updateDelegate = self
-            destination.setFirstTime(isFirstTime)
+            destination.setFirstTime(questionModel.isFirstTime())
         }
     }
 
-    func checkInternetConnection() {
-        loading.startAnimating()
-        questionModel.getVersion { version in
-            if version == "" { // no internet
-                self.showNoInternetAlert()
-            } else { // internet
-                self.finishSetup()
-            }
-        }
+    func getQuestions() {
+        self.loading.stopAnimating()
+        questionModel.getStarterQuestions()
     }
 
     private func showNoInternetAlert() {
@@ -49,34 +43,12 @@ class HomeViewController: UIViewController {
                                           message: "Please connect to the internet and try again.",
                                           preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { _ in
-                self.checkInternetConnection()
+                self.questionModel.getVersion()
             }))
             self.present(alert, animated: true)
         }
     }
-
-    func finishSetup() {
-        self.loading.stopAnimating()
-        if questionModel.isFirstTime() {
-            isFirstTime = true
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: Strings.settingsSegue.rawValue, sender: nil)
-            }
-        } else {
-            questionModel.isNewDataAvailable { response in
-                if response {
-                    let alert = UpdateAlertView(parent: self)
-                    alert.delegate = self
-                    alert.show(animated: true)
-                }
-            }
-        }
-
-        questionModel.getStarterQuestions()
-    }
 }
-
-// MARK: - QuestionFilterable Protocol
 
 extension HomeViewController: QuestionFilterable {
     func sendFilterArray(with selections: [Selection]?) {
@@ -84,21 +56,39 @@ extension HomeViewController: QuestionFilterable {
     }
 }
 
-// MARK: - Updated Protocol
-
-extension HomeViewController: Update {
-    func didUpdate(_ updated: Bool) {
-        if updated {
-            questionModel.canUpdate = false
-            questionModel.getNewStarterQuestions()
+extension HomeViewController: UpdateAlertViewDelegate {
+    func okTriggered() {
+        Defaults.prepareForUpdate()
+        questionModel.saveNewVersion()
+        questionModel.getStarterQuestions()
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Strings.settingsSegue.rawValue, sender: nil)
         }
     }
 }
 
-extension HomeViewController: UpdateAlertViewDelegate {
-    func okTriggered() {
-        Defaults.defaults.removeObject(forKey: Strings.categories.rawValue)
-        Defaults.defaults.removeObject(forKey: Strings.selections.rawValue)
-        questionModel.getNewStarterQuestions()
+extension HomeViewController: Version {
+    func sendUpdate(available: Bool) {
+        if available {
+            let alert = UpdateAlertView(parent: self)
+            alert.delegate = self
+            alert.show(animated: true)
+        }
+        getQuestions()
+    }
+
+    func noInternet(firstTime: Bool) {
+        if firstTime {
+            showNoInternetAlert()
+        } else {
+            getQuestions()
+        }
+    }
+
+    func sendFirstVersion(_ version: String) {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Strings.settingsSegue.rawValue, sender: nil)
+        }
+        getQuestions()
     }
 }

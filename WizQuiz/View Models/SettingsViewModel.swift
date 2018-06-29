@@ -23,15 +23,12 @@ class SettingsViewModel: NSObject {
     // MARK: - Getting category data from network
 
     func getCategories(completion: @escaping () -> Void) {
-        if let categoryData = Defaults.getUserDefaults(for: Strings.categories.rawValue) {
-            // we have saved data
-            guard let selectionData = Defaults.getUserDefaults(for: Strings.selections.rawValue) else { fatalError() }
+        if let categoryData = Defaults.getUserDefaults(for: Strings.categories.rawValue),
+            let selectionData = Defaults.getUserDefaults(for: Strings.selections.rawValue) {
 
-            // decode categories
             let decodedCategories = try? PropertyListDecoder().decode([Category].self, from: categoryData)
             categories = decodedCategories
 
-            // decode selections
             let decodedSelections = try? PropertyListDecoder().decode([Selection].self, from: selectionData)
             selections = decodedSelections
 

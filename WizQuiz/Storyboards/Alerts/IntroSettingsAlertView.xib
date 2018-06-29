@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -42,7 +41,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="aMh-Wn-RM1">
-                            <rect key="frame" x="22" y="145" width="251" height="101"/>
+                            <rect key="frame" x="21.5" y="145" width="251" height="101"/>
                             <subviews>
                                 <button opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MbX-Aw-ok1" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="100.5" height="101"/>
@@ -66,7 +65,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </button>
                                 <button opaque="NO" userInteractionEnabled="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="XKy-qm-E3b" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
-                                    <rect key="frame" x="150.5" y="0.0" width="100.5" height="101"/>
+                                    <rect key="frame" x="151" y="0.0" width="100.5" height="101"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <state key="normal">
                                         <string key="title">Not
@@ -98,7 +97,7 @@ Selected</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frC-r8-wCh" customClass="RoundRectButton" customModule="WizQuiz" customModuleProvider="target">
-                            <rect key="frame" x="110" y="347" width="75.5" height="75.5"/>
+                            <rect key="frame" x="109.5" y="347" width="75.5" height="75.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="frC-r8-wCh" secondAttribute="height" multiplier="1:1" id="Zro-PI-tck"/>
                             </constraints>
