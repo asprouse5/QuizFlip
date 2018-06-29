@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
         }
     }
 
-    func getQuestions() {
+    private func getQuestions() {
         self.loading.stopAnimating()
         questionModel.getStarterQuestions()
     }

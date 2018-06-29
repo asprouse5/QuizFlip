@@ -31,7 +31,6 @@ class SettingsViewModel: NSObject {
 
             let decodedSelections = try? PropertyListDecoder().decode([Selection].self, from: selectionData)
             selections = decodedSelections
-
         } else {
             // no saved data, get some
             getNewCategoryData()
@@ -121,7 +120,6 @@ class SettingsViewModel: NSObject {
             if noButtonsSelected(cButtons) {
                 selected = false
             }
-
             updateSelection(for: headButton, selected: selected, index: headIndex)
         }
     }
@@ -149,7 +147,7 @@ class SettingsViewModel: NSObject {
 
     private func noCategoriesSelected() -> Bool {
         guard let selections = selections else { return false }
-        return selections.filter({ $0.selected == true }).count == 0
+        return selections.filter { $0.selected == true }.count == 0
     }
 
 }

@@ -69,7 +69,6 @@ class QuestionModel: NSObject {
 
             let decodedFilteredQuestions = try? PropertyListDecoder().decode([QAData].self, from: filteredQuestionData)
             filteredQuestions = decodedFilteredQuestions
-
         } else {
             // no data saved, get some
             getNewStarterQuestions()
@@ -98,7 +97,7 @@ class QuestionModel: NSObject {
 
     func filterQuestions(by selections: [Selection]?) {
         guard let selections = selections else { return }
-        let selected = selections.filter({$0.selected == true}).compactMap({$0.name})
+        let selected = selections.filter { $0.selected == true }.compactMap { $0.name }
         filteredQuestions = questions?.filter { selected.contains($0.category) }
         filteredQuestions?.shuffle()
         questionNumber = -1
