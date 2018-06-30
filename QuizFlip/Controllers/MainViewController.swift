@@ -19,6 +19,7 @@ class MainViewController: UIViewController {
 
     var nextQuestion = QAData()
     var showAnswer = false
+    var isFirstTime = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class MainViewController: UIViewController {
         qaLabel.setTextSize(label: qaLabel)
         categoryLabel.setTextSize(label: categoryLabel)
 
-        if questionModel.isFirstTime() {
+        if isFirstTime {
             IntroQuestionAlertView(parent: self).show(animated: true)
         } else {
             questionModel.filteredQuestions?.shuffle()
@@ -36,6 +37,10 @@ class MainViewController: UIViewController {
 
         questionModel.randomDelegate = self
         getNextQuestion()
+    }
+
+    func setFirstTime(_ isFirstTime: Bool) {
+        self.isFirstTime = isFirstTime
     }
 
     func getNextQuestion() {

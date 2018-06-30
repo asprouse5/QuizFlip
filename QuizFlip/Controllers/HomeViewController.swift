@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet var questionModel: QuestionModel!
     @IBOutlet var loading: UIActivityIndicatorView!
+    var firstTime = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +26,11 @@ class HomeViewController: UIViewController {
         if segue.identifier == Strings.mainSegue.rawValue,
             let destination = segue.destination as? MainViewController {
             destination.questionModel = questionModel
+            destination.setFirstTime(firstTime)
         } else if segue.identifier == Strings.settingsSegue.rawValue,
             let destination = segue.destination as? SettingsViewController {
             destination.filterDelegate = self
-            destination.setFirstTime(questionModel.isFirstTime())
+            destination.setFirstTime(firstTime)
         }
     }
 
@@ -69,6 +71,7 @@ extension HomeViewController: UpdateAlertViewDelegate {
 
 extension HomeViewController: Version {
     func sendUpdate(available: Bool) {
+        firstTime = false
         if available {
             let alert = UpdateAlertView(parent: self)
             alert.delegate = self
@@ -78,6 +81,7 @@ extension HomeViewController: Version {
     }
 
     func noInternet(firstTime: Bool) {
+        self.firstTime = firstTime
         if firstTime {
             showNoInternetAlert()
         } else {
@@ -86,6 +90,7 @@ extension HomeViewController: Version {
     }
 
     func sendFirstVersion(_ version: String) {
+        firstTime = true
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: Strings.settingsSegue.rawValue, sender: nil)
         }

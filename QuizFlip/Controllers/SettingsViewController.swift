@@ -25,7 +25,17 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        settingsViewModel.getCategories {
+        settingsViewModel.getCategories { newCategories in
+            if newCategories {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "New Categories",
+                                                  message: "There are new categories! Please update your selections",
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                self.settingsViewModel.setButtonState(self.cancelButton)
+            }
             self.settingsCollectionView.reloadData()
         }
 
@@ -33,7 +43,6 @@ class SettingsViewController: UIViewController {
             settingsViewModel.setButtonState(cancelButton)
             IntroSettingsAlertView(parent: self).show(animated: true)
         }
-
         settingsViewModel.setButtonState(okButton)
     }
 

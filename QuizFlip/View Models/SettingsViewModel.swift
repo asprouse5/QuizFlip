@@ -22,31 +22,48 @@ class SettingsViewModel: NSObject {
 
     // MARK: - Getting category data from network
 
-    func getCategories(completion: @escaping () -> Void) {
-        if let categoryData = Defaults.getUserDefaults(for: Strings.categories.rawValue),
-            let selectionData = Defaults.getUserDefaults(for: Strings.selections.rawValue) {
-
+    func getCategories(completion: @escaping (Bool) -> Void) {
+        if let categoryData = Defaults.getUserDefaults(for: Strings.categories.rawValue) {
             let decodedCategories = try? PropertyListDecoder().decode([Category].self, from: categoryData)
-            categories = decodedCategories
 
-            let decodedSelections = try? PropertyListDecoder().decode([Selection].self, from: selectionData)
-            selections = decodedSelections
+            if newCategories(oldCategories: decodedCategories) {
+                getSelections()
+                saveUserDefaults()
+                completion(true)
+            } else {
+                guard let selectionData = Defaults.getUserDefaults(for: Strings.selections.rawValue) else { return }
+                let decodedSelections = try? PropertyListDecoder().decode([Selection].self, from: selectionData)
+                selections = decodedSelections
+            }
+
+            Constants.multiplier = numberOfItems(in: 0) + 1
         } else {
             // no saved data, get some
             getNewCategoryData()
+            getSelections()
         }
-
-        completion()
+        completion(false)
     }
 
     private func getNewCategoryData() {
         networkClient.getCategoryData { categories in
             guard let categories = categories else { return }
             self.categories = categories
-            let data = categories.flatMap { [$0.title] + $0.icons }
-            self.selections = data.map { Selection(name: $0) }
-            self.saveUserDefaults()
         }
+    }
+
+    private func getSelections() {
+        guard let categories = categories else { return }
+        let data = categories.flatMap { [$0.title] + $0.icons }
+        selections = data.map { Selection(name: $0) }
+        saveUserDefaults()
+    }
+
+    private func newCategories(oldCategories: [Category]?) -> Bool {
+        getNewCategoryData()
+        guard let categories = categories else { return false }
+        guard let oldCategories = oldCategories else { return false }
+        return categories != oldCategories
     }
 
     // MARK: - Set up collection view data for SettingsViewController
