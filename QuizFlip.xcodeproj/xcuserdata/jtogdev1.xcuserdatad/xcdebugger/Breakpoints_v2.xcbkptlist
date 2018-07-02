@@ -266,12 +266,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuizFlip/View Models/SettingsViewModel.swift"
-            timestampString = "552010335.698801"
+            timestampString = "552232752.910111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "getCategories(completion:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "getCategories()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuizFlip/View Models/SettingsViewModel.swift"
-            timestampString = "552010335.6988699"
+            timestampString = "552232752.910213"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "newCategories(oldCategories:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuizFlip/View Models/SettingsViewModel.swift"
-            timestampString = "552010335.698927"
+            timestampString = "552232752.9102761"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "noCategoriesSelected()"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuizFlip/View Models/SettingsViewModel.swift"
-            timestampString = "552010335.69897"
+            timestampString = "552232752.910337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "noCategoriesSelected()"
             landmarkType = "7">
             <Locations>

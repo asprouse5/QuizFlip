@@ -8,9 +8,14 @@
 
 import Foundation
 
+protocol Fetching: class {
+    func gotCategories(new: Bool)
+}
+
 class SettingsViewModel: NSObject {
 
     @IBOutlet var networkClient: NetworkClient!
+    weak var fetchDelegate: Fetching?
     var categories: [Category]?
     var selections: [Selection]?
     var categoryButtons: [CategoryButton] = []
@@ -22,14 +27,14 @@ class SettingsViewModel: NSObject {
 
     // MARK: - Getting category data from network
 
-    func getCategories(completion: @escaping (Bool) -> Void) {
+    func getCategories() {
         if let categoryData = Defaults.getUserDefaults(for: Strings.categories.rawValue) {
             let decodedCategories = try? PropertyListDecoder().decode([Category].self, from: categoryData)
 
             if newCategories(oldCategories: decodedCategories) {
                 getSelections()
                 saveUserDefaults()
-                completion(true)
+                fetchDelegate?.gotCategories(new: true)
             } else {
                 guard let selectionData = Defaults.getUserDefaults(for: Strings.selections.rawValue) else { return }
                 let decodedSelections = try? PropertyListDecoder().decode([Selection].self, from: selectionData)
@@ -42,7 +47,7 @@ class SettingsViewModel: NSObject {
             getNewCategoryData()
             getSelections()
         }
-        completion(false)
+        fetchDelegate?.gotCategories(new: false)
     }
 
     private func getNewCategoryData() {
